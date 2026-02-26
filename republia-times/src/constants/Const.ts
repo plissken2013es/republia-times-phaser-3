@@ -1,0 +1,17 @@
+export const Const = {
+  s: 10,
+  p: 50,
+  paperX: 330,
+  paperY: 40,
+  paperW: 200,
+  paperH: 250,
+  feedX: 60,
+  feedY: 0,
+  feedW: 260,
+  feedH: 320,
+  buttonW: 120,
+  dayDuration: 60,
+  statMax: 30,
+  readershipStartCount: 200,
+  readershipBonusThresh: 100,
+} as const;
