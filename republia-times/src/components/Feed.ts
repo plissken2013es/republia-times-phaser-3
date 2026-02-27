@@ -6,6 +6,7 @@ import {
   IMG_BLURB_ARTICLE_B,
   IMG_BLURB_ARTICLE_M,
   IMG_BLURB_ARTICLE_S,
+  FONT_FEED,
 } from '../constants/AssetKeys';
 import { ArticleSize, NewsItem } from '../game/NewsItem';
 import { Paper } from './Paper';
@@ -13,7 +14,7 @@ import { Paper } from './Paper';
 type Blurb = {
   container: Phaser.GameObjects.Container;
   bg: Phaser.GameObjects.Image;
-  text: Phaser.GameObjects.Text;
+  text: Phaser.GameObjects.BitmapText;
   iconS: Phaser.GameObjects.Image;
   iconM: Phaser.GameObjects.Image;
   iconB: Phaser.GameObjects.Image;
@@ -37,12 +38,10 @@ export class Feed {
 
     for (let i = 0; i < 10; i += 1) {
       const bg = scene.add.image(0, 0, IMG_BLURB).setOrigin(0, 0);
-      const text = scene.add.text(10, 6, '', {
-        fontFamily: 'sans-serif',
-        fontSize: '10px',
-        color: '#000000',
-        wordWrap: { width: 160 },
-      });
+      const text = scene.add.bitmapText(10, 6, FONT_FEED, '', 8);
+      text.setMaxWidth(160);
+      text.setLineSpacing(2);
+      text.setTint(0x000000);
       const iconS = scene.add.image(180, 6, IMG_BLURB_ARTICLE_S).setOrigin(0, 0);
       const iconM = scene.add.image(200, 6, IMG_BLURB_ARTICLE_M).setOrigin(0, 0);
       const iconB = scene.add.image(220, 6, IMG_BLURB_ARTICLE_B).setOrigin(0, 0);
@@ -91,9 +90,9 @@ export class Feed {
     blurb.newsItem = newsItem;
     blurb.text.setText(newsItem.getBlurbText());
     if (newsItem.isRebelLeader()) {
-      blurb.text.setColor('#ff0000');
+      blurb.text.setTint(0xff0000);
     } else {
-      blurb.text.setColor('#000000');
+      blurb.text.setTint(0x000000);
     }
     blurb.container.setVisible(true);
     blurb.visible = true;

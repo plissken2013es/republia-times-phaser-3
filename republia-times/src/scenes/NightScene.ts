@@ -3,7 +3,7 @@ import Phaser from 'phaser';
 import { MuteButton } from '../components/MuteButton';
 import { StatMeters } from '../components/StatMeters';
 import { Const } from '../constants/Const';
-import { IMG_PRINTED_PAPER, MUSIC_NIGHT } from '../constants/AssetKeys';
+import { FONT_FEED, IMG_BUTTON, IMG_PRINTED_PAPER, MUSIC_NIGHT } from '../constants/AssetKeys';
 import { GameState } from '../game/GameState';
 
 export class NightScene extends Phaser.Scene {
@@ -26,12 +26,10 @@ export class NightScene extends Phaser.Scene {
 
     this.add.image(270, 80, IMG_PRINTED_PAPER).setOrigin(0.5, 0);
 
-    const button = this.add.rectangle(270, 270, Const.buttonW, 30, 0x666666);
-    const label = this.add.text(270, 270, 'Go to Sleep', {
-      fontFamily: 'sans-serif',
-      fontSize: '14px',
-      color: '#ffffff',
-    }).setOrigin(0.5, 0.5);
+    const button = this.add.image(270, 270, IMG_BUTTON).setOrigin(0.5, 0.5);
+    const label = this.add.bitmapText(270, 270, FONT_FEED, 'Go to Sleep', 8)
+      .setOrigin(0.5, 0.5)
+      .setTint(0x000000);
     const onClick = () => {
       GameState.instance.dayNumber += 1;
       this.scene.start('MorningScene');
@@ -40,12 +38,10 @@ export class NightScene extends Phaser.Scene {
     label.setInteractive({ useHandCursor: true }).on('pointerdown', onClick);
 
     const message = this.buildResultsMessage();
-    const messageText = this.add.text(100, 110, message, {
-      fontFamily: 'sans-serif',
-      fontSize: '14px',
-      color: '#ffffff',
-      wordWrap: { width: 340 },
-    });
+    const messageText = this.add.bitmapText(100, 110, FONT_FEED, message, 8);
+    messageText.setMaxWidth(340);
+    messageText.setLineSpacing(8);
+    messageText.setTint(0xffffff);
     messageText.y = 180 - messageText.height / 2;
 
     this.statMeters = new StatMeters(this, 450, 120, false);

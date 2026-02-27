@@ -1,30 +1,31 @@
 import Phaser from 'phaser';
 
 import { Const } from '../constants/Const';
+import { FONT_FEED, IMG_STAT_METER } from '../constants/AssetKeys';
 import { Readership } from '../game/Readership';
 
 class StatMeter {
   private scene: Phaser.Scene;
   private container: Phaser.GameObjects.Container;
   private needle: Phaser.GameObjects.Graphics;
-  private valueText: Phaser.GameObjects.Text;
+  private valueText: Phaser.GameObjects.BitmapText;
+  private width: number;
 
-  public constructor(scene: Phaser.Scene, x: number, y: number, name: string, onWhite: boolean) {
+  public constructor(scene: Phaser.Scene, x: number, y: number, name: string) {
     this.scene = scene;
     this.container = scene.add.container(x, y);
 
-    const base = scene.add.rectangle(0, 0, 80, 50, 0x333333).setOrigin(0, 0);
-    const nameText = scene.add.text(40, 34, name, {
-      fontFamily: 'sans-serif',
-      fontSize: '10px',
-      color: onWhite ? '#000000' : '#ffffff',
-    }).setOrigin(0.5, 0.5);
+    const base = scene.add.image(0, 0, IMG_STAT_METER).setOrigin(0, 0);
+    this.width = base.width;
+    const nameText = scene.add.bitmapText(4, 34, FONT_FEED, name, 8);
+    nameText.setMaxWidth(this.width - 10);
+    nameText.setCenterAlign();
+    nameText.setTint(0xffffff);
 
-    this.valueText = scene.add.text(40, 24, '0', {
-      fontFamily: 'sans-serif',
-      fontSize: '10px',
-      color: '#ffffff',
-    }).setOrigin(0.5, 0.5);
+    this.valueText = scene.add.bitmapText(4, 24, FONT_FEED, '0', 8);
+    this.valueText.setMaxWidth(this.width - 10);
+    this.valueText.setCenterAlign();
+    this.valueText.setTint(0xffffff);
 
     this.needle = scene.add.graphics();
     this.container.add([base, this.needle, this.valueText, nameText]);
@@ -33,9 +34,9 @@ class StatMeter {
   public setValue(value: number): void {
     this.valueText.setText(`${value}`);
 
-    const centerX = 40;
-    const centerY = 22;
-    const radius = 25;
+    const centerX = this.width / 2;
+    const centerY = 23;
+    const radius = this.width / 2 - 10;
     const angle = (-Math.PI / 2) + (value / Const.statMax) * (Math.PI / 2);
 
     this.needle.clear();
@@ -50,25 +51,21 @@ class StatMeter {
 }
 
 export class StatMeters {
-  private readerCountText: Phaser.GameObjects.Text;
+  private readerCountText: Phaser.GameObjects.BitmapText;
   private loyaltyMeter: StatMeter;
 
   public constructor(scene: Phaser.Scene, x: number, y: number, onWhite: boolean) {
-    const readerNameText = scene.add.text(x - 10, y, 'Readers', {
-      fontFamily: 'sans-serif',
-      fontSize: '12px',
-      color: onWhite ? '#000000' : '#ffffff',
-    }).setOrigin(0, 0);
+    const readerNameText = scene.add.bitmapText(x - 10, y, FONT_FEED, 'Readers', 8);
+    readerNameText.setMaxWidth(100);
+    readerNameText.setCenterAlign();
+    readerNameText.setTint(onWhite ? 0x000000 : 0xffffff);
 
-    this.readerCountText = scene.add.text(x - 10, y + 12, '0', {
-      fontFamily: 'sans-serif',
-      fontSize: '12px',
-      color: onWhite ? '#000000' : '#ffffff',
-    }).setOrigin(0, 0);
+    this.readerCountText = scene.add.bitmapText(x - 10, y + 10, FONT_FEED, '0', 8);
+    this.readerCountText.setMaxWidth(100);
+    this.readerCountText.setCenterAlign();
+    this.readerCountText.setTint(onWhite ? 0x000000 : 0xffffff);
 
-    this.loyaltyMeter = new StatMeter(scene, x, y + 25, 'Loyalty', onWhite);
-    readerNameText.setDepth(1);
-    this.readerCountText.setDepth(1);
+    this.loyaltyMeter = new StatMeter(scene, x, y + 25, 'Loyalty');
   }
 
   public setValues(readership: Readership, showDelta: boolean): void {

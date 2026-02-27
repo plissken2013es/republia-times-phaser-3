@@ -3,7 +3,7 @@
   <info face="Silky Wonderland" size="8" bold="0" italic="0" charset="" unicode="1" stretchH="100" smooth="1" aa="1" padding="0,0,0,0" spacing="1,1" outline="0"/>
   <common lineHeight="8" base="6" scaleW="256" scaleH="256" pages="1" packed="0" alphaChnl="1" redChnl="0" greenChnl="0" blueChnl="0"/>
   <pages>
-    <page id="0" file="article_m_0.png" />
+    <page id="0" file="article_m.png" />
   </pages>
   <chars count="97">
     <char id="32" x="219" y="7" width="3" height="1" xoffset="-1" yoffset="7" xadvance="2" page="0" chnl="15" />
@@ -105,3 +105,4 @@
     <char id="173" x="197" y="7" width="4" height="2" xoffset="-1" yoffset="3" xadvance="3" page="0" chnl="15" />
   </chars>
 </font>
+

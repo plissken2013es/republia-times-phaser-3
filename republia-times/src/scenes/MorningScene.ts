@@ -4,6 +4,8 @@ import { MuteButton } from '../components/MuteButton';
 import { StatMeters } from '../components/StatMeters';
 import { Const } from '../constants/Const';
 import {
+  FONT_FEED,
+  IMG_BUTTON,
   IMG_LOGO,
   IMG_LOGO2,
   IMG_MORNING,
@@ -43,12 +45,14 @@ export class MorningScene extends Phaser.Scene {
     const logoSprite = this.add.image(0, 20, logoKey).setOrigin(0, 0);
     logoSprite.x = 270 - logoSprite.width / 2;
 
-    const button = this.add.rectangle(270, 270, Const.buttonW, 30, 0xcccccc);
-    const buttonLabel = this.add.text(270, 270, rebelsWon ? "Let's Go!" : (gameOver ? 'Accept Fate' : 'Start Work'), {
-      fontFamily: 'sans-serif',
-      fontSize: '14px',
-      color: '#000000',
-    }).setOrigin(0.5, 0.5);
+    const button = this.add.image(270, 270, IMG_BUTTON).setOrigin(0.5, 0.5);
+    const buttonLabel = this.add.bitmapText(
+      270,
+      270,
+      FONT_FEED,
+      rebelsWon ? "Let's Go!" : (gameOver ? 'Accept Fate' : 'Start Work'),
+      8,
+    ).setOrigin(0.5, 0.5).setTint(0x000000);
 
     const onClick = () => {
       if (gameOver) {
@@ -63,26 +67,22 @@ export class MorningScene extends Phaser.Scene {
     button.setInteractive({ useHandCursor: true }).on('pointerdown', onClick);
     buttonLabel.setInteractive({ useHandCursor: true }).on('pointerdown', onClick);
 
-    const messageText = this.add.text(100, 90, message, {
-      fontFamily: 'sans-serif',
-      fontSize: '14px',
-      color: rebelsWon ? '#ff0000' : '#000000',
-      wordWrap: { width: 340 },
-    });
+    const messageText = this.add.bitmapText(100, 90, FONT_FEED, message, 8);
+    messageText.setMaxWidth(340);
+    messageText.setLineSpacing(8);
+    messageText.setTint(rebelsWon ? 0xff0000 : 0x000000);
     messageText.y = 180 - messageText.height / 2;
 
-    this.add.text(245, 70, `Day ${dayNumber}`, {
-      fontFamily: 'sans-serif',
-      fontSize: '14px',
-      color: '#000000',
-    }).setOrigin(0, 0);
+    const dayText = this.add.bitmapText(245, 70, FONT_FEED, `Day ${dayNumber}`, 8);
+    dayText.setMaxWidth(50);
+    dayText.setCenterAlign();
+    dayText.setTint(0x000000);
 
-    this.add.text(0, 285, 'by\nLucas Pope\n@dukope', {
-      fontFamily: 'sans-serif',
-      fontSize: '12px',
-      color: '#000000',
-      align: 'right',
-    }).setOrigin(0, 0).setPosition(540 - 120, 285);
+    const creditsText = this.add.bitmapText(540 - 120, 285, FONT_FEED, 'by\nLucas Pope\n@dukope', 8);
+    creditsText.setMaxWidth(120);
+    creditsText.setRightAlign();
+    creditsText.setLineSpacing(4);
+    creditsText.setTint(0x000000);
 
     if (dayNumber > 1) {
       this.statMeters = new StatMeters(this, 450, 120, true);

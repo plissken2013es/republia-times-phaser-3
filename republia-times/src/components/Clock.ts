@@ -1,9 +1,11 @@
 import Phaser from 'phaser';
 
+import { FONT_FEED } from '../constants/AssetKeys';
+
 export class Clock {
   private scene: Phaser.Scene;
   private graphics: Phaser.GameObjects.Graphics;
-  private dayText: Phaser.GameObjects.Text;
+  private dayText: Phaser.GameObjects.BitmapText;
   private x: number;
   private y: number;
   private size: number;
@@ -17,12 +19,10 @@ export class Clock {
     this.graphics = scene.add.graphics();
     this.graphics.setPosition(this.x, this.y);
 
-    this.dayText = scene.add.text(this.x - 10, this.y + 10, `Day ${dayNumber}`, {
-      fontFamily: 'sans-serif',
-      fontSize: '12px',
-      color: '#000000',
-      align: 'center',
-    }).setOrigin(0, 0);
+    this.dayText = scene.add.bitmapText(0, 10, FONT_FEED, `Day ${dayNumber}`, 8);
+    this.dayText.setMaxWidth(60);
+    this.dayText.setCenterAlign();
+    this.dayText.setTint(0x000000);
 
     this.setTime(0);
   }

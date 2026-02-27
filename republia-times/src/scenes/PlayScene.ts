@@ -10,7 +10,7 @@ import { GameState } from '../game/GameState';
 import { Day } from '../game/Day';
 import { Goal } from '../game/Goal';
 import { Const } from '../constants/Const';
-import { IMG_BACKGROUND, SFX_ALARM, SFX_DAY_OVER, SFX_NULL } from '../constants/AssetKeys';
+import { FONT_FEED, IMG_BACKGROUND, IMG_BUTTON, SFX_ALARM, SFX_DAY_OVER, SFX_NULL } from '../constants/AssetKeys';
 import { Storage } from '../utils/Storage';
 
 export class PlayScene extends Phaser.Scene {
@@ -28,7 +28,7 @@ export class PlayScene extends Phaser.Scene {
   private dayOver = false;
   private appeared = new Set<number>();
   private muteButton?: MuteButton;
-  private scoreOverlay?: Phaser.GameObjects.Text;
+  private scoreOverlay?: Phaser.GameObjects.BitmapText;
   private scoreVisible = false;
 
   public constructor() {
@@ -56,12 +56,10 @@ export class PlayScene extends Phaser.Scene {
     this.alarmPlayed = false;
     this.dayOver = false;
 
-    const button = this.add.rectangle(420, 280, 120, 30, 0xcccccc);
-    const label = this.add.text(420, 280, 'End Day', {
-      fontFamily: 'sans-serif',
-      fontSize: '14px',
-      color: '#000000',
-    }).setOrigin(0.5, 0.5);
+    const button = this.add.image(420, 280, IMG_BUTTON).setOrigin(0.5, 0.5);
+    const label = this.add.bitmapText(420, 280, FONT_FEED, 'End Day', 8)
+      .setOrigin(0.5, 0.5)
+      .setTint(0x000000);
 
     button.setInteractive({ useHandCursor: true }).on('pointerdown', () => {
       this.speed = 10;
@@ -141,12 +139,8 @@ export class PlayScene extends Phaser.Scene {
     this.scoreVisible = !this.scoreVisible;
 
     if (!this.scoreOverlay) {
-      this.scoreOverlay = this.add.text(Const.paperX, 310, '', {
-        fontFamily: 'sans-serif',
-        fontSize: '10px',
-        color: '#ff0000',
-        backgroundColor: '#ffffff',
-      });
+      this.scoreOverlay = this.add.bitmapText(Const.paperX, 310, FONT_FEED, '', 8);
+      this.scoreOverlay.setTint(0xff0000);
     }
 
     if (this.scoreVisible) {
