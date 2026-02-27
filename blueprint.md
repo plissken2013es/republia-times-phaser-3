@@ -2454,3 +2454,61 @@ input: {
 
 This was specified in blueprint Prompt 7 and specs §14 (Input & Touch Support) but was not included in the generated implementation.
 ```
+
+### F. Bitmap Font Fixes (applied post-initial-Codex build)
+
+The four bitmap font atlases (`feed`, `article_b`, `article_m`, `article_s`) shipped with three issues that required correction. All files live in `republia-times/public/assets/fonts/`.
+
+#### F.1 — Black glyphs (breaks `setTint`)
+**Problem:** The PNG atlases had black (0,0,0) glyph pixels. Phaser 3's `setTint()` is multiplicative: `black × any_tint = black`. Tinting never worked — the rebel-won red tint (`0xff0000`) was invisible.
+
+**Fix:** Whiten all non-transparent pixels with Python/Pillow. For each PNG in the fonts folder:
+```python
+from PIL import Image
+img = Image.open(path).convert("RGBA")
+pixels = img.load()
+for y in range(img.height):
+    for x in range(img.width):
+        r, g, b, a = pixels[x, y]
+        if a > 0 and (r, g, b) != (255, 255, 255):
+            pixels[x, y] = (255, 255, 255, a)
+img.save(path)
+```
+White glyphs on a transparent background let `setTint(0x000000)` produce black text and `setTint(0xff0000)` produce red text as expected.
+
+#### F.2 — Antialiasing metadata
+**Problem:** All four XMLs had `smooth="1" aa="1"`. Although Phaser ignores these fields at runtime (filtering is controlled by `pixelArt: true` globally), the flags are misleading for future BFG re-exports.
+
+**Fix:** Set `smooth="0" aa="0"` in all four XML `<info>` tags.
+
+#### F.3 — Excessive `lineHeight` in `feed.xml`
+**Problem:** `feed.xml` declared `lineHeight="12"` and `base="10"` for a size-8 font. Combined with `setLineSpacing(8)` in `MorningScene.ts`, effective line pitch was 20 px — long messages overflowed the screen and buried the button.
+
+**Fix:**
+- `feed.xml`: changed `lineHeight="12"` → `"8"` and `base="10"` → `"8"`.
+- `MorningScene.ts` line 72: `setLineSpacing(8)` → `setLineSpacing(2)`.
+  Result: 10 px per line (8 px glyph + 2 px gap), matching the original Flash layout.
+
+#### F.4 — Message text `y`-clamp (`MorningScene.ts`)
+**Problem:** `messageText.y = 180 - messageText.height / 2` had no floor. Tall messages produced a negative y, overlapping the logo (y ≈ 20) and the "Day N" label (y = 70).
+
+**Fix** (`MorningScene.ts` line 74):
+```diff
+- messageText.y = 180 - messageText.height / 2;
++ messageText.y = Math.max(90, 180 - messageText.height / 2);
+```
+
+#### F.5 — Word-wrap / `xadvance` mismatch
+**Problem:** `feed.xml` had `xadvance="6"` for most glyphs (7 px wide, 1 px gap, xoffset = −1 → 0 px effective gap). Using `BitmapText.setLetterSpacing(2)` adds spacing to rendered output but **not** to Phaser's word-wrap calculation. Phaser packed lines using 6 px/char, rendered them at 8 px/char → lines overflowed `setMaxWidth` and ran into the stat-meter panel.
+
+**Fix:** Encode the spacing in the XML instead:
+```python
+# Increase all non-zero xadvance values by 2 in feed.xml
+import re
+content = re.sub(
+    r'xadvance="(\d+)"',
+    lambda m: f'xadvance="{int(m.group(1)) + 2}"' if int(m.group(1)) > 0 else m.group(0),
+    content
+)
+```
+Result: `xadvance=8` for letters/digits, `xadvance=4` for space and narrow punctuation. Word-wrap and rendering now agree; `setMaxWidth(340)` works correctly. No `setLetterSpacing` call is needed in code.
