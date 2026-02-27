@@ -2441,4 +2441,16 @@ Add `pixelArt: true` to the Phaser game config if fonts or sprites appear blurry
 
 ### D. Accessibility — Keyboard Article Placement (Annex B.6)
 Tab to cycle through blurbs, arrow keys to choose size, Enter to spawn, arrow keys to position on paper grid, Enter to place.
+
+### E. Multi-Touch Support — Missing `activePointers` Config
+`src/main.ts` is missing the `input: { activePointers: 2 }` config block required for multi-touch (two-finger drag on tablet). Without it, Phaser only registers a single active pointer, meaning simultaneous touch gestures will be silently ignored. Fix:
+
+```ts
+// src/main.ts — inside the Phaser.Types.Core.GameConfig object
+input: {
+  activePointers: 2,
+},
+```
+
+This was specified in blueprint Prompt 7 and specs §14 (Input & Touch Support) but was not included in the generated implementation.
 ```

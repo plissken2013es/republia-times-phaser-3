@@ -69,9 +69,9 @@ export class MorningScene extends Phaser.Scene {
 
     const messageText = this.add.bitmapText(100, 90, FONT_FEED, message, 8);
     messageText.setMaxWidth(340);
-    messageText.setLineSpacing(8);
+    messageText.setLineSpacing(2);
     messageText.setTint(rebelsWon ? 0xff0000 : 0x000000);
-    messageText.y = 180 - messageText.height / 2;
+    messageText.y = Math.max(90, 180 - messageText.height / 2);
 
     const dayText = this.add.bitmapText(245, 70, FONT_FEED, `Day ${dayNumber}`, 8);
     dayText.setMaxWidth(50);
