@@ -125,6 +125,7 @@ export class PreloadScene extends Phaser.Scene {
   public create(): void {
     Storage.load();
     GameState.instance.savedMute = Storage.getMute();
+
     this.scene.start('MorningScene');
   }
 }
