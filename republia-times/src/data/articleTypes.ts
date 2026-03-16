@@ -29,6 +29,8 @@ export interface ArticleData {
   dayRangeEnd: number;
   loyaltyEffect: LoyaltyEffect;
   interesting: boolean;
+  /** Whether the article can be dragged onto the paper. False for rebel cipher messages. */
+  placeable: boolean;
   text: {
     en: ArticleText;
     es: ArticleText;

@@ -44,6 +44,14 @@ export class PlayScene extends Phaser.Scene {
 
     this.add.image(0, 0, IMG_BACKGROUND).setOrigin(0, 0);
 
+    // "News Feed" header — was embedded in old background, now rendered as text
+    this.add.bitmapText(160, 3, FONT_FEED, S().ui_newsFeed, 10)
+      .setOrigin(0.5, 0).setTint(0xffffff);
+
+    // "Drag Articles to Paper" hint — between feed and paper areas
+    this.add.bitmapText(295, 55, FONT_FEED, S().ui_dragArticles, 10)
+      .setOrigin(0.5, 0).setTint(0x000000);
+
     // Newspaper title logo — switches between Republia/Democria
     const logoKey = GameState.instance.stateInControl ? IMG_LOGO_SMALL : IMG_LOGO_SMALL2;
     this.add.image(360, 10, logoKey).setOrigin(0, 0);
@@ -60,6 +68,7 @@ export class PlayScene extends Phaser.Scene {
     this.speed = GameState.instance.dayNumber === 1 ? 0.5 : 1;
     this.alarmPlayed = false;
     this.dayOver = false;
+    this.appeared = new Set();
 
     const button = this.add.image(30, 104, IMG_BUTTON).setOrigin(0.5, 0.5).setDisplaySize(60, 20);
     const label = this.add.bitmapText(30, 104, FONT_FEED, S().ui_endDay, 10)

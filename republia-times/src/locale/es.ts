@@ -30,6 +30,10 @@ export const es: LocaleStrings = {
   ui_day: 'Día',
   // 'by\nLucas Pope\n@dukope'
   ui_credits: 'por\nLucas Pope\n@dukope',
+  // 'News Feed'
+  ui_newsFeed: 'Noticias',
+  // 'Drag Articles\nto Paper'
+  ui_dragArticles: 'Arrastre \nal Periódico',
 
   // ── CenterPopup (PlayScene day-over) ──
   // 'The day is over. There is no more time. We must send to print immediately.'

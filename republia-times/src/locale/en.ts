@@ -17,6 +17,8 @@ export interface LocaleStrings {
   ui_results: string;
   ui_day: string;
   ui_credits: string;
+  ui_newsFeed: string;
+  ui_dragArticles: string;
 
   // CenterPopup
   popup_dayOver: string;
@@ -125,6 +127,8 @@ export const en: LocaleStrings = {
   ui_results: 'RESULTS',
   ui_day: 'Day',
   ui_credits: 'by\nLucas Pope\n@dukope',
+  ui_newsFeed: 'News Feed',
+  ui_dragArticles: 'Drag Articles\nto Paper',
 
   // ── CenterPopup (PlayScene day-over) ──
   popup_dayOver: 'The day is over. There is no more time. We must send to print immediately.',

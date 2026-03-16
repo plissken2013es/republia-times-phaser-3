@@ -1,9 +1,8 @@
-import { getNewsEntry } from '../data/buildNewsLocale';
+import { getNewsEntry, getArticleSource } from '../data/buildNewsLocale';
 import type { NewsEntry } from '../locale/en';
 import { GameState } from './GameState';
 import { Goal } from './Goal';
 import { ArticleCategory } from '../data/articleTypes';
-import { articleDatabase } from '../data/articleDatabase';
 
 export enum ArticleSize {
   S = 0,
@@ -83,10 +82,10 @@ export class NewsItem {
     return GameState.expandGovNames(str);
   }
 
-  /** Initialise allNewsItems from the article database. Call once at startup. */
+  /** Initialise allNewsItems from the active article source. Call once at startup. */
   public static initAllNewsItems(): void {
     const items: NewsItem[] = [];
-    for (const article of articleDatabase) {
+    for (const article of getArticleSource()) {
       items.push(
         new NewsItem(
           article.legacyIndex,

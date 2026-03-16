@@ -39,8 +39,12 @@ import {
   SFX_NULL,
 } from '../constants/AssetKeys';
 import { GameState } from '../game/GameState';
+import { NewsItem } from '../game/NewsItem';
 import { loadLanguagePreference } from '../locale/locale';
 import { Storage } from '../utils/Storage';
+import { loadArticles } from '../data/articleLoader';
+import { setArticleSource, rebuildNewsCache } from '../data/buildNewsLocale';
+import { getLanguage } from '../locale/locale';
 
 export class PreloadScene extends Phaser.Scene {
   public static readonly KEY = 'PreloadScene';
@@ -112,8 +116,18 @@ export class PreloadScene extends Phaser.Scene {
     this.load.bitmapFont(FONT_ARTICLE_S, 'assets/fonts/SG03_0.png', 'assets/fonts/SG03.fnt');
   }
 
-  public create(): void {
+  public async create(): Promise<void> {
     loadLanguagePreference();
+
+    // Load articles from JSONBin (if configured) or fall back to static database
+    const { articles, source } = await loadArticles();
+    setArticleSource(articles);
+    rebuildNewsCache(getLanguage());
+    NewsItem.initAllNewsItems();
+    if (source === 'remote') {
+      console.log(`[PreloadScene] Using ${articles.length} articles from remote`);
+    }
+
     Storage.load();
     GameState.instance.savedMute = Storage.getMute();
 

@@ -14,6 +14,7 @@ import {
 } from '../constants/AssetKeys';
 import { GameState } from '../game/GameState';
 import { Goal } from '../game/Goal';
+import { Readership } from '../game/Readership';
 import { S } from '../locale/locale';
 import { Storage } from '../utils/Storage';
 
@@ -76,6 +77,9 @@ export class MorningScene extends Phaser.Scene {
         gs.reset();
         this.scene.start('MorningScene');
       } else {
+        if (dayNumber === 1) {
+          gs.readership = new Readership();
+        }
         this.scene.start('PlayScene');
       }
     };
