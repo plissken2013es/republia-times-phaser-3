@@ -28,7 +28,7 @@ export class Feed {
   private blurbs: Blurb[] = [];
   private blurbsTop = Const.feedH;
   private blurbsTopTarget = Const.feedH;
-  private blurbHeight = 40;
+  private blurbHeight = 30;
 
   public enabled = true;
 
@@ -36,10 +36,15 @@ export class Feed {
     this.scene = scene;
     this.paper = paper;
 
+    // Shared mask to clip all blurb text within the feed area
+    const maskGraphics = scene.make.graphics({ x: 0, y: 0 });
+    maskGraphics.fillRect(Const.feedX, Const.feedY, Const.feedW, Const.feedH);
+    const feedMask = maskGraphics.createGeometryMask();
+
     for (let i = 0; i < 10; i += 1) {
       const bg = scene.add.image(0, 0, IMG_BLURB).setOrigin(0, 0);
-      const text = scene.add.bitmapText(10, 6, FONT_FEED, '', 8);
-      text.setMaxWidth(160);
+      const text = scene.add.bitmapText(11, 2, FONT_FEED, '', 8);
+      text.setMaxWidth(170);
       text.setLineSpacing(2);
       text.setTint(0x000000);
       const iconS = scene.add.image(180, 6, IMG_BLURB_ARTICLE_S).setOrigin(0, 0);
@@ -48,6 +53,7 @@ export class Feed {
 
       const container = scene.add.container(Const.feedX, Const.feedY, [bg, text, iconS, iconM, iconB]);
       container.setVisible(false);
+      container.setMask(feedMask);
 
       this.blurbs.push({
         container,
