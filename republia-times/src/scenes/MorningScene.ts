@@ -45,14 +45,26 @@ export class MorningScene extends Phaser.Scene {
     const logoSprite = this.add.image(0, 20, logoKey).setOrigin(0, 0);
     logoSprite.x = 270 - logoSprite.width / 2;
 
-    const button = this.add.image(270, 270, IMG_BUTTON).setOrigin(0.5, 0.5);
+    const messageText = this.add.bitmapText(100, 90, FONT_FEED, message, 8);
+    messageText.setMaxWidth(340);
+    messageText.setLineSpacing(2);
+    messageText.setTint(rebelsWon ? 0xff0000 : 0x000000);
+    // Match original: center text vertically around y=180
+    messageText.y = 180 - messageText.height / 2;
+    // Clamp so text doesn't go above the header area
+    if (messageText.y < 85) messageText.y = 85;
+
+    // Place button below text, but no lower than y=270 (original position)
+    const buttonY = Math.max(270, messageText.y + messageText.height + 12);
+
+    const button = this.add.image(270, buttonY, IMG_BUTTON).setOrigin(0.5, 0.5).setDepth(10);
     const buttonLabel = this.add.bitmapText(
       270,
-      270,
+      buttonY,
       FONT_FEED,
       rebelsWon ? "Let's Go!" : (gameOver ? 'Accept Fate' : 'Start Work'),
       8,
-    ).setOrigin(0.5, 0.5).setTint(0x000000);
+    ).setOrigin(0.5, 0.5).setTint(0x000000).setDepth(11);
 
     const onClick = () => {
       if (gameOver) {
@@ -66,12 +78,6 @@ export class MorningScene extends Phaser.Scene {
     };
     button.setInteractive({ useHandCursor: true }).on('pointerdown', onClick);
     buttonLabel.setInteractive({ useHandCursor: true }).on('pointerdown', onClick);
-
-    const messageText = this.add.bitmapText(100, 90, FONT_FEED, message, 8);
-    messageText.setMaxWidth(340);
-    messageText.setLineSpacing(2);
-    messageText.setTint(rebelsWon ? 0xff0000 : 0x000000);
-    messageText.y = Math.max(90, 180 - messageText.height / 2);
 
     const dayText = this.add.bitmapText(245, 70, FONT_FEED, `Day ${dayNumber}`, 8);
     dayText.setMaxWidth(50);
