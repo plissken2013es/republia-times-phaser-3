@@ -14,14 +14,15 @@ type ArticleSpec = {
   height: number;
   key: string;
   font: string;
+  fontSize: number;
   textOffset: number;
   textMaxWidth: number;
 };
 
 const ARTICLE_SPECS: Record<ArticleSize, ArticleSpec> = {
-  [ArticleSize.S]: { size: ArticleSize.S, width: Const.p, height: Const.p * 2, key: IMG_ARTICLE_S, font: FONT_ARTICLE_S, textOffset: 5, textMaxWidth: 40 },
-  [ArticleSize.M]: { size: ArticleSize.M, width: Const.p * 2, height: Const.p * 2, key: IMG_ARTICLE_M, font: FONT_ARTICLE_M, textOffset: 8, textMaxWidth: 84 },
-  [ArticleSize.B]: { size: ArticleSize.B, width: Const.p * 3, height: Const.p * 3, key: IMG_ARTICLE_B, font: FONT_ARTICLE_B, textOffset: 10, textMaxWidth: 130 },
+  [ArticleSize.S]: { size: ArticleSize.S, width: Const.p, height: Const.p * 2, key: IMG_ARTICLE_S, font: FONT_ARTICLE_S, fontSize: 8, textOffset: 5, textMaxWidth: 40 },
+  [ArticleSize.M]: { size: ArticleSize.M, width: Const.p * 2, height: Const.p * 2, key: IMG_ARTICLE_M, font: FONT_ARTICLE_M, fontSize: 8, textOffset: 8, textMaxWidth: 84 },
+  [ArticleSize.B]: { size: ArticleSize.B, width: Const.p * 3, height: Const.p * 3, key: IMG_ARTICLE_B, font: FONT_ARTICLE_B, fontSize: 16, textOffset: 10, textMaxWidth: 130 },
 };
 
 class Article {
@@ -36,7 +37,7 @@ class Article {
     this.size = size;
     this.sprite = scene.add.image(0, 0, spec.key).setVisible(false).setOrigin(0, 0);
     this.sprite.setInteractive({ draggable: true });
-    this.headline = scene.add.bitmapText(0, 0, spec.font, '', 8)
+    this.headline = scene.add.bitmapText(0, 0, spec.font, '', spec.fontSize)
       .setVisible(false)
       .setMaxWidth(spec.textMaxWidth)
       .setTint(0x000000);
