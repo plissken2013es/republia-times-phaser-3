@@ -39,6 +39,7 @@ import {
   SFX_NULL,
 } from '../constants/AssetKeys';
 import { GameState } from '../game/GameState';
+import { loadLanguagePreference } from '../locale/locale';
 import { Storage } from '../utils/Storage';
 
 export class PreloadScene extends Phaser.Scene {
@@ -112,6 +113,7 @@ export class PreloadScene extends Phaser.Scene {
   }
 
   public create(): void {
+    loadLanguagePreference();
     Storage.load();
     GameState.instance.savedMute = Storage.getMute();
 

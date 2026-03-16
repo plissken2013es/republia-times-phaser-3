@@ -1,17 +1,15 @@
 import Phaser from 'phaser';
 
 import { FONT_FEED } from '../constants/AssetKeys';
+import { S } from '../locale/locale';
 
 export class Clock {
-  private scene: Phaser.Scene;
   private graphics: Phaser.GameObjects.Graphics;
-  private dayText: Phaser.GameObjects.BitmapText;
   private x: number;
   private y: number;
   private size: number;
 
   public constructor(scene: Phaser.Scene, dayNumber: number) {
-    this.scene = scene;
     this.size = 40;
     this.x = 10;
     this.y = 30;
@@ -20,9 +18,9 @@ export class Clock {
     this.graphics.setPosition(this.x, this.y);
 
     // Center "Day N" over the clock (clock center = x + size/2 = 30)
-    this.dayText = scene.add.bitmapText(this.x + this.size / 2, 10, FONT_FEED, `Day ${dayNumber}`, 10);
-    this.dayText.setOrigin(0.5, 0);
-    this.dayText.setTint(0x000000);
+    const dayText = scene.add.bitmapText(this.x + this.size / 2, 10, FONT_FEED, `${S().ui_day} ${dayNumber}`, 10);
+    dayText.setOrigin(0.5, 0);
+    dayText.setTint(0x000000);
 
     this.setTime(0);
   }

@@ -4,6 +4,7 @@ import { MuteButton } from '../components/MuteButton';
 import { StatMeters } from '../components/StatMeters';
 import { FONT_FEED, IMG_BUTTON, IMG_PRINTED_PAPER, MUSIC_NIGHT } from '../constants/AssetKeys';
 import { GameState } from '../game/GameState';
+import { S } from '../locale/locale';
 
 export class NightScene extends Phaser.Scene {
   public static readonly KEY = 'NightScene';
@@ -35,7 +36,7 @@ export class NightScene extends Phaser.Scene {
 
     // "Go to Sleep" button at (210, 270) matching original
     const button = this.add.image(270, 280, IMG_BUTTON).setOrigin(0.5, 0.5);
-    const label = this.add.bitmapText(270, 280, FONT_FEED, 'Go to Sleep', 10)
+    const label = this.add.bitmapText(270, 280, FONT_FEED, S().ui_goToSleep, 10)
       .setOrigin(0.5, 0.5)
       .setTint(0x000000);
     const onClick = () => {
@@ -58,9 +59,10 @@ export class NightScene extends Phaser.Scene {
 
   private buildResultsMessage(): string {
     const rs = GameState.instance.readership;
-    let message = "Today's issue has been printed and distributed.\n \nRESULTS\n \n";
-    message += `      ${this.formatResult('Loyalty', Math.round(rs.curLoyalty), Math.round(rs.curLoyalty - rs.preLoyalty))}\n`;
-    message += `      ${this.formatResult('Readership', Math.round(rs.curReaderCount), Math.round(rs.curReaderCount - rs.preReaderCount))}\n \n`;
+    const L = S();
+    let message = `${L.night_printed}\n \n${L.ui_results}\n \n`;
+    message += `      ${this.formatResult(L.night_loyalty, Math.round(rs.curLoyalty), Math.round(rs.curLoyalty - rs.preLoyalty))}\n`;
+    message += `      ${this.formatResult(L.night_readership, Math.round(rs.curReaderCount), Math.round(rs.curReaderCount - rs.preReaderCount))}\n \n`;
     message += rs.comments;
     return message;
   }
@@ -69,7 +71,7 @@ export class NightScene extends Phaser.Scene {
     let str = `${name}: ${value}`;
     if (delta > 0) str += `   (+${delta})`;
     else if (delta < 0) str += `   (${delta})`;
-    else str += '   (no change)';
+    else str += `   (${S().night_noChange})`;
     return str;
   }
 }

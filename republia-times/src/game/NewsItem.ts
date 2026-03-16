@@ -1,3 +1,5 @@
+import { S } from '../locale/locale';
+import type { NewsEntry } from '../locale/en';
 import { GameState } from './GameState';
 import { Goal } from './Goal';
 
@@ -19,43 +21,48 @@ export class NewsItem {
   public appearTime = 0;
   public used = false;
 
-  private blurbText: string;
-  private articleText: string | null;
+  /** Index into the locale news_N entries */
+  public readonly index: number;
 
   public constructor(
+    index: number,
     dayRangeStart: number,
     dayRangeEnd: number,
     loyaltyEffect: number,
     interesting: boolean,
-    blurbText: string,
-    articleText: string | null,
   ) {
+    this.index = index;
     this.dayRangeStart = dayRangeStart;
     this.dayRangeEnd = dayRangeEnd;
     this.loyaltyEffect = loyaltyEffect;
     this.interesting = interesting;
-    this.blurbText = blurbText;
-    this.articleText = articleText;
+  }
+
+  private getNewsEntry(): NewsEntry {
+    const key = `news_${this.index}` as `news_${number}`;
+    return S()[key];
   }
 
   public isWeather(): boolean {
-    return this.blurbText.includes('Weather:');
+    const entry = this.getNewsEntry();
+    return entry[0].includes('Weather:') || entry[0].includes('Clima:');
   }
 
   public isRebelLeader(): boolean {
-    return this.blurbText.includes('***');
+    return this.getNewsEntry()[0].includes('***');
   }
 
   public hasArticleText(): boolean {
-    return this.articleText !== null;
+    return this.getNewsEntry()[1] !== null;
   }
 
   public getBlurbText(): string {
-    return this.getProcessedText(this.blurbText);
+    return this.getProcessedText(this.getNewsEntry()[0]);
   }
 
   public getArticleText(): string {
-    return this.articleText ? this.getProcessedText(this.articleText) : '';
+    const entry = this.getNewsEntry();
+    return entry[1] ? this.getProcessedText(entry[1]) : '';
   }
 
   public static resetAllNewsItems(): void {
@@ -73,592 +80,92 @@ export class NewsItem {
     return GameState.expandGovNames(str);
   }
 
+  // All news items — text is now read from locale at runtime via index
+  // Constructor: (index, dayRangeStart, dayRangeEnd, loyaltyEffect, interesting)
   public static readonly allNewsItems: NewsItem[] = [
     // plot
-    // if '|' is in blurbText, region is selected based on current goal status
-    new NewsItem(
-      1,
-      3,
-      NewsItem.LOYALTY_UP,
-      true,
-      'The rebellion has been crushed. Peace returns to all sectors',
-      'Rebellion Crushed, Peace Restored!',
-    ),
-    new NewsItem(
-      3,
-      -1,
-      NewsItem.LOYALTY_NONE,
-      true,
-      '*** ####....##...####..## ***',
-      null,
-    ),
-    new NewsItem(
-      4,
-      -1,
-      NewsItem.LOYALTY_NONE,
-      true,
-      '*** Est#blishing secure chan#el. Aw#it further# comm###ication ***',
-      null,
-    ),
-    new NewsItem(
-      6,
-      -1,
-      NewsItem.LOYALTY_NONE,
-      true,
-      '*** #Please hear me. I am Kurstov, leader of#the rebellion. We need your help. ***',
-      null,
-    ),
-    new NewsItem(
-      7,
-      -1,
-      NewsItem.LOYALTY_NONE,
-      true,
-      '*** We can rescue your family. Sow disloyalty to strengthen the rebels. You have 4 days. ***',
-      null,
-    ),
-    new NewsItem(
-      8,
-      -1,
-      NewsItem.LOYALTY_NONE,
-      true,
-      "*** Please help us. The government's tyranny must end! Place negative articles! ***|*** Your family will soon be safe! Drop the public's loyalty to -30 and get 1000 readers in 3 days! ***|*** It's working! Your efforts have strengthened us unimaginably! ***",
-      null,
-    ),
-    new NewsItem(
-      9,
-      -1,
-      NewsItem.LOYALTY_NONE,
-      true,
-      "*** The government cannot win! Seal their fate! Place negative articles! ***|*** Your family's safety is assured! Convince 1000 readers to be disloyal in 2 days! ***|*** Yes! Our operations are in order. Soon we overthrow! ***",
-      null,
-    ),
-    new NewsItem(
-      10,
-      -1,
-      NewsItem.LOYALTY_NONE,
-      true,
-      '*** We have no time! The people must be free! Spread negative news! ***|*** Our time is at hand! Hurry! Get 1000 readers with -30 loyalty by the end of today! ***|*** Oh glorious day! We strike at sundown. Prepare yourself! ***',
-      null,
-    ),
+    new NewsItem(0, 1, 3, NewsItem.LOYALTY_UP, true),
+    new NewsItem(1, 3, -1, NewsItem.LOYALTY_NONE, true),
+    new NewsItem(2, 4, -1, NewsItem.LOYALTY_NONE, true),
+    new NewsItem(3, 6, -1, NewsItem.LOYALTY_NONE, true),
+    new NewsItem(4, 7, -1, NewsItem.LOYALTY_NONE, true),
+    new NewsItem(5, 8, -1, NewsItem.LOYALTY_NONE, true),
+    new NewsItem(6, 9, -1, NewsItem.LOYALTY_NONE, true),
+    new NewsItem(7, 10, -1, NewsItem.LOYALTY_NONE, true),
 
-    new NewsItem(
-      7,
-      100,
-      NewsItem.LOYALTY_UP,
-      true,
-      'Terrorist rebel hideout near Central Chem destroyed',
-      'Rebels Routed At Factory!',
-    ),
-    new NewsItem(
-      8,
-      100,
-      NewsItem.LOYALTY_DOWN,
-      true,
-      'Rebels at Central Chem sabotage important machinary',
-      'Factory Sabotaged!',
-    ),
-    new NewsItem(
-      9,
-      100,
-      NewsItem.LOYALTY_UP,
-      true,
-      'Terrorist 2nd-in-command captured. Renounces fight against [GOV]',
-      'Terrorist Leader Buckles!',
-    ),
-    new NewsItem(
-      10,
-      100,
-      NewsItem.LOYALTY_DOWN,
-      true,
-      'Rebels regroup in western towns. Growing in strength and number.',
-      'Rebels Gaining Support!',
-    ),
+    // plot (day-ranged military)
+    new NewsItem(8, 7, 100, NewsItem.LOYALTY_UP, true),
+    new NewsItem(9, 8, 100, NewsItem.LOYALTY_DOWN, true),
+    new NewsItem(10, 9, 100, NewsItem.LOYALTY_UP, true),
+    new NewsItem(11, 10, 100, NewsItem.LOYALTY_DOWN, true),
 
     // war (always interesting)
-    new NewsItem(
-      0,
-      0,
-      NewsItem.LOYALTY_UP,
-      true,
-      "[GOV] forces have destroyed Antegria's illegal satellites",
-      '[GOV] Downs Enemy Satellite!',
-    ),
-    new NewsItem(
-      0,
-      0,
-      NewsItem.LOYALTY_UP,
-      true,
-      '[GOV] borders have been reinforced with 200,000 additional troops',
-      'Borders Reinforced!',
-    ),
-    new NewsItem(
-      0,
-      0,
-      NewsItem.LOYALTY_UP,
-      true,
-      'State-of-the-art military spy satellites now used to reduce crime',
-      'Keeping An Eye On Crime!',
-    ),
-    new NewsItem(
-      0,
-      0,
-      NewsItem.LOYALTY_UP,
-      true,
-      '[GOV] Navy commissions an additional 500 destroyers to patrol coast',
-      'Safeguarding The Coasts!',
-    ),
-    new NewsItem(
-      0,
-      0,
-      NewsItem.LOYALTY_UP,
-      true,
-      '[GOV] Air Force tactical fighter sets new speed record',
-      'Faster Fighter Flown!',
-    ),
-    new NewsItem(
-      0,
-      0,
-      NewsItem.LOYALTY_UP,
-      true,
-      'Multiple terrorist cells in central district foiled in operation',
-      'Central Terrorists Terminated!',
-    ),
-    new NewsItem(
-      0,
-      0,
-      NewsItem.LOYALTY_UP,
-      true,
-      '[GOV] Army 5th Divison shuts down bomb factory in northern mountains',
-      'Bomb Factory Found, Destroyed!',
-    ),
-    new NewsItem(
-      0,
-      0,
-      NewsItem.LOYALTY_UP,
-      true,
-      '[GOV] soldiers strongest in the world according to latest tests',
-      'Our Boys Are the Best!',
-    ),
-    new NewsItem(
-      0,
-      0,
-      NewsItem.LOYALTY_UP,
-      true,
-      'Peace enforcement squad rounds up 200 terrorist rebels',
-      'Peace Restored, Rebels Captured!',
-    ),
-
-    new NewsItem(
-      0,
-      0,
-      NewsItem.LOYALTY_DOWN,
-      true,
-      '40,000 gallons of military gasoline stolen from western bases',
-      'Military Gas Gone!',
-    ),
-    new NewsItem(
-      0,
-      0,
-      NewsItem.LOYALTY_DOWN,
-      true,
-      'Critical oil fields in the north have been sabotaged',
-      'Pipelines Crippled!',
-    ),
-    new NewsItem(
-      0,
-      0,
-      NewsItem.LOYALTY_DOWN,
-      true,
-      'Terrorist bomb explodes on northern bay ferry. 600 people missing',
-      'Explosion Rocks The Seas!',
-    ),
-    new NewsItem(
-      0,
-      0,
-      NewsItem.LOYALTY_DOWN,
-      true,
-      '[GOV] Air Force tactical fighter test flight ends in crash. Crew lost',
-      'Futuristic Fight Crashes, Burns!',
-    ),
-    new NewsItem(
-      0,
-      0,
-      NewsItem.LOYALTY_DOWN,
-      true,
-      '[GOV] Navy identifies critical fault in all operational submarines',
-      'Our Subs Are Faulty!',
-    ),
-    new NewsItem(
-      0,
-      0,
-      NewsItem.LOYALTY_DOWN,
-      true,
-      'The top general in charge of southern forces has died suddenly',
-      'General Dies Overnight!',
-    ),
-    new NewsItem(
-      0,
-      0,
-      NewsItem.LOYALTY_DOWN,
-      true,
-      'Antegria secret code remains unbreakable. Top [GOV] minds are flumoxed',
-      "The Enemy's Unbreakable Code!",
-    ),
-    new NewsItem(
-      0,
-      0,
-      NewsItem.LOYALTY_DOWN,
-      true,
-      'Tank production falls behind schedule. Poor factory conditions blamed',
-      'Tanking Tanks!',
-    ),
-    new NewsItem(
-      0,
-      0,
-      NewsItem.LOYALTY_DOWN,
-      true,
-      'Worldwide survey finds [GOV] soldiers worst trained, with worst aim',
-      "Our Boys Can't Fire Straight!",
-    ),
-    new NewsItem(
-      0,
-      0,
-      NewsItem.LOYALTY_DOWN,
-      true,
-      'Antegria Navy sinks [GOV] battleship off eastern coast',
-      '[GOV] Battleship Bested!',
-    ),
+    new NewsItem(12, 0, 0, NewsItem.LOYALTY_UP, true),
+    new NewsItem(13, 0, 0, NewsItem.LOYALTY_UP, true),
+    new NewsItem(14, 0, 0, NewsItem.LOYALTY_UP, true),
+    new NewsItem(15, 0, 0, NewsItem.LOYALTY_UP, true),
+    new NewsItem(16, 0, 0, NewsItem.LOYALTY_UP, true),
+    new NewsItem(17, 0, 0, NewsItem.LOYALTY_UP, true),
+    new NewsItem(18, 0, 0, NewsItem.LOYALTY_UP, true),
+    new NewsItem(19, 0, 0, NewsItem.LOYALTY_UP, true),
+    new NewsItem(20, 0, 0, NewsItem.LOYALTY_UP, true),
+    new NewsItem(21, 0, 0, NewsItem.LOYALTY_DOWN, true),
+    new NewsItem(22, 0, 0, NewsItem.LOYALTY_DOWN, true),
+    new NewsItem(23, 0, 0, NewsItem.LOYALTY_DOWN, true),
+    new NewsItem(24, 0, 0, NewsItem.LOYALTY_DOWN, true),
+    new NewsItem(25, 0, 0, NewsItem.LOYALTY_DOWN, true),
+    new NewsItem(26, 0, 0, NewsItem.LOYALTY_DOWN, true),
+    new NewsItem(27, 0, 0, NewsItem.LOYALTY_DOWN, true),
+    new NewsItem(28, 0, 0, NewsItem.LOYALTY_DOWN, true),
+    new NewsItem(29, 0, 0, NewsItem.LOYALTY_DOWN, true),
+    new NewsItem(30, 0, 0, NewsItem.LOYALTY_DOWN, true),
 
     // politics (never interesting)
-    new NewsItem(
-      0,
-      0,
-      NewsItem.LOYALTY_UP,
-      false,
-      'The Honorable and Great Leader awarded Lifetime Glory medal',
-      'A Lifetime of Glory!',
-    ),
-    new NewsItem(
-      0,
-      0,
-      NewsItem.LOYALTY_UP,
-      false,
-      'Agricultural output from the farming sector doubles for 10th straight month',
-      'More Corn Than Air!',
-    ),
-    new NewsItem(
-      0,
-      0,
-      NewsItem.LOYALTY_UP,
-      false,
-      'Income reallocation scheme contributes 400 million to schools. Proves system works',
-      'Education Spending Up!',
-    ),
-    new NewsItem(
-      0,
-      0,
-      NewsItem.LOYALTY_UP,
-      false,
-      'Latest polls show broad satisfaction with government leaders',
-      'Politics Polls Positive!',
-    ),
-    new NewsItem(
-      0,
-      0,
-      NewsItem.LOYALTY_UP,
-      false,
-      "Newest regional administrator fights for worker's rights",
-      'Power To The People!',
-    ),
+    new NewsItem(31, 0, 0, NewsItem.LOYALTY_UP, false),
+    new NewsItem(32, 0, 0, NewsItem.LOYALTY_UP, false),
+    new NewsItem(33, 0, 0, NewsItem.LOYALTY_UP, false),
+    new NewsItem(34, 0, 0, NewsItem.LOYALTY_UP, false),
+    new NewsItem(35, 0, 0, NewsItem.LOYALTY_UP, false),
+    new NewsItem(36, 0, 0, NewsItem.LOYALTY_DOWN, false),
+    new NewsItem(37, 0, 0, NewsItem.LOYALTY_DOWN, false),
+    new NewsItem(38, 0, 0, NewsItem.LOYALTY_DOWN, false),
+    new NewsItem(39, 0, 0, NewsItem.LOYALTY_DOWN, false),
+    new NewsItem(40, 0, 0, NewsItem.LOYALTY_DOWN, false),
 
-    new NewsItem(
-      0,
-      0,
-      NewsItem.LOYALTY_DOWN,
-      false,
-      'Party officials have voted to adjust ration quotas for all orphans',
-      'Less Food For Orphans',
-    ),
-    new NewsItem(
-      0,
-      0,
-      NewsItem.LOYALTY_DOWN,
-      false,
-      "The Honorable and Great Leader photographed in women's clothes",
-      'Great Leader, In A Dress!',
-    ),
-    new NewsItem(
-      0,
-      0,
-      NewsItem.LOYALTY_DOWN,
-      false,
-      '30,000 teachers and academics reassigned to more useful labor tasks',
-      'Educators Punished For Being Smart!',
-    ),
-    new NewsItem(
-      0,
-      0,
-      NewsItem.LOYALTY_DOWN,
-      false,
-      'Local citizen council votes will be eliminated in favor of suggestive comments',
-      'Local Councils Lose Vote!',
-    ),
-    new NewsItem(
-      0,
-      0,
-      NewsItem.LOYALTY_DOWN,
-      false,
-      'Yearly donations to the state must increase to support growing government oversight',
-      'Taxes Rise For 8th Year!',
-    ),
-
-    // weather (no loyalty effect, always interesting)
-    new NewsItem(
-      0,
-      0,
-      NewsItem.LOYALTY_NONE,
-      true,
-      'Weather: Skies and temperatures will remain calm today',
-      'Another Sunny Day!',
-    ),
-    new NewsItem(
-      0,
-      0,
-      NewsItem.LOYALTY_NONE,
-      true,
-      'Weather: Storms predicted to wash western coast out to sea',
-      'Western Storms Threaten Coast!',
-    ),
-    new NewsItem(
-      0,
-      0,
-      NewsItem.LOYALTY_NONE,
-      true,
-      'Weather: Forecast expects heavy rains in the north and east',
-      'Showers Rain Down!',
-    ),
-    new NewsItem(
-      0,
-      0,
-      NewsItem.LOYALTY_NONE,
-      true,
-      'Weather: Expect unseasonal snow in the south',
-      'Blizzard Incoming?',
-    ),
-    new NewsItem(
-      0,
-      0,
-      NewsItem.LOYALTY_NONE,
-      true,
-      'Weather: Sunny morning and cloudy evening for the day',
-      'Warm To Cloudy!',
-    ),
-    new NewsItem(
-      0,
-      0,
-      NewsItem.LOYALTY_NONE,
-      true,
-      'Weather: Light showers throughout the day',
-      'Warm To Cloudy This Week!',
-    ),
-    new NewsItem(
-      0,
-      0,
-      NewsItem.LOYALTY_NONE,
-      true,
-      'Weather: Hurricane-level winds spotted off eastern coast',
-      'Eastern Hurricanes Return!',
-    ),
-    new NewsItem(
-      0,
-      0,
-      NewsItem.LOYALTY_NONE,
-      true,
-      'Weather: Clear skies and no sign of rain',
-      'Another Dry Day!',
-    ),
-    new NewsItem(
-      0,
-      0,
-      NewsItem.LOYALTY_NONE,
-      true,
-      'Weather: Freezing sleet and snow expected in northern mountains',
-      'Buckle Down For Ice!',
-    ),
-    new NewsItem(
-      0,
-      0,
-      NewsItem.LOYALTY_NONE,
-      true,
-      'Weather: Tropical breezes blow across southeastern coast',
-      'Sea Breeze Incoming!',
-    ),
+    // weather (no loyalty, always interesting)
+    new NewsItem(41, 0, 0, NewsItem.LOYALTY_NONE, true),
+    new NewsItem(42, 0, 0, NewsItem.LOYALTY_NONE, true),
+    new NewsItem(43, 0, 0, NewsItem.LOYALTY_NONE, true),
+    new NewsItem(44, 0, 0, NewsItem.LOYALTY_NONE, true),
+    new NewsItem(45, 0, 0, NewsItem.LOYALTY_NONE, true),
+    new NewsItem(46, 0, 0, NewsItem.LOYALTY_NONE, true),
+    new NewsItem(47, 0, 0, NewsItem.LOYALTY_NONE, true),
+    new NewsItem(48, 0, 0, NewsItem.LOYALTY_NONE, true),
+    new NewsItem(49, 0, 0, NewsItem.LOYALTY_NONE, true),
+    new NewsItem(50, 0, 0, NewsItem.LOYALTY_NONE, true),
 
     // sports (always interesting)
-    new NewsItem(
-      0,
-      0,
-      NewsItem.LOYALTY_UP,
-      true,
-      '[GOV] National Team has won the global football tournament',
-      '[GOV] Wins Football Crown!',
-    ),
-    new NewsItem(
-      0,
-      0,
-      NewsItem.LOYALTY_UP,
-      true,
-      'Antegria ski team soundly defeated by [GOV] crew',
-      '[GOV] Defeats Antegria Skiers!',
-    ),
-    new NewsItem(
-      0,
-      0,
-      NewsItem.LOYALTY_UP,
-      true,
-      'Tennis star Restojiu powers through semifinal brackets',
-      'Tennis Star Advances!',
-    ),
-    new NewsItem(
-      0,
-      0,
-      NewsItem.LOYALTY_UP,
-      true,
-      'Young [GOV] atheletes dominate track and field. May win Olympic gold',
-      'Our Young Heroes!',
-    ),
-    new NewsItem(
-      0,
-      0,
-      NewsItem.LOYALTY_UP,
-      true,
-      'Skilled [GOV] baseball team finishes record season. Thanks Leader for support',
-      'Baseball Success Sealed!',
-    ),
-
-    new NewsItem(
-      0,
-      0,
-      NewsItem.LOYALTY_NONE,
-      true,
-      'Championship weight lifter Lekshou retires due to crippling injury',
-      'Muscleman Retires!',
-    ),
-    new NewsItem(
-      0,
-      0,
-      NewsItem.LOYALTY_DOWN,
-      true,
-      '[GOV] National Football Team has lost the regional finals to Antegria',
-      '[GOV] Football Stumbles!',
-    ),
-    new NewsItem(
-      0,
-      0,
-      NewsItem.LOYALTY_DOWN,
-      true,
-      'Entire [GOV] National Hockey team killed in plane crash',
-      'Tragedy Strikes Hockey!',
-    ),
-    new NewsItem(
-      0,
-      0,
-      NewsItem.LOYALTY_DOWN,
-      true,
-      'Athletic training in [GOV] is years behind the competition',
-      'Our Athletes: Behind The Curve?',
-    ),
-    new NewsItem(
-      0,
-      0,
-      NewsItem.LOYALTY_DOWN,
-      true,
-      'National kayaking team has defected to Antegria',
-      'Kayaking For The Enemy!',
-    ),
+    new NewsItem(51, 0, 0, NewsItem.LOYALTY_UP, true),
+    new NewsItem(52, 0, 0, NewsItem.LOYALTY_UP, true),
+    new NewsItem(53, 0, 0, NewsItem.LOYALTY_UP, true),
+    new NewsItem(54, 0, 0, NewsItem.LOYALTY_UP, true),
+    new NewsItem(55, 0, 0, NewsItem.LOYALTY_UP, true),
+    new NewsItem(56, 0, 0, NewsItem.LOYALTY_NONE, true),
+    new NewsItem(57, 0, 0, NewsItem.LOYALTY_DOWN, true),
+    new NewsItem(58, 0, 0, NewsItem.LOYALTY_DOWN, true),
+    new NewsItem(59, 0, 0, NewsItem.LOYALTY_DOWN, true),
+    new NewsItem(60, 0, 0, NewsItem.LOYALTY_DOWN, true),
 
     // entertainment (always interesting)
-    new NewsItem(
-      0,
-      0,
-      NewsItem.LOYALTY_UP,
-      true,
-      "Cherrywood's newest stars attended recent gala ball to honor verterans",
-      'Stars Dance For Vets!',
-    ),
-    new NewsItem(
-      0,
-      0,
-      NewsItem.LOYALTY_UP,
-      true,
-      "New fall TV programming will focus on [GOV]'s rebuilding",
-      'Fall TV Revealaed!',
-    ),
-    new NewsItem(
-      0,
-      0,
-      NewsItem.LOYALTY_UP,
-      true,
-      'Beloved children\'s book "Mumpit Mush" finally coming to the big screen',
-      'Mumpit Mush Is Coming!',
-    ),
-    new NewsItem(
-      2,
-      -1,
-      NewsItem.LOYALTY_UP,
-      true,
-      'Superstars Chad and Jenlyn preparing for Cherrywood wedding tomorrow',
-      'C&J To Tie the Knot!',
-    ),
-    new NewsItem(
-      3,
-      -1,
-      NewsItem.LOYALTY_UP,
-      true,
-      'Superstars Chad and Jenlyn marry in extravagant festival',
-      'C&J Finally Hitched!',
-    ),
-
-    new NewsItem(
-      0,
-      0,
-      NewsItem.LOYALTY_NONE,
-      true,
-      '"My butt is not too fat, just right" claims TV star Aprelica',
-      'Butt Within Spec!',
-    ),
-
-    new NewsItem(
-      0,
-      0,
-      NewsItem.LOYALTY_DOWN,
-      true,
-      'Reality star Mestonda found dead from apparent overdose',
-      'Reality Star Overdoses!',
-    ),
-    new NewsItem(
-      0,
-      0,
-      NewsItem.LOYALTY_DOWN,
-      true,
-      'Fashion designer CrevyCrevy has defected to Antegria',
-      'Fashion Icon Defects!',
-    ),
-    new NewsItem(
-      0,
-      0,
-      NewsItem.LOYALTY_DOWN,
-      true,
-      'Mega-group HugginBoyz admits to not singing on any albums, can barely dance',
-      'HugginBoyz: Talentless After All!',
-    ),
-    new NewsItem(
-      6,
-      -1,
-      NewsItem.LOYALTY_DOWN,
-      true,
-      'Superstars Chad and Jenlyn file for divorce. Both claim infidelity',
-      'C&J Fairytale Ends!',
-    ),
+    new NewsItem(61, 0, 0, NewsItem.LOYALTY_UP, true),
+    new NewsItem(62, 0, 0, NewsItem.LOYALTY_UP, true),
+    new NewsItem(63, 0, 0, NewsItem.LOYALTY_UP, true),
+    new NewsItem(64, 2, -1, NewsItem.LOYALTY_UP, true),
+    new NewsItem(65, 3, -1, NewsItem.LOYALTY_UP, true),
+    new NewsItem(66, 0, 0, NewsItem.LOYALTY_NONE, true),
+    new NewsItem(67, 0, 0, NewsItem.LOYALTY_DOWN, true),
+    new NewsItem(68, 0, 0, NewsItem.LOYALTY_DOWN, true),
+    new NewsItem(69, 0, 0, NewsItem.LOYALTY_DOWN, true),
+    new NewsItem(70, 6, -1, NewsItem.LOYALTY_DOWN, true),
   ];
 }

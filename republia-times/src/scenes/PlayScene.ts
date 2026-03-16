@@ -11,6 +11,7 @@ import { Day } from '../game/Day';
 import { Goal } from '../game/Goal';
 import { Const } from '../constants/Const';
 import { FONT_FEED, IMG_BACKGROUND, IMG_BUTTON, IMG_LOGO_SMALL, IMG_LOGO_SMALL2, SFX_ALARM, SFX_DAY_OVER, SFX_NULL } from '../constants/AssetKeys';
+import { S } from '../locale/locale';
 import { Storage } from '../utils/Storage';
 
 export class PlayScene extends Phaser.Scene {
@@ -22,7 +23,7 @@ export class PlayScene extends Phaser.Scene {
   private paper?: Paper;
   private popup?: CenterPopup;
   private day?: Day;
-  private time = 0;
+  private elapsed = 0;
   private speed = 1;
   private alarmPlayed = false;
   private dayOver = false;
@@ -55,13 +56,13 @@ export class PlayScene extends Phaser.Scene {
     this.popup = new CenterPopup(this);
     this.day = new Day(GameState.instance.dayNumber);
     this.day.newsItems.sort((a, b) => a.appearTime - b.appearTime);
-    this.time = 0;
+    this.elapsed = 0;
     this.speed = GameState.instance.dayNumber === 1 ? 0.5 : 1;
     this.alarmPlayed = false;
     this.dayOver = false;
 
     const button = this.add.image(30, 104, IMG_BUTTON).setOrigin(0.5, 0.5).setDisplaySize(60, 20);
-    const label = this.add.bitmapText(30, 104, FONT_FEED, 'End Day', 10)
+    const label = this.add.bitmapText(30, 104, FONT_FEED, S().ui_endDay, 10)
       .setOrigin(0.5, 0.5)
       .setTint(0x000000);
 
@@ -99,9 +100,9 @@ export class PlayScene extends Phaser.Scene {
   public update(_: number, delta: number): void {
     if (!this.day || !this.feed || !this.paper || !this.popup || this.dayOver) return;
     const deltaSeconds = (delta / 1000) * this.speed;
-    this.time += deltaSeconds;
+    this.elapsed += deltaSeconds;
 
-    const timeFraction = this.time / Const.dayDuration;
+    const timeFraction = this.elapsed / Const.dayDuration;
     this.clock?.setTime(Math.min(timeFraction, 1));
     this.feed.update(deltaSeconds);
 
@@ -112,20 +113,20 @@ export class PlayScene extends Phaser.Scene {
 
     this.day.newsItems.forEach((item, index) => {
       if (this.appeared.has(index)) return;
-      if (item.appearTime <= this.time) {
+      if (item.appearTime <= this.elapsed) {
         this.appeared.add(index);
         this.feed?.addBlurb(item);
       }
     });
 
-    if (this.time >= Const.dayDuration) {
+    if (this.elapsed >= Const.dayDuration) {
       this.dayOver = true;
       this.feed.enabled = false;
       this.paper.enabled = false;
       this.sound.play(SFX_DAY_OVER, { volume: 0.25 });
       this.popup.show(
-        'The day is over. There is no more time. We must send to print immediately.',
-        'Send to Print',
+        S().popup_dayOver,
+        S().ui_sendToPrint,
         () => {
         const summary = this.paper?.getSummary();
         if (summary) {

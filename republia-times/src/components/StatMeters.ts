@@ -3,9 +3,9 @@ import Phaser from 'phaser';
 import { Const } from '../constants/Const';
 import { FONT_FEED, IMG_STAT_METER } from '../constants/AssetKeys';
 import { Readership } from '../game/Readership';
+import { S } from '../locale/locale';
 
 class StatMeter {
-  private scene: Phaser.Scene;
   private container: Phaser.GameObjects.Container;
   private needle: Phaser.GameObjects.Graphics;
   private deltaWedge: Phaser.GameObjects.Graphics;
@@ -13,7 +13,6 @@ class StatMeter {
   public width: number;
 
   public constructor(scene: Phaser.Scene, x: number, y: number, name: string) {
-    this.scene = scene;
     this.container = scene.add.container(x, y);
 
     const base = scene.add.image(0, 0, IMG_STAT_METER).setOrigin(0, 0);
@@ -87,10 +86,10 @@ export class StatMeters {
 
   public constructor(scene: Phaser.Scene, x: number, y: number, onWhite: boolean) {
     // Create loyalty meter first to get its width for centering
-    this.loyaltyMeter = new StatMeter(scene, x, y + 25, 'Loyalty');
+    this.loyaltyMeter = new StatMeter(scene, x, y + 25, S().ui_loyalty);
     const centerX = x + this.loyaltyMeter.width / 2;
 
-    const readerNameText = scene.add.bitmapText(centerX, y, FONT_FEED, 'Readers', 10);
+    const readerNameText = scene.add.bitmapText(centerX, y, FONT_FEED, S().ui_readers, 10);
     readerNameText.setOrigin(0.5, 0);
     readerNameText.setTint(onWhite ? 0x000000 : 0xffffff);
 
