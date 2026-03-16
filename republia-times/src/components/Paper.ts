@@ -3,7 +3,7 @@ import Phaser from 'phaser';
 import { Const } from '../constants/Const';
 import {
   IMG_ARTICLE_B, IMG_ARTICLE_M, IMG_ARTICLE_S,
-  FONT_ARTICLE_B, FONT_ARTICLE_M, FONT_ARTICLE_S,
+  FONT_ARTICLE_B, FONT_FEED, FONT_FEED_SMALL,
 } from '../constants/AssetKeys';
 import { ArticleSize, NewsItem } from '../game/NewsItem';
 import { PaperSummary } from '../game/PaperSummary';
@@ -20,9 +20,9 @@ type ArticleSpec = {
 };
 
 const ARTICLE_SPECS: Record<ArticleSize, ArticleSpec> = {
-  [ArticleSize.S]: { size: ArticleSize.S, width: Const.p, height: Const.p * 2, key: IMG_ARTICLE_S, font: FONT_ARTICLE_S, fontSize: 8, textOffset: 5, textMaxWidth: 40 },
-  [ArticleSize.M]: { size: ArticleSize.M, width: Const.p * 2, height: Const.p * 2, key: IMG_ARTICLE_M, font: FONT_ARTICLE_M, fontSize: 12, textOffset: 8, textMaxWidth: 84 },
-  [ArticleSize.B]: { size: ArticleSize.B, width: Const.p * 3, height: Const.p * 3, key: IMG_ARTICLE_B, font: FONT_ARTICLE_B, fontSize: 18, textOffset: 10, textMaxWidth: 130 },
+  [ArticleSize.S]: { size: ArticleSize.S, width: Const.p, height: Const.p * 2, key: IMG_ARTICLE_S, font: FONT_FEED_SMALL, fontSize: 6, textOffset: 5, textMaxWidth: 40 },
+  [ArticleSize.M]: { size: ArticleSize.M, width: Const.p * 2, height: Const.p * 2, key: IMG_ARTICLE_M, font: FONT_FEED, fontSize: 10, textOffset: 8, textMaxWidth: 84 },
+  [ArticleSize.B]: { size: ArticleSize.B, width: Const.p * 3, height: Const.p * 3, key: IMG_ARTICLE_B, font: FONT_ARTICLE_B, fontSize: 12, textOffset: 10, textMaxWidth: 130 },
 };
 
 class Article {

@@ -39,3 +39,4 @@ export const FONT_FEED = 'font_feed';
 export const FONT_ARTICLE_B = 'font_article_b';
 export const FONT_ARTICLE_M = 'font_article_m';
 export const FONT_ARTICLE_S = 'font_article_s';
+export const FONT_FEED_SMALL = 'font_feed_small';

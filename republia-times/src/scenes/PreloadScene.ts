@@ -5,6 +5,7 @@ import {
   FONT_ARTICLE_M,
   FONT_ARTICLE_S,
   FONT_FEED,
+  FONT_FEED_SMALL,
   IMG_ARTICLE_B,
   IMG_ARTICLE_M,
   IMG_ARTICLE_S,
@@ -114,6 +115,7 @@ export class PreloadScene extends Phaser.Scene {
     this.load.bitmapFont(FONT_ARTICLE_B, 'assets/fonts/MotorolaScreentype_0.png', 'assets/fonts/MotorolaScreentype.fnt');
     this.load.bitmapFont(FONT_ARTICLE_M, 'assets/fonts/SILKWONDER_0.png', 'assets/fonts/SILKWONDER.fnt');
     this.load.bitmapFont(FONT_ARTICLE_S, 'assets/fonts/SG03_0.png', 'assets/fonts/SG03.fnt');
+    this.load.bitmapFont(FONT_FEED_SMALL, 'assets/fonts/nokiafc22_8_0.png', 'assets/fonts/nokiafc22_8.fnt');
   }
 
   public async create(): Promise<void> {
