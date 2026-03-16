@@ -282,6 +282,166 @@ flixel_FlxG.mouse.setGlobalScreenPositionUnsafe(paperX * 2, paperY * 2);
 
 **Coordinate formula for `setGlobalScreenPositionUnsafe`:** pass `logicalCoord × 2` (because camera zoom = 2, scaleMode = 1).
 
+### Console Tracing (local patched version only)
+
+The patched `ld-warmup-trt.js` includes `[GAME]` console.log traces for key events:
+
+| Log | Event |
+|---|---|
+| `[GAME] Spawn article S/M/B: <text>` | Blurb icon clicked |
+| `[GAME] Picked up article at (x,y)` | Existing article clicked on paper |
+| `[GAME] Article placed at (x,y) size=WxH` | Article released on paper |
+| `[GAME] Overlap detected: <text>` | Article overlaps another |
+| `[GAME] End Day clicked` | End Day button pressed |
+| `[GAME] Day over - sending to print` | Send to Print clicked |
+| `Day.hx: Day: N newsItems` | Day started (existing HaxeFlixel log) |
+| `Feed.hx: Adding blurb: <text>` | Story appeared in feed (existing) |
+
+Filter with: `grep "[GAME]\|Day.hx\|Feed.hx" console.log`
+
 ### Screenshots
 
 All screenshots from Playwright sessions are saved in `.playwright-mcp/screenshots/`.
+
+## Playwright Browser Testing (Phaser Port)
+
+### Setup
+
+The Phaser port runs at `http://localhost:5173` via `cd republia-times && npm run dev`.
+
+`main.ts` exposes the game instance on `window.__game` for Playwright access.
+
+### Accessing Game State
+
+```js
+// Get the Phaser game and active scene
+const game = window.__game;
+const scene = game.scene.getScene('PlayScene'); // or 'MorningScene', 'NightScene'
+
+// Read feed blurbs (with loyalty + interesting metadata)
+scene.feed.blurbs.filter(b => b.visible).map(b => ({
+  text: b.newsItem.getBlurbText(),
+  loyalty: b.newsItem.loyaltyEffect,     // 1=up, -1=down, 0=none
+  interesting: b.newsItem.interesting     // affects reader count
+}));
+
+// Read paper articles
+scene.paper.articles.filter(a => a.sprite.visible).map(a => ({
+  x: a.sprite.x, y: a.sprite.y,
+  size: a.size   // 0=S, 1=M, 2=B
+}));
+
+// Read game timing
+scene.time;     // elapsed seconds
+scene.speed;    // game speed multiplier
+scene.dayOver;  // true when 6PM reached
+```
+
+### Clicking Buttons
+
+Phaser handles DOM events natively — standard `page.mouse.click()` works. Calculate screen coordinates from game coordinates using canvas scale:
+
+```js
+const canvas = document.querySelector('canvas').getBoundingClientRect();
+const scaleX = canvas.width / 540;
+const scaleY = canvas.height / 320;
+const screenX = canvas.x + gameX * scaleX;
+const screenY = canvas.y + gameY * scaleY;
+// Then: page.mouse.click(screenX, screenY)
+```
+
+### Spawning Articles Programmatically
+
+```js
+const scene = window.__game.scene.getScene('PlayScene');
+scene.paper.enabled = true;  // Must enable first (disabled during intro animation)
+scene.feed.enabled = true;
+
+const pointer = scene.input.activePointer;
+pointer.worldX = 400;  // game coordinates where article appears
+pointer.worldY = 150;
+
+const blurb = scene.feed.blurbs.find(b => b.visible && b.newsItem);
+scene.paper.spawnArticleAtPointer(2, blurb.newsItem, pointer);
+// size: 0=S, 1=M, 2=B
+```
+
+### Key Differences from Original (HaxeFlixel)
+
+| Aspect | Original (HaxeFlixel) | Phaser Port |
+|---|---|---|
+| DOM click handling | Broken — needs `setGlobalScreenPositionUnsafe` hack | Works natively |
+| Game instance access | `flixel_FlxG` (patched onto `$global`) | `window.__game` (one-line change in main.ts) |
+| Scene access | `flixel_FlxG.game._state` | `game.scene.getScene('SceneName')` |
+| Spawn articles | `paper.spawnArticleAtMouse(size, assetPath, newsItem)` | `paper.spawnArticleAtPointer(size, newsItem, pointer)` |
+| Paper enabled | Always enabled | Starts disabled — must set `paper.enabled = true` |
+| Audio overlay | Patched out (`shared_BootWaiter`) | Phaser has its own AudioContext handling |
+| Console tracing | Patched into JS | Not needed — full JS API access is sufficient |
+
+## Phaser Port — UI/Visual Porting Notes
+
+### Fonts
+
+The original game uses HaxeFlixel bitmap fonts (`.fnt` + `_0.png` BMFont XML format). The Phaser port must use the **exact same font files** — do NOT regenerate or substitute fonts.
+
+| Font file | Face name | Size | Used for |
+|---|---|---|---|
+| `nokiafc22` | Nokia Cellphone FC | **10** | Feed text, UI text, buttons, messages (FONT_FEED) |
+| `MotorolaScreentype` | Motorola ScreenType | **18** | Big article headlines (FONT_ARTICLE_B) |
+| `SILKWONDER` | Silky Wonderland | **12** | Medium article headlines (FONT_ARTICLE_M) |
+| `SG03` | SG03 | **8** | Small article headlines (FONT_ARTICLE_S) |
+| `7x5` | 07x5 | **8** | Small status numbers (available but not currently used) |
+
+Font files are in `republia-times/public/assets/fonts/` copied from `republia-original-html5/assets/`.
+
+### Text Rendering Differences (Phaser vs HaxeFlixel)
+
+- **`setCenterAlign()`** in Phaser BitmapText only affects multi-line text alignment (lines relative to each other). For single-line centering, use **`setOrigin(0.5, 0)`** and position at the center point.
+- **`setLineSpacing(0)`** everywhere — the original uses lineSpacing=0. Any extra spacing creates visible differences.
+- **Paragraph breaks**: Use `\n \n` (newline + space + newline), NOT `\n\n`. HaxeFlixel renders the space as a blank line; Phaser's `\n\n` produces tighter spacing.
+
+### Key Layout Positions (Original, Logical Coordinates)
+
+**PlayScene:**
+- Clock: (10, 30) size 40×40
+- "Day N": centered at x=30 (clock center), y=10
+- End Day button: (0, 94) size 60×20
+- Readers text: centered over loyalty meter
+- Loyalty meter: (3, 265) size 52×52
+- Logo (paper header): (360, 10) origin(0,0)
+- Feed blurb icons: B at +204, M at +229, S at +247 (offset from blurb x), y offset +4
+- Blurb height: 30px (matching bg sprite)
+
+**NightScene:**
+- Printed paper: centered at (270, 30) origin(0.5, 0)
+- Message text: (100, 129) w=340
+- Button: (270, 280) "Go to Sleep"
+- StatMeters: (450, 120) — Readers centered above loyalty meter
+- Loyalty meter shows delta wedge (green=increase, red=decrease)
+
+**MorningScene:**
+- Logo: centered at x=270, y=20
+- "Day N": centered at x=270, y=70
+- Message text: (100, 99) w=340
+- Button: (270, buttonY) "Start Work" / "Accept Fate" / "Let's Go!"
+
+### Article Drag Interaction
+
+The original uses **press-and-hold** to spawn and drag articles:
+1. Press & hold on B/M/S icon → article spawns centered on cursor, `Dragging.png` icon appears on the size button
+2. Move mouse (holding) → article follows cursor via `pointermove`
+3. Release → article snaps to paper grid, `BlurbCheck.png` icon appears on the size button
+
+Implementation: Do NOT use Phaser's `setDragState()` for spawning from feed icons — it doesn't work for cross-object drag initiation. Instead, track a `placingArticle` via manual `pointermove`/`pointerup` handlers. Phaser's built-in drag system is only used for repositioning articles already on the paper.
+
+### Numeric Values
+
+All reader counts and loyalty values must be **integers**. Use `Math.round()` after any multiplication (0.5, 0.75, 0.9, 1.25 in Readership). The save format version was bumped to 2 to invalidate old saves with decimal drift.
+
+### Logo Switching
+
+Two logo sets exist for Republia (state) vs Democria (rebels):
+- `Logo.png` / `LogoSmall.png` — "The Republia Times"
+- `Logo2.png` / `LogoSmall2.png` — "The Democria Times"
+
+Both MorningScene and PlayScene switch based on `GameState.instance.stateInControl`.
