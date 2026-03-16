@@ -9,7 +9,7 @@ class StatMeter {
   private container: Phaser.GameObjects.Container;
   private needle: Phaser.GameObjects.Graphics;
   private valueText: Phaser.GameObjects.BitmapText;
-  private width: number;
+  public width: number;
 
   public constructor(scene: Phaser.Scene, x: number, y: number, name: string) {
     this.scene = scene;
@@ -17,14 +17,14 @@ class StatMeter {
 
     const base = scene.add.image(0, 0, IMG_STAT_METER).setOrigin(0, 0);
     this.width = base.width;
-    const nameText = scene.add.bitmapText(4, 34, FONT_FEED, name, 10);
-    nameText.setMaxWidth(this.width - 10);
-    nameText.setCenterAlign();
+    const centerX = this.width / 2;
+
+    const nameText = scene.add.bitmapText(centerX, 34, FONT_FEED, name, 10);
+    nameText.setOrigin(0.5, 0);
     nameText.setTint(0xffffff);
 
-    this.valueText = scene.add.bitmapText(4, 24, FONT_FEED, '0', 10);
-    this.valueText.setMaxWidth(this.width - 10);
-    this.valueText.setCenterAlign();
+    this.valueText = scene.add.bitmapText(centerX, 24, FONT_FEED, '0', 10);
+    this.valueText.setOrigin(0.5, 0);
     this.valueText.setTint(0xffffff);
 
     this.needle = scene.add.graphics();
@@ -55,17 +55,17 @@ export class StatMeters {
   private loyaltyMeter: StatMeter;
 
   public constructor(scene: Phaser.Scene, x: number, y: number, onWhite: boolean) {
-    const readerNameText = scene.add.bitmapText(x - 10, y, FONT_FEED, 'Readers', 10);
-    readerNameText.setMaxWidth(60);
-    readerNameText.setCenterAlign();
+    // Create loyalty meter first to get its width for centering
+    this.loyaltyMeter = new StatMeter(scene, x, y + 25, 'Loyalty');
+    const centerX = x + this.loyaltyMeter.width / 2;
+
+    const readerNameText = scene.add.bitmapText(centerX, y, FONT_FEED, 'Readers', 10);
+    readerNameText.setOrigin(0.5, 0);
     readerNameText.setTint(onWhite ? 0x000000 : 0xffffff);
 
-    this.readerCountText = scene.add.bitmapText(x - 10, y + 12, FONT_FEED, '0', 10);
-    this.readerCountText.setMaxWidth(60);
-    this.readerCountText.setCenterAlign();
+    this.readerCountText = scene.add.bitmapText(centerX, y + 12, FONT_FEED, '0', 10);
+    this.readerCountText.setOrigin(0.5, 0);
     this.readerCountText.setTint(onWhite ? 0x000000 : 0xffffff);
-
-    this.loyaltyMeter = new StatMeter(scene, x, y + 25, 'Loyalty');
   }
 
   public setValues(readership: Readership, showDelta: boolean): void {
