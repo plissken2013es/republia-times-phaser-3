@@ -38,7 +38,7 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     text: {
       en: { blurb: '*** Est#blishing secure chan#el. Aw#it further# comm###ication ***', headline: null },
-      es: { blurb: '*** Est#bleciendo canal# seguro. Esp#re más# comunicac###ion ***', headline: null },
+      es: { blurb: '*** Est#bleciendo c#nal seg#ro. Esp#re más# comunic###ion ***', headline: null },
     },
   },
   {
@@ -73,7 +73,7 @@ export const articleDatabase: readonly ArticleData[] = [
     loyaltyEffect: LoyaltyEffect.None,
     interesting: true,
     text: {
-      en: { blurb: "*** Please help us. The government's tyranny must end! Place negative articles! ***|*** Your family will soon be safe! Drop the public's loyalty to -30 and get 1000 readers in 3 days! ***|*** It's working! Your efforts have strengthened us unimaginably! ***", headline: null },
+      en: { blurb: '*** Please help us. The government\'s tyranny must end! Place negative articles! ***|*** Your family will soon be safe! Drop the public\'s loyalty to -30 and get 1000 readers in 3 days! ***|*** It\'s working! Your efforts have strengthened us unimaginably! ***', headline: null },
       es: { blurb: '*** ¡Por favor ayúdenos. ¡La tiranía del gobierno debe terminar! ¡Publique artículos negativos! ***|*** ¡Su familia pronto estará a salvo! ¡Baje la lealtad a -30 y consiga 1000 lectores en 3 días! ***|*** ¡Está funcionando! ¡Sus esfuerzos nos han fortalecido inimaginablemente! ***', headline: null },
     },
   },
@@ -85,7 +85,7 @@ export const articleDatabase: readonly ArticleData[] = [
     loyaltyEffect: LoyaltyEffect.None,
     interesting: true,
     text: {
-      en: { blurb: "*** The government cannot win! Seal their fate! Place negative articles! ***|*** Your family's safety is assured! Convince 1000 readers to be disloyal in 2 days! ***|*** Yes! Our operations are in order. Soon we overthrow! ***", headline: null },
+      en: { blurb: '*** The government cannot win! Seal their fate! Place negative articles! ***|*** Your family\'s safety is assured! Convince 1000 readers to be disloyal in 2 days! ***|*** Yes! Our operations are in order. Soon we overthrow! ***', headline: null },
       es: { blurb: '*** ¡El gobierno no puede ganar! ¡Selle su destino! ¡Publique artículos negativos! ***|*** ¡La seguridad de su familia está asegurada! ¡Convenza a 1000 lectores de ser desleales en 2 días! ***|*** ¡Sí! Nuestras operaciones están en orden. ¡Pronto derrocaremos! ***', headline: null },
     },
   },
@@ -102,7 +102,7 @@ export const articleDatabase: readonly ArticleData[] = [
     },
   },
 
-  // ── Plot (day-ranged military) ──
+  // ── Military ──
   {
     id: 'military-rebels-routed',
     legacyIndex: 8,
@@ -152,7 +152,7 @@ export const articleDatabase: readonly ArticleData[] = [
     },
   },
 
-  // ── War (always interesting) ──
+  // ── War ──
   {
     id: 'war-satellites-destroyed',
     legacyIndex: 12,
@@ -161,7 +161,7 @@ export const articleDatabase: readonly ArticleData[] = [
     loyaltyEffect: LoyaltyEffect.Up,
     interesting: true,
     text: {
-      en: { blurb: "[GOV] forces have destroyed Antegria's illegal satellites", headline: '[GOV] Downs Enemy Satellite!' },
+      en: { blurb: '[GOV] forces have destroyed Antegria\'s illegal satellites', headline: '[GOV] Downs Enemy Satellite!' },
       es: { blurb: 'Las fuerzas de [GOV] han destruido los satélites ilegales de Antegria', headline: '¡[GOV] Derriba Satelite Enemigo!' },
     },
   },
@@ -341,7 +341,7 @@ export const articleDatabase: readonly ArticleData[] = [
     loyaltyEffect: LoyaltyEffect.Down,
     interesting: true,
     text: {
-      en: { blurb: 'Antegria secret code remains unbreakable. Top [GOV] minds are flumoxed', headline: "The Enemy's Unbreakable Code!" },
+      en: { blurb: 'Antegria secret code remains unbreakable. Top [GOV] minds are flumoxed', headline: 'The Enemy\'s Unbreakable Code!' },
       es: { blurb: 'El código secreto de Antegria sigue siendo indescifrable. Las mejores mentes de [GOV] están confundidas', headline: 'Codigo Enemigo Indescifrable!' },
     },
   },
@@ -365,7 +365,7 @@ export const articleDatabase: readonly ArticleData[] = [
     loyaltyEffect: LoyaltyEffect.Down,
     interesting: true,
     text: {
-      en: { blurb: 'Worldwide survey finds [GOV] soldiers worst trained, with worst aim', headline: "Our Boys Can't Fire Straight!" },
+      en: { blurb: 'Worldwide survey finds [GOV] soldiers worst trained, with worst aim', headline: 'Our Boys Can\'t Fire Straight!' },
       es: { blurb: 'Encuesta mundial revela que los soldados de [GOV] son los peor entrenados', headline: 'Soldados Sin Punteria!' },
     },
   },
@@ -382,7 +382,7 @@ export const articleDatabase: readonly ArticleData[] = [
     },
   },
 
-  // ── Politics (never interesting) ──
+  // ── Politics ──
   {
     id: 'politics-glory-medal',
     legacyIndex: 31,
@@ -439,7 +439,7 @@ export const articleDatabase: readonly ArticleData[] = [
     loyaltyEffect: LoyaltyEffect.Up,
     interesting: false,
     text: {
-      en: { blurb: "Newest regional administrator fights for worker's rights", headline: 'Power To The People!' },
+      en: { blurb: 'Newest regional administrator fights for worker\'s rights', headline: 'Power To The People!' },
       es: { blurb: 'El nuevo administrador regional lucha por los derechos de los trabajadores', headline: 'Poder Para El Pueblo!' },
     },
   },
@@ -463,7 +463,7 @@ export const articleDatabase: readonly ArticleData[] = [
     loyaltyEffect: LoyaltyEffect.Down,
     interesting: false,
     text: {
-      en: { blurb: "The Honorable and Great Leader photographed in women's clothes", headline: 'Great Leader, In A Dress!' },
+      en: { blurb: 'The Honorable and Great Leader photographed in women\'s clothes', headline: 'Great Leader, In A Dress!' },
       es: { blurb: 'El Honorable y Gran Líder fotografiado con ropa de mujer', headline: 'Gran Lider, En Vestido!' },
     },
   },
@@ -504,7 +504,7 @@ export const articleDatabase: readonly ArticleData[] = [
     },
   },
 
-  // ── Weather (no loyalty, always interesting) ──
+  // ── Weather ──
   {
     id: 'weather-calm',
     legacyIndex: 41,
@@ -626,7 +626,7 @@ export const articleDatabase: readonly ArticleData[] = [
     },
   },
 
-  // ── Sports (always interesting) ──
+  // ── Sports ──
   {
     id: 'sports-football-win',
     legacyIndex: 51,
@@ -748,7 +748,7 @@ export const articleDatabase: readonly ArticleData[] = [
     },
   },
 
-  // ── Entertainment (always interesting) ──
+  // ── Entertainment ──
   {
     id: 'entertainment-gala',
     legacyIndex: 61,
@@ -757,7 +757,7 @@ export const articleDatabase: readonly ArticleData[] = [
     loyaltyEffect: LoyaltyEffect.Up,
     interesting: true,
     text: {
-      en: { blurb: "Cherrywood's newest stars attended recent gala ball to honor verterans", headline: 'Stars Dance For Vets!' },
+      en: { blurb: 'Cherrywood\'s newest stars attended recent gala ball to honor verterans', headline: 'Stars Dance For Vets!' },
       es: { blurb: 'Las nuevas estrellas de Cherrywood asistieron a la gala en honor a veteranos', headline: 'Estrellas Bailan Por Veteranos!' },
     },
   },
@@ -769,7 +769,7 @@ export const articleDatabase: readonly ArticleData[] = [
     loyaltyEffect: LoyaltyEffect.Up,
     interesting: true,
     text: {
-      en: { blurb: "New fall TV programming will focus on [GOV]'s rebuilding", headline: 'Fall TV Revealaed!' },
+      en: { blurb: 'New fall TV programming will focus on [GOV]\'s rebuilding', headline: 'Fall TV Revealaed!' },
       es: { blurb: 'La nueva programación de otoño se enfocará en la reconstrucción de [GOV]', headline: 'TV De Otono Revelada!' },
     },
   },
