@@ -6853,13 +6853,13 @@ Feed.prototype = $extend(flixel_FlxSprite.prototype,{
 					continue;
 				}
 				if(blurb.articleSpriteS.overlapsPoint(Util.get_mouse())) {
-					this.console.log("[GAME] Spawn article S: " + blurb.text.text); paper.spawnArticleAtMouse(0,AssetPaths.articleS,blurb.newsItem);
+					console.log("[GAME] Spawn article S: " + blurb.text.text); this.paper.spawnArticleAtMouse(0,AssetPaths.articleS,blurb.newsItem);
 				}
 				if(blurb.articleSpriteM.overlapsPoint(Util.get_mouse())) {
-					this.console.log("[GAME] Spawn article M: " + blurb.text.text); paper.spawnArticleAtMouse(1,AssetPaths.articleM,blurb.newsItem);
+					console.log("[GAME] Spawn article M: " + blurb.text.text); this.paper.spawnArticleAtMouse(1,AssetPaths.articleM,blurb.newsItem);
 				}
 				if(blurb.articleSpriteB.overlapsPoint(Util.get_mouse())) {
-					this.console.log("[GAME] Spawn article B: " + blurb.text.text); paper.spawnArticleAtMouse(2,AssetPaths.articleB,blurb.newsItem);
+					console.log("[GAME] Spawn article B: " + blurb.text.text); this.paper.spawnArticleAtMouse(2,AssetPaths.articleB,blurb.newsItem);
 				}
 			}
 		}
