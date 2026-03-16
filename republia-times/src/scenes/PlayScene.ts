@@ -10,7 +10,7 @@ import { GameState } from '../game/GameState';
 import { Day } from '../game/Day';
 import { Goal } from '../game/Goal';
 import { Const } from '../constants/Const';
-import { FONT_FEED, IMG_BACKGROUND, IMG_BUTTON, SFX_ALARM, SFX_DAY_OVER, SFX_NULL } from '../constants/AssetKeys';
+import { FONT_FEED, IMG_BACKGROUND, IMG_BUTTON, IMG_LOGO_SMALL, SFX_ALARM, SFX_DAY_OVER, SFX_NULL } from '../constants/AssetKeys';
 import { Storage } from '../utils/Storage';
 
 export class PlayScene extends Phaser.Scene {
@@ -42,6 +42,10 @@ export class PlayScene extends Phaser.Scene {
     this.sound.play(SFX_NULL, { loop: true, volume: 0.1 });
 
     this.add.image(0, 0, IMG_BACKGROUND).setOrigin(0, 0);
+
+    // Newspaper title logo at top of paper area
+    this.add.image(Const.paperX + Const.paperW / 2, Const.paperY + 10, IMG_LOGO_SMALL)
+      .setOrigin(0.5, 0.5);
 
     this.clock = new Clock(this, GameState.instance.dayNumber);
     this.statMeters = new StatMeters(this, 10, 220, true);
