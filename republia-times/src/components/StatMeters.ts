@@ -55,13 +55,13 @@ export class StatMeters {
   private loyaltyMeter: StatMeter;
 
   public constructor(scene: Phaser.Scene, x: number, y: number, onWhite: boolean) {
-    const readerNameText = scene.add.bitmapText(x - 10, y, FONT_FEED, 'Readers', 8);
-    readerNameText.setMaxWidth(100);
+    const readerNameText = scene.add.bitmapText(0, y, FONT_FEED, 'Readers', 8);
+    readerNameText.setMaxWidth(60);
     readerNameText.setCenterAlign();
     readerNameText.setTint(onWhite ? 0x000000 : 0xffffff);
 
-    this.readerCountText = scene.add.bitmapText(x - 10, y + 10, FONT_FEED, '0', 8);
-    this.readerCountText.setMaxWidth(100);
+    this.readerCountText = scene.add.bitmapText(0, y + 12, FONT_FEED, '0', 8);
+    this.readerCountText.setMaxWidth(60);
     this.readerCountText.setCenterAlign();
     this.readerCountText.setTint(onWhite ? 0x000000 : 0xffffff);
 

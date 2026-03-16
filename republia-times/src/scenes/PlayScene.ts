@@ -43,12 +43,11 @@ export class PlayScene extends Phaser.Scene {
 
     this.add.image(0, 0, IMG_BACKGROUND).setOrigin(0, 0);
 
-    // Newspaper title logo at top of paper area
-    this.add.image(Const.paperX + Const.paperW / 2, Const.paperY + 10, IMG_LOGO_SMALL)
-      .setOrigin(0.5, 0.5);
+    // Newspaper title logo — matches original at (360, 10)
+    this.add.image(360, 10, IMG_LOGO_SMALL).setOrigin(0, 0);
 
     this.clock = new Clock(this, GameState.instance.dayNumber);
-    this.statMeters = new StatMeters(this, 10, 240, true);
+    this.statMeters = new StatMeters(this, 3, 240, true);
     this.statMeters.setValues(GameState.instance.readership, false);
     this.paper = new Paper(this);
     this.feed = new Feed(this, this.paper);

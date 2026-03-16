@@ -47,11 +47,11 @@ export class Feed {
       text.setMaxWidth(170);
       text.setLineSpacing(2);
       text.setTint(0x000000);
-      const iconS = scene.add.image(180, 6, IMG_BLURB_ARTICLE_S).setOrigin(0, 0);
-      const iconM = scene.add.image(200, 6, IMG_BLURB_ARTICLE_M).setOrigin(0, 0);
-      const iconB = scene.add.image(220, 6, IMG_BLURB_ARTICLE_B).setOrigin(0, 0);
+      const iconB = scene.add.image(204, 4, IMG_BLURB_ARTICLE_B).setOrigin(0, 0);
+      const iconM = scene.add.image(229, 4, IMG_BLURB_ARTICLE_M).setOrigin(0, 0);
+      const iconS = scene.add.image(247, 4, IMG_BLURB_ARTICLE_S).setOrigin(0, 0);
 
-      const container = scene.add.container(Const.feedX, Const.feedY, [bg, text, iconS, iconM, iconB]);
+      const container = scene.add.container(Const.feedX, Const.feedY, [bg, text, iconB, iconM, iconS]);
       container.setVisible(false);
       container.setMask(feedMask);
 
@@ -78,12 +78,12 @@ export class Feed {
         const localY = pointer.worldY - bounds.y;
         if (localY < 0 || localY > this.blurbHeight) continue;
 
-        if (localX >= 180 && localX < 196) {
-          this.paper.spawnArticleAtPointer(ArticleSize.S, blurb.newsItem, pointer);
-        } else if (localX >= 200 && localX < 216) {
-          this.paper.spawnArticleAtPointer(ArticleSize.M, blurb.newsItem, pointer);
-        } else if (localX >= 220 && localX < 236) {
+        if (localX >= 204 && localX < 225) {
           this.paper.spawnArticleAtPointer(ArticleSize.B, blurb.newsItem, pointer);
+        } else if (localX >= 229 && localX < 243) {
+          this.paper.spawnArticleAtPointer(ArticleSize.M, blurb.newsItem, pointer);
+        } else if (localX >= 247 && localX < 256) {
+          this.paper.spawnArticleAtPointer(ArticleSize.S, blurb.newsItem, pointer);
         }
       }
     });
