@@ -79,9 +79,8 @@ export class MorningScene extends Phaser.Scene {
     button.setInteractive({ useHandCursor: true }).on('pointerdown', onClick);
     buttonLabel.setInteractive({ useHandCursor: true }).on('pointerdown', onClick);
 
-    const dayText = this.add.bitmapText(245, 70, FONT_FEED, `Day ${dayNumber}`, 10);
-    dayText.setMaxWidth(50);
-    dayText.setCenterAlign();
+    const dayText = this.add.bitmapText(270, 70, FONT_FEED, `Day ${dayNumber}`, 10);
+    dayText.setOrigin(0.5, 0);
     dayText.setTint(0x000000);
 
     const creditsText = this.add.bitmapText(540 - 120, 285, FONT_FEED, 'by\nLucas Pope\n@dukope', 10);
