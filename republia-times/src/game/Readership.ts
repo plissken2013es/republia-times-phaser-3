@@ -32,26 +32,26 @@ export class Readership {
     this.preReaderCount = this.curReaderCount;
 
     this.comments = '';
-    this.curLoyalty += paperSummary.totalLoyaltyEffect
-      * Readership.getReadershipBonus(this.preReaderCount);
+    this.curLoyalty += Math.round(paperSummary.totalLoyaltyEffect
+      * Readership.getReadershipBonus(this.preReaderCount));
 
     if (this.curLoyalty > Const.statMax) this.curLoyalty = Const.statMax;
     if (this.curLoyalty < -Const.statMax) this.curLoyalty = -Const.statMax;
 
     if (paperSummary.articleCoveragePercentage === 0) {
       this.comments += '* The paper is blank. Money was saved on ink, but you have lost many readers.\n';
-      this.curReaderCount *= 0.5;
+      this.curReaderCount = Math.round(this.curReaderCount * 0.5);
     } else if (paperSummary.articleCoveragePercentage < 0.75) {
       this.comments += '* There are too few articles. You have lost readers.\n';
-      this.curReaderCount *= 0.75;
+      this.curReaderCount = Math.round(this.curReaderCount * 0.75);
     }
 
     if (paperSummary.numInterestingArticles < 2) {
       this.comments += '* There are not enough interesting articles. You have lost readers.\n';
-      this.curReaderCount *= 0.9;
+      this.curReaderCount = Math.round(this.curReaderCount * 0.9);
     } else if (paperSummary.numInterestingArticles > 2) {
       this.comments += '* There are many interesting articles. You have gained readers.\n';
-      this.curReaderCount *= 1.25;
+      this.curReaderCount = Math.round(this.curReaderCount * 1.25);
     }
 
     if (this.curLoyalty > this.preLoyalty) {

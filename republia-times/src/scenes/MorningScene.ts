@@ -275,7 +275,7 @@ export class MorningScene extends Phaser.Scene {
       return '__________________________________________\nArticle Positioning\n\nArticle placement has no effect on loyalty or reader interest. Only the size and content of stories matter. Use your vast artistic and design experience to arrange articles in a way that pleases you.';
     }
     if (dayNumber === 5) {
-      return '__________________________________________\nWeather\n\nThe government cannot control the weather yet. As a result, articles about the weather do not affect loyalty.';
+      return '__________________________________________\nWeather\n \nThe government cannot control the weather yet. As a result, articles about the weather do not affect loyalty.';
     }
     if (dayNumber === 6) {
       return '__________________________________________\nPolitics\n\nThe public finds political stories uninteresting, but positive articles on political subjects can increase loyalty.';

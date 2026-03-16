@@ -2,7 +2,6 @@ import Phaser from 'phaser';
 
 import { MuteButton } from '../components/MuteButton';
 import { StatMeters } from '../components/StatMeters';
-import { Const } from '../constants/Const';
 import { FONT_FEED, IMG_BUTTON, IMG_PRINTED_PAPER, MUSIC_NIGHT } from '../constants/AssetKeys';
 import { GameState } from '../game/GameState';
 
@@ -24,10 +23,19 @@ export class NightScene extends Phaser.Scene {
 
     const rs = GameState.instance.readership;
 
-    this.add.image(270, 80, IMG_PRINTED_PAPER).setOrigin(0.5, 0);
+    // Printed paper preview — centered horizontally at y=30
+    const paper = this.add.image(270, 30, IMG_PRINTED_PAPER).setOrigin(0.5, 0);
 
-    const button = this.add.image(270, 270, IMG_BUTTON).setOrigin(0.5, 0.5);
-    const label = this.add.bitmapText(270, 270, FONT_FEED, 'Go to Sleep', 10)
+    // Results message at (100, 129) matching original
+    const message = this.buildResultsMessage();
+    const messageText = this.add.bitmapText(100, 129, FONT_FEED, message, 10);
+    messageText.setMaxWidth(340);
+    messageText.setLineSpacing(0);
+    messageText.setTint(0xffffff);
+
+    // "Go to Sleep" button at (210, 270) matching original
+    const button = this.add.image(270, 280, IMG_BUTTON).setOrigin(0.5, 0.5);
+    const label = this.add.bitmapText(270, 280, FONT_FEED, 'Go to Sleep', 10)
       .setOrigin(0.5, 0.5)
       .setTint(0x000000);
     const onClick = () => {
@@ -37,13 +45,7 @@ export class NightScene extends Phaser.Scene {
     button.setInteractive({ useHandCursor: true }).on('pointerdown', onClick);
     label.setInteractive({ useHandCursor: true }).on('pointerdown', onClick);
 
-    const message = this.buildResultsMessage();
-    const messageText = this.add.bitmapText(100, 110, FONT_FEED, message, 10);
-    messageText.setMaxWidth(340);
-    messageText.setLineSpacing(0);
-    messageText.setTint(0xffffff);
-    messageText.y = 180 - messageText.height / 2;
-
+    // StatMeters in top-right, matching original (440, 120)
     this.statMeters = new StatMeters(this, 450, 120, false);
     this.statMeters.setValues(rs, true);
 
@@ -56,9 +58,9 @@ export class NightScene extends Phaser.Scene {
 
   private buildResultsMessage(): string {
     const rs = GameState.instance.readership;
-    let message = "Today's issue has been printed and distributed.\n\nRESULTS\n\n";
-    message += `      ${this.formatResult('Loyalty', rs.curLoyalty, rs.curLoyalty - rs.preLoyalty)}\n`;
-    message += `      ${this.formatResult('Readership', rs.curReaderCount, rs.curReaderCount - rs.preReaderCount)}\n\n`;
+    let message = "Today's issue has been printed and distributed.\n \nRESULTS\n \n";
+    message += `      ${this.formatResult('Loyalty', Math.round(rs.curLoyalty), Math.round(rs.curLoyalty - rs.preLoyalty))}\n`;
+    message += `      ${this.formatResult('Readership', Math.round(rs.curReaderCount), Math.round(rs.curReaderCount - rs.preReaderCount))}\n \n`;
     message += rs.comments;
     return message;
   }

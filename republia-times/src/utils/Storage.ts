@@ -48,10 +48,10 @@ export class Storage {
 
       const gs = GameState.instance;
       gs.dayNumber = parsed.dayNumber;
-      gs.readership.curLoyalty = parsed.loyalty;
-      gs.readership.preLoyalty = parsed.loyalty;
-      gs.readership.curReaderCount = parsed.readerCount;
-      gs.readership.preReaderCount = parsed.readerCount;
+      gs.readership.curLoyalty = Math.round(parsed.loyalty);
+      gs.readership.preLoyalty = Math.round(parsed.loyalty);
+      gs.readership.curReaderCount = Math.round(parsed.readerCount);
+      gs.readership.preReaderCount = Math.round(parsed.readerCount);
       gs.stateInControl = parsed.stateInControl;
       gs.haveWonAtLeastOnce = parsed.haveWonAtLeastOnce;
       gs.savedMute = parsed.mute;
