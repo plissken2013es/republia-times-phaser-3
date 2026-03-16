@@ -48,7 +48,7 @@ export class PlayScene extends Phaser.Scene {
       .setOrigin(0.5, 0.5);
 
     this.clock = new Clock(this, GameState.instance.dayNumber);
-    this.statMeters = new StatMeters(this, 10, 220, true);
+    this.statMeters = new StatMeters(this, 10, 240, true);
     this.statMeters.setValues(GameState.instance.readership, false);
     this.paper = new Paper(this);
     this.feed = new Feed(this, this.paper);
@@ -60,8 +60,8 @@ export class PlayScene extends Phaser.Scene {
     this.alarmPlayed = false;
     this.dayOver = false;
 
-    const button = this.add.image(30, 195, IMG_BUTTON).setOrigin(0.5, 0.5);
-    const label = this.add.bitmapText(30, 195, FONT_FEED, 'End Day', 8)
+    const button = this.add.image(30, 104, IMG_BUTTON).setOrigin(0.5, 0.5).setDisplaySize(60, 20);
+    const label = this.add.bitmapText(30, 104, FONT_FEED, 'End Day', 8)
       .setOrigin(0.5, 0.5)
       .setTint(0x000000);
 
