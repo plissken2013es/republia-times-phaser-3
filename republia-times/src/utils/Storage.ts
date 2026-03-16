@@ -2,7 +2,7 @@ import { GameState } from '../game/GameState';
 import { NewsItem } from '../game/NewsItem';
 
 interface SaveData {
-  version: 1;
+  version: 2;
   dayNumber: number;
   loyalty: number;
   readerCount: number;
@@ -22,7 +22,7 @@ export class Storage {
       .filter((index) => index >= 0);
 
     const payload: SaveData = {
-      version: 1,
+      version: 2,
       dayNumber: gs.dayNumber,
       loyalty: gs.readership.curLoyalty,
       readerCount: gs.readership.curReaderCount,
@@ -96,7 +96,7 @@ export class Storage {
 
   private static isValidSaveData(data: Partial<SaveData>): data is SaveData {
     return (
-      data.version === 1
+      data.version === 2
       && typeof data.dayNumber === 'number'
       && typeof data.loyalty === 'number'
       && typeof data.readerCount === 'number'
