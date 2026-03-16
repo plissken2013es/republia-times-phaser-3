@@ -33,7 +33,7 @@ describe('Storage', () => {
   });
 
   it('returns false for invalid save data', () => {
-    localStorage.setItem('republiatimes-save', JSON.stringify({ version: 2 }));
+    localStorage.setItem('republiatimes-save', JSON.stringify({ version: 3 }));
     expect(Storage.load()).toBe(false);
   });
 
