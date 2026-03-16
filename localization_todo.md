@@ -17,14 +17,20 @@ Claude extracts ALL English text and generates a complete Spanish draft in a sin
 ## Phase 2 — Human Review + Integration
 
 - [ ] **2.1** **USER REVIEWS `es.ts`** — polish tone, fix phrasing, adjust cultural fit
-- [ ] **2.2** Refactor all source files to import from locale:
+- [ ] **2.2** Create `src/locale/locale.ts` — accessor with `S()`, `setLanguage()`, `getLanguage()`, `loadLanguagePreference()`
+- [ ] **2.3** Refactor all source files to import from locale via `S()`:
   - [ ] `MorningScene.ts` — use locale for all message branches
   - [ ] `NightScene.ts` — results text
   - [ ] `PlayScene.ts` + components — UI labels
   - [ ] `Readership.ts` — comment strings
   - [ ] `NewsItem.ts` — all 71 items from locale data
-- [ ] **2.3** Smoke test — game plays with Spanish strings, no missing text
-- [ ] **2.4** Assess + fix article headline fonts:
+- [ ] **2.4** Add language toggle button (EN/ES) on MorningScene:
+  - [ ] Position near mute button (bottom-left area)
+  - [ ] On click: `setLanguage()` + restart MorningScene
+  - [ ] Visual: show current language, toggle on click
+- [ ] **2.5** Persist language to localStorage, load in PreloadScene via `loadLanguagePreference()`
+- [ ] **2.6** Smoke test — game plays in both languages, switching works
+- [ ] **2.7** Assess + fix article headline fonts:
   - [ ] Check if original TTFs exist in `legay_HaxeFlixel_src/`
   - [ ] If yes: regenerate MotorolaScreentype, SILKWONDER, SG03 with Latin chars
   - [ ] If no: constrain article headlines to ASCII-only characters
@@ -38,6 +44,7 @@ Claude extracts ALL English text and generates a complete Spanish draft in a sin
 - [ ] **3.4** Fix text overflow — shorten any translations that break layout
 - [ ] **3.5** Full playthrough test — play 10 days in Spanish, both paths (state + rebel)
 - [ ] **3.6** Edge case test — rebel victory screen, game over screen, replay with "haveWonAtLeastOnce"
+- [ ] **3.7** Edge case test — switch language on day 1, play through, switch back on day 5 morning
 
 ## Notes
 

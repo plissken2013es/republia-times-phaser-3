@@ -4,8 +4,8 @@
 
 The localization is built in **three phases**:
 
-1. **Infrastructure** — Create the locale system, extract all English strings into it, verify the game still works identically.
-2. **Translation** — Translate all strings to Spanish, regenerate article fonts if needed.
+1. **Extract + Draft** — Extract all English strings into locale files, generate Spanish first-draft for user review.
+2. **Review + Integration** — User polishes Spanish, then integrate locale system into game code + add language selector UI.
 3. **Validation** — Test all screens, verify text fits within layout bounds, fix overflow issues.
 
 ---
@@ -13,29 +13,29 @@ The localization is built in **three phases**:
 ## Phase Breakdown
 
 ```
-Phase 1 — Infrastructure
-  1.1  Create src/locale/strings.ts with all UI strings (English first)
-  1.2  Refactor MorningScene to use Strings.* for all message text
-  1.3  Refactor NightScene + Readership to use Strings.*
-  1.4  Refactor PlayScene + components (Feed, Paper, Clock, StatMeters, CenterPopup)
-  1.5  Extract NewsItem blurb/article text into translatable structure
-  1.6  Verify: game plays identically with extracted strings
+Phase 1 — Extract + Draft (Claude generates, user reviews)
+  1.1  Create src/locale/en.ts — extract ALL English text into structured locale file
+  1.2  Create src/locale/es.ts — Claude generates first-draft Spanish translation
+  1.3  Create src/locale/locale.ts — accessor with setLanguage/getLanguage/S()
+  1.4  User reviews and polishes es.ts
 
-Phase 2 — Translation
-  2.1  Translate UI strings (buttons, labels, scene text)
-  2.2  Translate MorningScene messages (goals, performance, family, tutorials)
-  2.3  Translate all 71 news items (blurb + article text)
-  2.4  Translate Readership comment strings
-  2.5  Assess article font Latin coverage — regenerate or constrain
-  2.6  Handle [GOV] placeholder in Spanish grammar context
+Phase 2 — Integration (wire locale into game + language selector)
+  2.1  Refactor MorningScene to use S().* for all message text
+  2.2  Refactor NightScene + Readership to use S().*
+  2.3  Refactor PlayScene + components (Feed, Paper, Clock, StatMeters, CenterPopup)
+  2.4  Refactor NewsItem to read blurb/article text from active locale
+  2.5  Add language toggle button on MorningScene (EN/ES, restarts scene)
+  2.6  Persist language choice to localStorage, load on boot in PreloadScene
+  2.7  Assess article font Latin coverage — regenerate or constrain
+  2.8  Verify: game plays in both languages, switching works
 
 Phase 3 — Validation
-  3.1  Visual review: MorningScene (all day variants)
+  3.1  Visual review: MorningScene (all day variants, both languages)
   3.2  Visual review: PlayScene (feed text, article headlines, button)
   3.3  Visual review: NightScene (results, comments)
   3.4  Text overflow fixes (shorten translations that exceed bounds)
-  3.5  Full playthrough: 10-day game in Spanish
-  3.6  Edge cases: rebel path, game over, replay
+  3.5  Full playthrough: 10-day game in Spanish, both paths
+  3.6  Edge cases: language switch mid-game, rebel path, replay
 ```
 
 ---

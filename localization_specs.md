@@ -4,7 +4,7 @@
 
 Add full Spanish localization to the Phaser 3 port of Republia Times. The game currently has all text hardcoded in English across multiple source files. This feature extracts all player-visible strings into a locale system and provides a complete Spanish translation.
 
-The localization is **compile-time** (not runtime language switching) for MVP. The Spanish version replaces the English one.
+The game supports **runtime language switching** via a language selector on the initial screen. Changing language restarts the current scene to rebuild all text. Both English and Spanish are shipped in the same build.
 
 ---
 
@@ -33,38 +33,77 @@ The localization is **compile-time** (not runtime language switching) for MVP. T
 
 ---
 
-## 3. Architecture
+## 3. Language Selection
 
-### 3.1 Locale File
+### 3.1 Where
 
-Create a single locale module:
+A language toggle (EN / ES flag or text button) on the **MorningScene** (initial screen), near the mute button. Visible on every MorningScene visit, not just day 1.
+
+### 3.2 Switching Behavior
+
+- Changing language **restarts the current scene** (`this.scene.start(currentSceneKey)`)
+- All text is created in each scene's `create()` method, which reads from the active locale — so restarting the scene rebuilds everything in the new language
+- Mid-gameplay switching (during PlayScene) is **not supported** — the language button only appears on MorningScene. This avoids complexity with the Feed/Paper state.
+- The selected language is **persisted to localStorage** so it survives page refresh
+
+### 3.3 Technical Impact
+
+- No need to dynamically update existing BitmapText objects
+- Each scene's `create()` already reads strings once — just needs to read from the active locale instead of hardcoded English
+- `NewsItem` text is resolved at read time (`getBlurbText()`, `getArticleText()`) so it naturally picks up the active language
+- Save format does NOT store language — it's a user preference, not game state
+
+---
+
+## 4. Architecture
+
+### 4.1 Locale Files
 
 ```
 src/
   locale/
-    strings.ts        # All translatable strings as a typed object
+    en.ts             # English strings (original)
+    es.ts             # Spanish strings (translation)
+    locale.ts         # Active locale accessor + language switching
 ```
+
+### 4.2 Locale Accessor
 
 ```ts
-export const Strings = {
-  // UI
-  startWork: 'Empezar a Trabajar',
-  endDay: 'Terminar el Dia',
-  goToSleep: 'Ir a Dormir',
-  sendToPrint: 'Enviar a Imprenta',
-  readers: 'Lectores',
-  loyalty: 'Lealtad',
-  results: 'RESULTADOS',
-  dayLabel: (n: number) => `Dia ${n}`,
-  // ...
-} as const;
+// src/locale/locale.ts
+import { en } from './en';
+import { es } from './es';
+
+export type LocaleStrings = typeof en;
+
+const LANG_KEY = 'republiatimes-lang';
+let active: LocaleStrings = en;
+
+export function setLanguage(lang: 'en' | 'es'): void {
+  active = lang === 'es' ? es : en;
+  localStorage.setItem(LANG_KEY, lang);
+}
+
+export function getLanguage(): 'en' | 'es' {
+  return active === es ? 'es' : 'en';
+}
+
+export function loadLanguagePreference(): void {
+  const saved = localStorage.getItem(LANG_KEY);
+  if (saved === 'es') active = es;
+}
+
+// All game code reads strings via S()
+export function S(): LocaleStrings { return active; }
 ```
 
-### 3.2 String Replacement Strategy
+Usage in scenes: `S().ui_startWork` — always reads from the active locale.
 
-Replace all hardcoded English strings in scene/component code with references to `Strings.*`. The `NewsItem` constructor calls are the bulk of the work — each blurb and article text must be translated.
+### 4.3 String Replacement Strategy
 
-### 3.3 [GOV] System
+Replace all hardcoded English strings in scene/component code with `S().*` calls. The `NewsItem` data also references the locale for blurb/article text.
+
+### 4.4 [GOV] System
 
 The `[GOV]` placeholder system stays as-is. Translated strings use `[GOV]` and `GameState.expandGovNames()` still replaces them. "Republia" and "Democria" are proper nouns and remain unchanged.
 
