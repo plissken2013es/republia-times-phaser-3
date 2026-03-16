@@ -110,8 +110,6 @@ export interface LocaleStrings {
   comment_influenceExpanded: string;
   comment_influenceReduced: string;
 
-  // News items (71 items)
-  [key: `news_${number}`]: NewsEntry;
 }
 
 export const en: LocaleStrings = {
@@ -232,98 +230,4 @@ export const en: LocaleStrings = {
   comment_loyaltyDecreased: "The included articles have decreased your readership's loyalty to the government.",
   comment_influenceExpanded: "The paper's increasing readership has expanded its influence.",
   comment_influenceReduced: "The paper's decreasing readership has reduced its influence.",
-
-  // ── News items: [blurbText, articleText] ──
-  // Plot items
-  news_0: ['The rebellion has been crushed. Peace returns to all sectors', 'Rebellion Crushed, Peace Restored!'],
-  news_1: ['*** ####....##...####..## ***', null],
-  news_2: ['*** Est#blishing secure chan#el. Aw#it further# comm###ication ***', null],
-  news_3: ['*** #Please hear me. I am Kurstov, leader of#the rebellion. We need your help. ***', null],
-  news_4: ['*** We can rescue your family. Sow disloyalty to strengthen the rebels. You have 4 days. ***', null],
-  news_5: [
-    "*** Please help us. The government's tyranny must end! Place negative articles! ***|*** Your family will soon be safe! Drop the public's loyalty to -30 and get 1000 readers in 3 days! ***|*** It's working! Your efforts have strengthened us unimaginably! ***",
-    null,
-  ],
-  news_6: [
-    "*** The government cannot win! Seal their fate! Place negative articles! ***|*** Your family's safety is assured! Convince 1000 readers to be disloyal in 2 days! ***|*** Yes! Our operations are in order. Soon we overthrow! ***",
-    null,
-  ],
-  news_7: [
-    '*** We have no time! The people must be free! Spread negative news! ***|*** Our time is at hand! Hurry! Get 1000 readers with -30 loyalty by the end of today! ***|*** Oh glorious day! We strike at sundown. Prepare yourself! ***',
-    null,
-  ],
-  // Plot (day-ranged military)
-  news_8: ['Terrorist rebel hideout near Central Chem destroyed', 'Rebels Routed At Factory!'],
-  news_9: ['Rebels at Central Chem sabotage important machinary', 'Factory Sabotaged!'],
-  news_10: ['Terrorist 2nd-in-command captured. Renounces fight against [GOV]', 'Terrorist Leader Buckles!'],
-  news_11: ['Rebels regroup in western towns. Growing in strength and number.', 'Rebels Gaining Support!'],
-
-  // War (always interesting)
-  news_12: ["[GOV] forces have destroyed Antegria's illegal satellites", '[GOV] Downs Enemy Satellite!'],
-  news_13: ['[GOV] borders have been reinforced with 200,000 additional troops', 'Borders Reinforced!'],
-  news_14: ['State-of-the-art military spy satellites now used to reduce crime', 'Keeping An Eye On Crime!'],
-  news_15: ['[GOV] Navy commissions an additional 500 destroyers to patrol coast', 'Safeguarding The Coasts!'],
-  news_16: ['[GOV] Air Force tactical fighter sets new speed record', 'Faster Fighter Flown!'],
-  news_17: ['Multiple terrorist cells in central district foiled in operation', 'Central Terrorists Terminated!'],
-  news_18: ['[GOV] Army 5th Divison shuts down bomb factory in northern mountains', 'Bomb Factory Found, Destroyed!'],
-  news_19: ['[GOV] soldiers strongest in the world according to latest tests', 'Our Boys Are the Best!'],
-  news_20: ['Peace enforcement squad rounds up 200 terrorist rebels', 'Peace Restored, Rebels Captured!'],
-  news_21: ['40,000 gallons of military gasoline stolen from western bases', 'Military Gas Gone!'],
-  news_22: ['Critical oil fields in the north have been sabotaged', 'Pipelines Crippled!'],
-  news_23: ['Terrorist bomb explodes on northern bay ferry. 600 people missing', 'Explosion Rocks The Seas!'],
-  news_24: ['[GOV] Air Force tactical fighter test flight ends in crash. Crew lost', 'Futuristic Fight Crashes, Burns!'],
-  news_25: ['[GOV] Navy identifies critical fault in all operational submarines', 'Our Subs Are Faulty!'],
-  news_26: ['The top general in charge of southern forces has died suddenly', 'General Dies Overnight!'],
-  news_27: ['Antegria secret code remains unbreakable. Top [GOV] minds are flumoxed', "The Enemy's Unbreakable Code!"],
-  news_28: ['Tank production falls behind schedule. Poor factory conditions blamed', 'Tanking Tanks!'],
-  news_29: ['Worldwide survey finds [GOV] soldiers worst trained, with worst aim', "Our Boys Can't Fire Straight!"],
-  news_30: ['Antegria Navy sinks [GOV] battleship off eastern coast', '[GOV] Battleship Bested!'],
-
-  // Politics (never interesting)
-  news_31: ['The Honorable and Great Leader awarded Lifetime Glory medal', 'A Lifetime of Glory!'],
-  news_32: ['Agricultural output from the farming sector doubles for 10th straight month', 'More Corn Than Air!'],
-  news_33: ['Income reallocation scheme contributes 400 million to schools. Proves system works', 'Education Spending Up!'],
-  news_34: ['Latest polls show broad satisfaction with government leaders', 'Politics Polls Positive!'],
-  news_35: ["Newest regional administrator fights for worker's rights", 'Power To The People!'],
-  news_36: ['Party officials have voted to adjust ration quotas for all orphans', 'Less Food For Orphans'],
-  news_37: ["The Honorable and Great Leader photographed in women's clothes", 'Great Leader, In A Dress!'],
-  news_38: ['30,000 teachers and academics reassigned to more useful labor tasks', 'Educators Punished For Being Smart!'],
-  news_39: ['Local citizen council votes will be eliminated in favor of suggestive comments', 'Local Councils Lose Vote!'],
-  news_40: ['Yearly donations to the state must increase to support growing government oversight', 'Taxes Rise For 8th Year!'],
-
-  // Weather (no loyalty, always interesting)
-  news_41: ['Weather: Skies and temperatures will remain calm today', 'Another Sunny Day!'],
-  news_42: ['Weather: Storms predicted to wash western coast out to sea', 'Western Storms Threaten Coast!'],
-  news_43: ['Weather: Forecast expects heavy rains in the north and east', 'Showers Rain Down!'],
-  news_44: ['Weather: Expect unseasonal snow in the south', 'Blizzard Incoming?'],
-  news_45: ['Weather: Sunny morning and cloudy evening for the day', 'Warm To Cloudy!'],
-  news_46: ['Weather: Light showers throughout the day', 'Warm To Cloudy This Week!'],
-  news_47: ['Weather: Hurricane-level winds spotted off eastern coast', 'Eastern Hurricanes Return!'],
-  news_48: ['Weather: Clear skies and no sign of rain', 'Another Dry Day!'],
-  news_49: ['Weather: Freezing sleet and snow expected in northern mountains', 'Buckle Down For Ice!'],
-  news_50: ['Weather: Tropical breezes blow across southeastern coast', 'Sea Breeze Incoming!'],
-
-  // Sports (always interesting)
-  news_51: ['[GOV] National Team has won the global football tournament', '[GOV] Wins Football Crown!'],
-  news_52: ['Antegria ski team soundly defeated by [GOV] crew', '[GOV] Defeats Antegria Skiers!'],
-  news_53: ['Tennis star Restojiu powers through semifinal brackets', 'Tennis Star Advances!'],
-  news_54: ['Young [GOV] atheletes dominate track and field. May win Olympic gold', 'Our Young Heroes!'],
-  news_55: ['Skilled [GOV] baseball team finishes record season. Thanks Leader for support', 'Baseball Success Sealed!'],
-  news_56: ['Championship weight lifter Lekshou retires due to crippling injury', 'Muscleman Retires!'],
-  news_57: ['[GOV] National Football Team has lost the regional finals to Antegria', '[GOV] Football Stumbles!'],
-  news_58: ['Entire [GOV] National Hockey team killed in plane crash', 'Tragedy Strikes Hockey!'],
-  news_59: ['Athletic training in [GOV] is years behind the competition', 'Our Athletes: Behind The Curve?'],
-  news_60: ['National kayaking team has defected to Antegria', 'Kayaking For The Enemy!'],
-
-  // Entertainment (always interesting)
-  news_61: ["Cherrywood's newest stars attended recent gala ball to honor verterans", 'Stars Dance For Vets!'],
-  news_62: ["New fall TV programming will focus on [GOV]'s rebuilding", 'Fall TV Revealaed!'],
-  news_63: ['Beloved children\'s book "Mumpit Mush" finally coming to the big screen', 'Mumpit Mush Is Coming!'],
-  news_64: ['Superstars Chad and Jenlyn preparing for Cherrywood wedding tomorrow', 'C&J To Tie the Knot!'],
-  news_65: ['Superstars Chad and Jenlyn marry in extravagant festival', 'C&J Finally Hitched!'],
-  news_66: ['"My butt is not too fat, just right" claims TV star Aprelica', 'Butt Within Spec!'],
-  news_67: ['Reality star Mestonda found dead from apparent overdose', 'Reality Star Overdoses!'],
-  news_68: ['Fashion designer CrevyCrevy has defected to Antegria', 'Fashion Icon Defects!'],
-  news_69: ['Mega-group HugginBoyz admits to not singing on any albums, can barely dance', 'HugginBoyz: Talentless After All!'],
-  news_70: ['Superstars Chad and Jenlyn file for divorce. Both claim infidelity', 'C&J Fairytale Ends!'],
 };

@@ -2,9 +2,10 @@ import { describe, expect, it } from 'vitest';
 
 import { ArticleSize, NewsItem } from './NewsItem';
 import { PaperSummary } from './PaperSummary';
+import { ArticleCategory } from '../data/articleTypes';
 
 const makeItem = (loyalty: number, interesting: boolean): NewsItem =>
-  new NewsItem(0, 0, 0, loyalty, interesting);
+  new NewsItem(0, 0, 0, loyalty, interesting, ArticleCategory.War);
 
 describe('PaperSummary', () => {
   it('applies loyalty and interest for a big article', () => {
