@@ -140,6 +140,10 @@ export class Paper {
     return summary;
   }
 
+  public isNewsItemPlaced(newsItem: NewsItem): boolean {
+    return this.articles.some((a) => a.sprite.visible && a.newsItem === newsItem);
+  }
+
   public markNewsItemsUsed(): void {
     for (const article of this.articles) {
       if (article.sprite.visible && article.newsItem) {
