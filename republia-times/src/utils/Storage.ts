@@ -13,6 +13,7 @@ interface SaveData {
 }
 
 const STORAGE_KEY = 'republiatimes-save';
+const MUTE_KEY = 'republiatimes-mute';
 
 export class Storage {
   public static save(): void {
@@ -79,11 +80,7 @@ export class Storage {
 
   public static getMute(): boolean {
     try {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      if (!raw) return false;
-      const parsed = JSON.parse(raw) as Partial<SaveData>;
-      if (!Storage.isValidSaveData(parsed)) return false;
-      return parsed.mute;
+      return localStorage.getItem(MUTE_KEY) === 'true';
     } catch {
       return false;
     }
@@ -91,7 +88,11 @@ export class Storage {
 
   public static setMute(muted: boolean): void {
     GameState.instance.savedMute = muted;
-    Storage.save();
+    try {
+      localStorage.setItem(MUTE_KEY, muted ? 'true' : 'false');
+    } catch {
+      // ignore
+    }
   }
 
   private static isValidSaveData(data: Partial<SaveData>): data is SaveData {
