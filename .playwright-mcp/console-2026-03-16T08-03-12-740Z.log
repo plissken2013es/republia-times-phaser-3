@@ -1,0 +1,6 @@
+[     241ms] ReferenceError: Util is not defined
+    at http://localhost:5174/ld-warmup-trt.js:118927:11
+    at http://localhost:5174/ld-warmup-trt.js:118930:3
+[     447ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ http://localhost:5174/:0
+[   44225ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ http://localhost:5174/:0
+[   99993ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ http://localhost:5174/:0

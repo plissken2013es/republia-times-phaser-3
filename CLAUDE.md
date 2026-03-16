@@ -143,8 +143,20 @@ In `PlayState` and `MorningState`:
 ### Night/Results Screen
 
 - After "Send to Print", the NightState shows how loyalty and readership changed.
-- Loyalty effect depends on which stories you placed and at what size (loyaltyEffect × sizeMult).
-- Reader count is affected by coverage percentage and interesting articles.
+- Shows a miniature preview of the printed newspaper at the top.
+- **Loyalty** effect depends on which stories you placed and at what size (loyaltyEffect × sizeMult).
+- **Reader count** is affected by coverage percentage and interesting articles (sports, entertainment, military, weather).
+- Feedback messages explain what happened: "interesting articles" → gained readers, "increased loyalty" → positive articles placed.
+- Example Day 1 result: Loyalty 0→2 (+2), Readership 200→250 (+50) with 5 articles, some overlapping.
+- **"Go to Sleep"** button advances to the next day's MorningState.
+
+### Day 2+ Morning Briefing
+
+- Shows progress feedback ("You are making good progress" / "Loyalty is dropping").
+- Reminds of current goal and deadline ("loyalty of 20 by end of day 3").
+- Shows family status based on current loyalty level.
+- Tutorial tips appear on days 2-7 (Article Size, Reader Interest, Positioning, Weather, Politics, Size & Interest).
+- Stat meters (Readers + Loyalty gauge) appear from Day 2 onward.
 
 ## Playwright Browser Testing (Original Game)
 
@@ -156,6 +168,27 @@ Lucas Pope already ported The Republia Times from Flixel/Flash to **HaxeFlixel/H
 - **Direct game URL:** `https://dukope.com/files/ld/js-ld-warmup-trt/index.html` (canvas only, use this)
 
 The game uses **Lime/OpenFL** as the HTML5 backend. The main JS bundle is `ld-warmup-trt.js`.
+
+### Local Copy (`republia-original-html5/`)
+
+A patched local copy of the HTML5 game lives in `republia-original-html5/`. Serve it with:
+```bash
+npx serve -l 5174 republia-original-html5/
+```
+
+**Patch:** `ld-warmup-trt.js` has been modified to export `flixel_FlxG` and `Util` to `$global` (window), making game internals accessible from Playwright's `page.evaluate()`:
+```js
+// Access from Playwright:
+await page.evaluate(() => ({
+  width: flixel_FlxG.width,        // 540
+  height: flixel_FlxG.height,      // 320
+  mouse: { screenX: flixel_FlxG.mouse.screenX, screenY: flixel_FlxG.mouse.screenY },
+  zoom: flixel_FlxG.camera.zoom,   // 2
+  scale: { x: flixel_FlxG.scaleMode.scale.x, y: flixel_FlxG.scaleMode.scale.y }  // 1, 1
+}));
+```
+
+**Confirmed values:** FlxG.width=540, height=320, camera.zoom=2, scaleMode.scale=(1,1).
 
 ### Playwright MCP Setup
 
@@ -212,13 +245,42 @@ Screen coordinate = logical coordinate × 2. Key positions:
 
 ### Known Issues & Workarounds
 
-1. **OpenFL audio gate overlay:** The first time the game loads, there's a "click to play" overlay (white circle with play triangle) that requires a real user gesture to dismiss. Playwright's programmatic clicks do NOT bypass this — the user must manually click the overlay in the Playwright browser window once.
+1. **OpenFL audio gate overlay:** ~~Requires manual click~~ **FIXED in local copy.** The overlay was drawn by `shared_BootWaiter` (a Flixel sprite button). Patched by setting `shared_BootWaiter.clickedAtLeastOnce = true` in `ld-warmup-trt.js`. Game now loads directly without any manual interaction needed.
 
-2. **FlxButton click detection:** `FlxButton.onUp` fires on mouse-up when the cursor is over the button. Playwright's `page.mouse.click()` works for this (confirmed: "Start Work" button). However, clicking other FlxButton instances (e.g. CenterPopup "Send to Print") was unreliable in testing — coordinates appeared correct but clicks didn't register. This may be a timing issue with the game's update loop or a Lime/OpenFL input handling quirk in HTML5 mode.
+2. **`page.mouse.move()` does NOT update FlxG.mouse.** Only `page.mouse.click()` (mousedown/mouseup) triggers Lime's event handler which updates FlxG.mouse position. The `mousemove` DOM events are not processed by Lime's HTML5 backend.
 
-3. **Feed blurb icon clicks:** Clicking S/M/B icons to spawn articles also failed to register despite correct coordinates. The `Feed.onMouseDown` handler checks `FlxG.mouse` position, which is updated by OpenFL's input system — there may be a frame-timing issue where the mouse position isn't updated before the click handler runs.
+3. **FlxButton clicks work** for buttons like "Start Work" (MorningState) because FlxButton checks FlxG.mouse on mouseUp. Use `setGlobalScreenPositionUnsafe()` to pre-set the position, then `page.mouse.click()` to trigger. Confirmed working for: "Start Work", "Send to Print", "Go to Sleep".
 
-4. **Possible workaround (untested):** Using `page.mouse.move()` to the target, waiting a frame (~17ms), then `page.mouse.down()` + `page.mouse.up()` separately might give OpenFL time to register the mouse position before the click.
+4. **Feed blurb icon clicks do NOT work via DOM events.** The Feed's `onMouseDown` checks `FlxG.mouse` position against blurb sprite bounds, but by the time the handler runs, Lime has already overwritten the mouse position with the DOM event coordinates — which may differ from what was set via `setGlobalScreenPositionUnsafe`.
+
+5. **Solution: Direct JS API calls.** Use `paper.spawnArticleAtMouse(size, asset, newsItem)` directly via `page.evaluate()` to bypass all DOM click issues. This is the **recommended approach** for programmatic gameplay (see "Direct JS API" section below).
+
+### Direct JS API (local patched version only)
+
+With the patched local version, game internals are accessible via `page.evaluate()`:
+
+```js
+// Access game state
+const state = flixel_FlxG.game._state;  // current FlxState (PlayState/MorningState/NightState)
+const feed = state.feed;                 // Feed object with blurbs array
+const paper = state.paper;               // Paper object with articles array
+
+// Read blurb data
+feed.blurbs.forEach(b => {
+  if (b.visible) console.log(b.text.text, b.articleSpriteB.x, b.articleSpriteB.y);
+});
+
+// Spawn article programmatically (bypasses DOM click issues)
+// size: 0=S, 1=M, 2=B | asset: "assets/ArticleSmall.png" / "ArticleMed.png" / "ArticleBig.png"
+flixel_FlxG.mouse.setGlobalScreenPositionUnsafe(logicalX * 2, logicalY * 2);
+paper.spawnArticleAtMouse(2, "assets/ArticleBig.png", blurb.newsItem);
+
+// Place article by clicking on paper grid position
+flixel_FlxG.mouse.setGlobalScreenPositionUnsafe(paperX * 2, paperY * 2);
+// then page.mouse.click(paperX * 2, paperY * 2) to trigger mouseUp
+```
+
+**Coordinate formula for `setGlobalScreenPositionUnsafe`:** pass `logicalCoord × 2` (because camera zoom = 2, scaleMode = 1).
 
 ### Screenshots
 

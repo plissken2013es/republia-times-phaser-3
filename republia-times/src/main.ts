@@ -20,4 +20,6 @@ const config: Phaser.Types.Core.GameConfig = {
   scene: [PreloadScene, MorningScene, PlayScene, NightScene],
 };
 
-new Phaser.Game(config);
+const game = new Phaser.Game(config);
+// Expose for Playwright testing
+(window as unknown as Record<string, unknown>).__game = game;
