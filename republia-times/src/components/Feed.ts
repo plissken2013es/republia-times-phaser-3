@@ -54,7 +54,7 @@ export class Feed {
 
     for (let i = 0; i < 10; i += 1) {
       const bg = scene.add.image(0, 0, IMG_BLURB).setOrigin(0, 0);
-      const text = scene.add.bitmapText(11, 2, FONT_FEED, '', 8);
+      const text = scene.add.bitmapText(11, 2, FONT_FEED, '', 10);
       text.setMaxWidth(170);
       text.setLineSpacing(2);
       text.setTint(0x000000);

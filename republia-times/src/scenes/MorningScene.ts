@@ -45,7 +45,7 @@ export class MorningScene extends Phaser.Scene {
     const logoSprite = this.add.image(0, 20, logoKey).setOrigin(0, 0);
     logoSprite.x = 270 - logoSprite.width / 2;
 
-    const messageText = this.add.bitmapText(100, 90, FONT_FEED, message, 8);
+    const messageText = this.add.bitmapText(100, 90, FONT_FEED, message, 10);
     messageText.setMaxWidth(340);
     messageText.setLineSpacing(2);
     messageText.setTint(rebelsWon ? 0xff0000 : 0x000000);
@@ -79,12 +79,12 @@ export class MorningScene extends Phaser.Scene {
     button.setInteractive({ useHandCursor: true }).on('pointerdown', onClick);
     buttonLabel.setInteractive({ useHandCursor: true }).on('pointerdown', onClick);
 
-    const dayText = this.add.bitmapText(245, 70, FONT_FEED, `Day ${dayNumber}`, 8);
+    const dayText = this.add.bitmapText(245, 70, FONT_FEED, `Day ${dayNumber}`, 10);
     dayText.setMaxWidth(50);
     dayText.setCenterAlign();
     dayText.setTint(0x000000);
 
-    const creditsText = this.add.bitmapText(540 - 120, 285, FONT_FEED, 'by\nLucas Pope\n@dukope', 8);
+    const creditsText = this.add.bitmapText(540 - 120, 285, FONT_FEED, 'by\nLucas Pope\n@dukope', 10);
     creditsText.setMaxWidth(120);
     creditsText.setRightAlign();
     creditsText.setLineSpacing(4);

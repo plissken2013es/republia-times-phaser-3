@@ -60,7 +60,7 @@ export class PlayScene extends Phaser.Scene {
     this.dayOver = false;
 
     const button = this.add.image(30, 104, IMG_BUTTON).setOrigin(0.5, 0.5).setDisplaySize(60, 20);
-    const label = this.add.bitmapText(30, 104, FONT_FEED, 'End Day', 8)
+    const label = this.add.bitmapText(30, 104, FONT_FEED, 'End Day', 10)
       .setOrigin(0.5, 0.5)
       .setTint(0x000000);
 
@@ -142,7 +142,7 @@ export class PlayScene extends Phaser.Scene {
     this.scoreVisible = !this.scoreVisible;
 
     if (!this.scoreOverlay) {
-      this.scoreOverlay = this.add.bitmapText(Const.paperX, 310, FONT_FEED, '', 8);
+      this.scoreOverlay = this.add.bitmapText(Const.paperX, 310, FONT_FEED, '', 10);
       this.scoreOverlay.setTint(0xff0000);
     }
 

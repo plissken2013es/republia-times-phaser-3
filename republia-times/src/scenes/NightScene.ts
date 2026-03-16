@@ -27,7 +27,7 @@ export class NightScene extends Phaser.Scene {
     this.add.image(270, 80, IMG_PRINTED_PAPER).setOrigin(0.5, 0);
 
     const button = this.add.image(270, 270, IMG_BUTTON).setOrigin(0.5, 0.5);
-    const label = this.add.bitmapText(270, 270, FONT_FEED, 'Go to Sleep', 8)
+    const label = this.add.bitmapText(270, 270, FONT_FEED, 'Go to Sleep', 10)
       .setOrigin(0.5, 0.5)
       .setTint(0x000000);
     const onClick = () => {
@@ -38,7 +38,7 @@ export class NightScene extends Phaser.Scene {
     label.setInteractive({ useHandCursor: true }).on('pointerdown', onClick);
 
     const message = this.buildResultsMessage();
-    const messageText = this.add.bitmapText(100, 110, FONT_FEED, message, 8);
+    const messageText = this.add.bitmapText(100, 110, FONT_FEED, message, 10);
     messageText.setMaxWidth(340);
     messageText.setLineSpacing(8);
     messageText.setTint(0xffffff);

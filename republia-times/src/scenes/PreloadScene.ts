@@ -104,22 +104,11 @@ export class PreloadScene extends Phaser.Scene {
     this.load.audio(SFX_ALARM, 'assets/audio/Alarm.mp3');
     this.load.audio(SFX_CLICK, 'assets/audio/Click.mp3');
 
-    this.load.bitmapFont(FONT_FEED, 'assets/fonts/feed.png', 'assets/fonts/feed.xml');
-    this.load.bitmapFont(
-      FONT_ARTICLE_B,
-      'assets/fonts/article_b.png',
-      'assets/fonts/article_b.xml',
-    );
-    this.load.bitmapFont(
-      FONT_ARTICLE_M,
-      'assets/fonts/article_m.png',
-      'assets/fonts/article_m.xml',
-    );
-    this.load.bitmapFont(
-      FONT_ARTICLE_S,
-      'assets/fonts/article_s.png',
-      'assets/fonts/article_s.xml',
-    );
+    // Use original game's bitmap fonts (.fnt + _0.png from HaxeFlixel)
+    this.load.bitmapFont(FONT_FEED, 'assets/fonts/nokiafc22_0.png', 'assets/fonts/nokiafc22.fnt');
+    this.load.bitmapFont(FONT_ARTICLE_B, 'assets/fonts/MotorolaScreentype_0.png', 'assets/fonts/MotorolaScreentype.fnt');
+    this.load.bitmapFont(FONT_ARTICLE_M, 'assets/fonts/SILKWONDER_0.png', 'assets/fonts/SILKWONDER.fnt');
+    this.load.bitmapFont(FONT_ARTICLE_S, 'assets/fonts/SG03_0.png', 'assets/fonts/SG03.fnt');
   }
 
   public create(): void {

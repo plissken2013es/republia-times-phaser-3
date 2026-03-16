@@ -19,7 +19,7 @@ export class Clock {
     this.graphics = scene.add.graphics();
     this.graphics.setPosition(this.x, this.y);
 
-    this.dayText = scene.add.bitmapText(0, 10, FONT_FEED, `Day ${dayNumber}`, 8);
+    this.dayText = scene.add.bitmapText(0, 10, FONT_FEED, `Day ${dayNumber}`, 10);
     this.dayText.setMaxWidth(60);
     this.dayText.setCenterAlign();
     this.dayText.setTint(0x000000);
