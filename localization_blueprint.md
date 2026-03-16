@@ -97,6 +97,14 @@ The 71 news items are constructed with positional arguments. Two options:
 
 **Recommended: Option A** for MVP. The game already has all items hardcoded; translating in-place is the least disruptive.
 
+### Translation Workflow
+
+1. **Claude generates first-draft Spanish** — Extract ALL game text (UI, messages, 71 news items) into a single reviewable file (`src/locale/es.ts`), with English originals as comments alongside each Spanish translation.
+2. **User reviews and polishes** — The human reviews the file, corrects tone, fixes awkward phrasing, adjusts for cultural fit.
+3. **Integrate polished translations** — Replace all hardcoded English with references to the reviewed locale file.
+
+This avoids back-and-forth on individual strings. The user gets a complete translation file to review in one pass.
+
 ### [GOV] in Spanish
 
 Spanish grammar may require different forms:
