@@ -1,2 +1,4 @@
 republia-times/node_modules
+republia-times/dist
 _debug_ui
+.playwright-mcp
