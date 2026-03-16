@@ -10,7 +10,7 @@ import { GameState } from '../game/GameState';
 import { Day } from '../game/Day';
 import { Goal } from '../game/Goal';
 import { Const } from '../constants/Const';
-import { FONT_FEED, IMG_BACKGROUND, IMG_BUTTON, IMG_LOGO_SMALL, SFX_ALARM, SFX_DAY_OVER, SFX_NULL } from '../constants/AssetKeys';
+import { FONT_FEED, IMG_BACKGROUND, IMG_BUTTON, IMG_LOGO_SMALL, IMG_LOGO_SMALL2, SFX_ALARM, SFX_DAY_OVER, SFX_NULL } from '../constants/AssetKeys';
 import { Storage } from '../utils/Storage';
 
 export class PlayScene extends Phaser.Scene {
@@ -43,8 +43,9 @@ export class PlayScene extends Phaser.Scene {
 
     this.add.image(0, 0, IMG_BACKGROUND).setOrigin(0, 0);
 
-    // Newspaper title logo — matches original at (360, 10)
-    this.add.image(360, 10, IMG_LOGO_SMALL).setOrigin(0, 0);
+    // Newspaper title logo — switches between Republia/Democria
+    const logoKey = GameState.instance.stateInControl ? IMG_LOGO_SMALL : IMG_LOGO_SMALL2;
+    this.add.image(360, 10, logoKey).setOrigin(0, 0);
 
     this.clock = new Clock(this, GameState.instance.dayNumber);
     this.statMeters = new StatMeters(this, 3, 240, true);
