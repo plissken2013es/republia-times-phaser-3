@@ -40,7 +40,7 @@ export class NightScene extends Phaser.Scene {
     const message = this.buildResultsMessage();
     const messageText = this.add.bitmapText(100, 110, FONT_FEED, message, 10);
     messageText.setMaxWidth(340);
-    messageText.setLineSpacing(8);
+    messageText.setLineSpacing(0);
     messageText.setTint(0xffffff);
     messageText.y = 180 - messageText.height / 2;
 

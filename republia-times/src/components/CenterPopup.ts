@@ -20,13 +20,13 @@ export class CenterPopup {
     const left = this.background.x - this.background.width / 2;
     const top = this.background.y - this.background.height / 2;
 
-    this.messageText = scene.add.bitmapText(left + 40, top + 70, FONT_FEED, '', 8);
+    this.messageText = scene.add.bitmapText(left + 40, top + 70, FONT_FEED, '', 10);
     this.messageText.setMaxWidth(this.background.width - 80);
-    this.messageText.setLineSpacing(8);
+    this.messageText.setLineSpacing(0);
     this.messageText.setTint(0xffffff);
 
     this.button = scene.add.image(this.background.x, top + this.background.height - 35, IMG_BUTTON).setOrigin(0.5, 0.5);
-    this.buttonLabel = scene.add.bitmapText(this.button.x, this.button.y, FONT_FEED, 'OK', 8)
+    this.buttonLabel = scene.add.bitmapText(this.button.x, this.button.y, FONT_FEED, 'OK', 10)
       .setOrigin(0.5, 0.5);
     this.buttonLabel.setTint(0x000000);
 

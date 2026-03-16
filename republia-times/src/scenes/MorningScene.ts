@@ -45,9 +45,9 @@ export class MorningScene extends Phaser.Scene {
     const logoSprite = this.add.image(0, 20, logoKey).setOrigin(0, 0);
     logoSprite.x = 270 - logoSprite.width / 2;
 
-    const messageText = this.add.bitmapText(100, 90, FONT_FEED, message, 10);
+    const messageText = this.add.bitmapText(100, 99, FONT_FEED, message, 10);
     messageText.setMaxWidth(340);
-    messageText.setLineSpacing(2);
+    messageText.setLineSpacing(0);
     messageText.setTint(rebelsWon ? 0xff0000 : 0x000000);
     // Match original: center text vertically around y=180
     messageText.y = 180 - messageText.height / 2;
@@ -63,7 +63,7 @@ export class MorningScene extends Phaser.Scene {
       buttonY,
       FONT_FEED,
       rebelsWon ? "Let's Go!" : (gameOver ? 'Accept Fate' : 'Start Work'),
-      8,
+      10,
     ).setOrigin(0.5, 0.5).setTint(0x000000).setDepth(11);
 
     const onClick = () => {
@@ -87,7 +87,7 @@ export class MorningScene extends Phaser.Scene {
     const creditsText = this.add.bitmapText(540 - 120, 285, FONT_FEED, 'by\nLucas Pope\n@dukope', 10);
     creditsText.setMaxWidth(120);
     creditsText.setRightAlign();
-    creditsText.setLineSpacing(4);
+    creditsText.setLineSpacing(0);
     creditsText.setTint(0x000000);
 
     if (dayNumber > 1) {

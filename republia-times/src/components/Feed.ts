@@ -56,7 +56,7 @@ export class Feed {
       const bg = scene.add.image(0, 0, IMG_BLURB).setOrigin(0, 0);
       const text = scene.add.bitmapText(11, 2, FONT_FEED, '', 10);
       text.setMaxWidth(170);
-      text.setLineSpacing(2);
+      text.setLineSpacing(0);
       text.setTint(0x000000);
       const iconB = scene.add.image(204, 4, IMG_BLURB_ARTICLE_B).setOrigin(0, 0);
       const iconM = scene.add.image(229, 4, IMG_BLURB_ARTICLE_M).setOrigin(0, 0);
