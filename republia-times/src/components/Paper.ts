@@ -60,7 +60,8 @@ class Article {
 export class Paper {
   private scene: Phaser.Scene;
   private articles: Article[] = [];
-  private draggingArticle: Article | null = null;
+  /** Article currently being placed from feed (follows pointer until release) */
+  private placingArticle: Article | null = null;
 
   public enabled = true;
 
@@ -73,16 +74,16 @@ export class Paper {
       this.articles.push(new Article(scene, ArticleSize.B));
     }
 
+    // Drag existing articles already on the paper
     this.scene.input.on('dragstart', (_: Phaser.Input.Pointer, obj: Phaser.GameObjects.Image) => {
-      if (!this.enabled) return;
+      if (!this.enabled || this.placingArticle) return;
       const article = this.articles.find((entry) => entry.sprite === obj);
       if (!article) return;
-      this.draggingArticle = article;
       article.dragging = true;
     });
 
     this.scene.input.on('drag', (_: Phaser.Input.Pointer, obj: Phaser.GameObjects.Image, x: number, y: number) => {
-      if (!this.enabled) return;
+      if (!this.enabled || this.placingArticle) return;
       const article = this.articles.find((entry) => entry.sprite === obj);
       if (!article) return;
       article.sprite.setPosition(x, y);
@@ -93,18 +94,31 @@ export class Paper {
     this.scene.input.on('dragend', (_: Phaser.Input.Pointer, obj: Phaser.GameObjects.Image) => {
       if (!this.enabled) return;
       const article = this.articles.find((entry) => entry.sprite === obj);
-      if (!article) return;
-      this.snapToGrid(article);
-      if (!this.isArticleValid(article)) {
-        article.setVisible(false);
-        article.newsItem = null;
-      }
-      article.dragging = false;
-      if (this.draggingArticle === article) this.draggingArticle = null;
+      if (!article || article === this.placingArticle) return;
+      this.finalizeArticleDrop(article);
+    });
+
+    // Follow pointer while placing a newly spawned article
+    this.scene.input.on('pointermove', (pointer: Phaser.Input.Pointer) => {
+      if (!this.placingArticle) return;
+      const spec = ARTICLE_SPECS[this.placingArticle.size];
+      this.placingArticle.sprite.setPosition(
+        pointer.worldX - spec.width / 2,
+        pointer.worldY - spec.height / 2,
+      );
+      this.placingArticle.updateTextPosition();
       this.updateOverlapTints();
+    });
+
+    // Drop the placing article on pointer release
+    this.scene.input.on('pointerup', () => {
+      if (!this.placingArticle) return;
+      this.finalizeArticleDrop(this.placingArticle);
+      this.placingArticle = null;
     });
   }
 
+  /** Spawn a new article from the feed — it follows the pointer until release */
   public spawnArticleAtPointer(
     size: ArticleSize,
     newsItem: NewsItem,
@@ -114,6 +128,7 @@ export class Paper {
     const article = this.articles.find((entry) => entry.size === size && !entry.sprite.visible);
     if (!article) return;
 
+    // Remove any existing article for this news item
     for (const entry of this.articles) {
       if (entry.newsItem === newsItem) {
         entry.setVisible(false);
@@ -121,14 +136,26 @@ export class Paper {
       }
     }
 
+    const spec = ARTICLE_SPECS[size];
     article.newsItem = newsItem;
     article.headline.setText(newsItem.getArticleText());
     article.setVisible(true);
-    article.sprite.setPosition(pointer.worldX, pointer.worldY);
+    article.sprite.setPosition(
+      pointer.worldX - spec.width / 2,
+      pointer.worldY - spec.height / 2,
+    );
     article.updateTextPosition();
-    this.draggingArticle?.setVisible(false);
-    this.draggingArticle = article;
-    this.scene.input.setDragState(pointer, article.sprite, 2);
+    article.dragging = true;
+
+    // Cancel any previous placing
+    if (this.placingArticle && this.placingArticle !== article) {
+      this.placingArticle.dragging = false;
+    }
+    this.placingArticle = article;
+  }
+
+  public isNewsItemPlaced(newsItem: NewsItem): boolean {
+    return this.articles.some((a) => a.sprite.visible && a.newsItem === newsItem && !a.dragging);
   }
 
   public getSummary(): PaperSummary {
@@ -140,16 +167,22 @@ export class Paper {
     return summary;
   }
 
-  public isNewsItemPlaced(newsItem: NewsItem): boolean {
-    return this.articles.some((a) => a.sprite.visible && a.newsItem === newsItem);
-  }
-
   public markNewsItemsUsed(): void {
     for (const article of this.articles) {
       if (article.sprite.visible && article.newsItem) {
         article.newsItem.used = true;
       }
     }
+  }
+
+  private finalizeArticleDrop(article: Article): void {
+    this.snapToGrid(article);
+    if (!this.isArticleValid(article)) {
+      article.setVisible(false);
+      article.newsItem = null;
+    }
+    article.dragging = false;
+    this.updateOverlapTints();
   }
 
   private snapToGrid(article: Article): void {
