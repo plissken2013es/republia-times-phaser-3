@@ -26,8 +26,8 @@ export class Feed {
   private scene: Phaser.Scene;
   private paper: Paper;
   private blurbs: Blurb[] = [];
-  private blurbsTop = 0;
-  private blurbsTopTarget = 0;
+  private blurbsTop = Const.feedH;
+  private blurbsTopTarget = Const.feedH;
   private blurbHeight = 40;
 
   public enabled = true;
