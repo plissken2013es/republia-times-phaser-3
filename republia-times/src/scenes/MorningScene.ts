@@ -33,7 +33,13 @@ export class MorningScene extends Phaser.Scene {
     this.cameras.main.setBackgroundColor('#ffffff');
     this.sound.mute = GameState.instance.savedMute;
     this.sound.stopAll();
-    this.sound.play(MUSIC_MAIN, { loop: true, volume: 0.5 });
+    if (this.sound.locked) {
+      this.sound.once('unlocked', () => {
+        this.sound.play(MUSIC_MAIN, { loop: true, volume: 0.5 });
+      });
+    } else {
+      this.sound.play(MUSIC_MAIN, { loop: true, volume: 0.5 });
+    }
 
     const gs = GameState.instance;
     const rs = gs.readership;
