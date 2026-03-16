@@ -8,6 +8,7 @@ class StatMeter {
   private scene: Phaser.Scene;
   private container: Phaser.GameObjects.Container;
   private needle: Phaser.GameObjects.Graphics;
+  private deltaWedge: Phaser.GameObjects.Graphics;
   private valueText: Phaser.GameObjects.BitmapText;
   public width: number;
 
@@ -27,18 +28,48 @@ class StatMeter {
     this.valueText.setOrigin(0.5, 0);
     this.valueText.setTint(0xffffff);
 
+    this.deltaWedge = scene.add.graphics();
     this.needle = scene.add.graphics();
-    this.container.add([base, this.needle, this.valueText, nameText]);
+    this.container.add([base, this.deltaWedge, this.needle, this.valueText, nameText]);
   }
 
-  public setValue(value: number): void {
+  private loyaltyToAngle(value: number): number {
+    return (-Math.PI / 2) + (value / Const.statMax) * (Math.PI / 2);
+  }
+
+  public setValue(value: number, prevValue?: number): void {
     this.valueText.setText(`${value}`);
 
     const centerX = this.width / 2;
     const centerY = 23;
     const radius = this.width / 2 - 10;
-    const angle = (-Math.PI / 2) + (value / Const.statMax) * (Math.PI / 2);
+    const angle = this.loyaltyToAngle(value);
 
+    // Draw delta wedge if previous value provided
+    this.deltaWedge.clear();
+    if (prevValue !== undefined && prevValue !== value) {
+      const prevAngle = this.loyaltyToAngle(prevValue);
+      const color = value > prevValue ? 0x00ff00 : 0xff0000;
+      this.deltaWedge.fillStyle(color, 0.7);
+      this.deltaWedge.beginPath();
+      this.deltaWedge.moveTo(centerX, centerY);
+
+      // Draw arc from previous angle to current angle
+      const startAngle = Math.min(prevAngle, angle);
+      const endAngle = Math.max(prevAngle, angle);
+      const steps = 16;
+      for (let i = 0; i <= steps; i++) {
+        const a = startAngle + (endAngle - startAngle) * (i / steps);
+        this.deltaWedge.lineTo(
+          centerX + radius * Math.cos(a),
+          centerY + radius * Math.sin(a),
+        );
+      }
+      this.deltaWedge.closePath();
+      this.deltaWedge.fillPath();
+    }
+
+    // Draw needle
     this.needle.clear();
     this.needle.lineStyle(2, 0x000000, 1);
     this.needle.lineBetween(
@@ -76,6 +107,11 @@ export class StatMeters {
       if (delta > 0) text += ` (+${delta})`;
     }
     this.readerCountText.setText(text);
-    this.loyaltyMeter.setValue(readership.curLoyalty);
+
+    if (showDelta) {
+      this.loyaltyMeter.setValue(readership.curLoyalty, readership.preLoyalty);
+    } else {
+      this.loyaltyMeter.setValue(readership.curLoyalty);
+    }
   }
 }
