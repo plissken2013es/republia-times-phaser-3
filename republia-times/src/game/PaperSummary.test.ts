@@ -5,7 +5,7 @@ import { PaperSummary } from './PaperSummary';
 import { ArticleCategory } from '../data/articleTypes';
 
 const makeItem = (loyalty: number, interesting: boolean): NewsItem =>
-  new NewsItem(0, 0, 0, loyalty, interesting, ArticleCategory.War);
+  new NewsItem(0, 0, 0, loyalty, interesting, ArticleCategory.War, true);
 
 describe('PaperSummary', () => {
   it('applies loyalty and interest for a big article', () => {

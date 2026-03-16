@@ -22,6 +22,7 @@ export class NewsItem {
   public appearTime = 0;
   public used = false;
   public readonly category: ArticleCategory;
+  public readonly placeable: boolean;
 
   /** Index into the locale news_N entries (legacy, for save compat) */
   public readonly index: number;
@@ -33,6 +34,7 @@ export class NewsItem {
     loyaltyEffect: number,
     interesting: boolean,
     category: ArticleCategory,
+    placeable: boolean,
   ) {
     this.index = index;
     this.dayRangeStart = dayRangeStart;
@@ -40,6 +42,7 @@ export class NewsItem {
     this.loyaltyEffect = loyaltyEffect;
     this.interesting = interesting;
     this.category = category;
+    this.placeable = placeable;
   }
 
   private getNewsEntry(): NewsEntry {
@@ -94,6 +97,7 @@ export class NewsItem {
           article.loyaltyEffect,
           article.interesting,
           article.category,
+          article.placeable,
         ),
       );
     }

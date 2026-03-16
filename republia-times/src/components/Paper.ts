@@ -62,6 +62,8 @@ export class Paper {
   private articles: Article[] = [];
   /** Article currently being placed from feed (follows pointer until release) */
   private placingArticle: Article | null = null;
+  /** Called when an article is removed from the paper (dragged outside grid) */
+  public onArticleRemoved: ((newsItem: NewsItem) => void) | null = null;
 
   public enabled = true;
 
@@ -178,8 +180,12 @@ export class Paper {
   private finalizeArticleDrop(article: Article): void {
     this.snapToGrid(article);
     if (!this.isArticleValid(article)) {
+      const removed = article.newsItem;
       article.setVisible(false);
       article.newsItem = null;
+      if (removed && this.onArticleRemoved) {
+        this.onArticleRemoved(removed);
+      }
     }
     article.dragging = false;
     this.updateOverlapTints();

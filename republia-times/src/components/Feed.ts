@@ -83,7 +83,7 @@ export class Feed {
     this.scene.input.on('pointerdown', (pointer: Phaser.Input.Pointer) => {
       if (!this.enabled) return;
       for (const blurb of this.blurbs) {
-        if (!blurb.visible || !blurb.newsItem) continue;
+        if (!blurb.visible || !blurb.newsItem || !blurb.newsItem.placeable) continue;
         const bounds = blurb.container.getBounds();
         if (!bounds.contains(pointer.worldX, pointer.worldY)) continue;
 
@@ -140,6 +140,14 @@ export class Feed {
     blurb.placedSize = size;
   }
 
+  public clearCheckForNewsItem(newsItem: NewsItem): void {
+    const blurb = this.blurbs.find((b) => b.newsItem === newsItem);
+    if (blurb) {
+      blurb.checkIcon.setVisible(false);
+      blurb.placedSize = null;
+    }
+  }
+
   public addBlurb(newsItem: NewsItem): void {
     const blurb = this.blurbs.find((entry) => !entry.visible);
     if (!blurb) return;
@@ -151,6 +159,10 @@ export class Feed {
     } else {
       blurb.text.setTint(0x000000);
     }
+    // Hide size icons for non-placeable items (rebel cipher messages)
+    blurb.iconB.setVisible(newsItem.placeable);
+    blurb.iconM.setVisible(newsItem.placeable);
+    blurb.iconS.setVisible(newsItem.placeable);
     blurb.container.setVisible(true);
     blurb.visible = true;
     blurb.placedSize = null;

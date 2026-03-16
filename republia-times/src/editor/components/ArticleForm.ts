@@ -44,6 +44,7 @@ export class ArticleForm {
     this.addNumberRow('Day End', a.dayRangeEnd, (v) => this.update({ dayRangeEnd: v }));
     this.addLoyaltyRow(a.loyaltyEffect);
     this.addCheckboxRow('Interesting', a.interesting, (v) => this.update({ interesting: v }));
+    this.addCheckboxRow('Placeable', a.placeable, (v) => this.update({ placeable: v }));
 
     // EN text
     this.addHeader('English Text');

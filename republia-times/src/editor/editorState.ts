@@ -93,6 +93,7 @@ export class EditorState {
       dayRangeEnd: 0,
       loyaltyEffect: LoyaltyEffect.None,
       interesting: true,
+      placeable: true,
       text: {
         en: { blurb: 'New article blurb text', headline: 'New Headline!' },
         es: { blurb: 'Texto del nuevo artículo', headline: 'Nuevo Titular!' },

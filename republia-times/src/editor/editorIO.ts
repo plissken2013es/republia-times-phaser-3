@@ -107,6 +107,7 @@ export function generateTS(articles: ArticleData[]): string {
     lines.push(`    dayRangeStart: ${a.dayRangeStart}, dayRangeEnd: ${a.dayRangeEnd},`);
     lines.push(`    loyaltyEffect: ${loyaltyToString(a.loyaltyEffect)},`);
     lines.push(`    interesting: ${a.interesting},`);
+    lines.push(`    placeable: ${a.placeable},`);
     lines.push('    text: {');
     lines.push(`      en: { blurb: ${textField(a.text.en.blurb)}, headline: ${textField(a.text.en.headline)} },`);
     lines.push(`      es: { blurb: ${textField(a.text.es.blurb)}, headline: ${textField(a.text.es.headline)} },`);

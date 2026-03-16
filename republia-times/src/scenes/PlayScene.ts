@@ -61,6 +61,7 @@ export class PlayScene extends Phaser.Scene {
     this.statMeters.setValues(GameState.instance.readership, false);
     this.paper = new Paper(this);
     this.feed = new Feed(this, this.paper);
+    this.paper.onArticleRemoved = (newsItem) => this.feed?.clearCheckForNewsItem(newsItem);
     this.popup = new CenterPopup(this);
     this.day = new Day(GameState.instance.dayNumber);
     this.day.newsItems.sort((a, b) => a.appearTime - b.appearTime);

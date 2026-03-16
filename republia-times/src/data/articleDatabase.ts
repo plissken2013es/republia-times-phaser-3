@@ -12,6 +12,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 1, dayRangeEnd: 3,
     loyaltyEffect: LoyaltyEffect.Up,
     interesting: true,
+    placeable: true,
     text: {
       en: { blurb: 'The rebellion has been crushed. Peace returns to all sectors', headline: 'Rebellion Crushed, Peace Restored!' },
       es: { blurb: 'La rebelión ha sido aplastada. La paz vuelve a todos los sectores', headline: 'Rebelion Aplastada, Paz Restaurada!' },
@@ -24,6 +25,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 3, dayRangeEnd: -1,
     loyaltyEffect: LoyaltyEffect.None,
     interesting: true,
+    placeable: false,
     text: {
       en: { blurb: '*** ####....##...####..## ***', headline: null },
       es: { blurb: '*** ####....##...####..## ***', headline: null },
@@ -36,6 +38,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 4, dayRangeEnd: -1,
     loyaltyEffect: LoyaltyEffect.None,
     interesting: true,
+    placeable: false,
     text: {
       en: { blurb: '*** Est#blishing secure chan#el. Aw#it further# comm###ication ***', headline: null },
       es: { blurb: '*** Est#bleciendo c#nal seg#ro. Esp#re más# comunic###ion ***', headline: null },
@@ -48,6 +51,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 6, dayRangeEnd: -1,
     loyaltyEffect: LoyaltyEffect.None,
     interesting: true,
+    placeable: false,
     text: {
       en: { blurb: '*** #Please hear me. I am Kurstov, leader of#the rebellion. We need your help. ***', headline: null },
       es: { blurb: '*** ¡#Escúcheme por favor. Soy Kurstov, líder de#la rebelión. Necesitamos su ayuda. ***', headline: null },
@@ -60,6 +64,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 7, dayRangeEnd: -1,
     loyaltyEffect: LoyaltyEffect.None,
     interesting: true,
+    placeable: false,
     text: {
       en: { blurb: '*** We can rescue your family. Sow disloyalty to strengthen the rebels. You have 4 days. ***', headline: null },
       es: { blurb: '*** Podemos rescatar a su familia. Siembre deslealtad para fortalecer a los rebeldes. Tiene 4 días. ***', headline: null },
@@ -72,6 +77,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 8, dayRangeEnd: -1,
     loyaltyEffect: LoyaltyEffect.None,
     interesting: true,
+    placeable: false,
     text: {
       en: { blurb: '*** Please help us. The government\'s tyranny must end! Place negative articles! ***|*** Your family will soon be safe! Drop the public\'s loyalty to -30 and get 1000 readers in 3 days! ***|*** It\'s working! Your efforts have strengthened us unimaginably! ***', headline: null },
       es: { blurb: '*** ¡Por favor ayúdenos. ¡La tiranía del gobierno debe terminar! ¡Publique artículos negativos! ***|*** ¡Su familia pronto estará a salvo! ¡Baje la lealtad a -30 y consiga 1000 lectores en 3 días! ***|*** ¡Está funcionando! ¡Sus esfuerzos nos han fortalecido inimaginablemente! ***', headline: null },
@@ -84,6 +90,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 9, dayRangeEnd: -1,
     loyaltyEffect: LoyaltyEffect.None,
     interesting: true,
+    placeable: false,
     text: {
       en: { blurb: '*** The government cannot win! Seal their fate! Place negative articles! ***|*** Your family\'s safety is assured! Convince 1000 readers to be disloyal in 2 days! ***|*** Yes! Our operations are in order. Soon we overthrow! ***', headline: null },
       es: { blurb: '*** ¡El gobierno no puede ganar! ¡Selle su destino! ¡Publique artículos negativos! ***|*** ¡La seguridad de su familia está asegurada! ¡Convenza a 1000 lectores de ser desleales en 2 días! ***|*** ¡Sí! Nuestras operaciones están en orden. ¡Pronto derrocaremos! ***', headline: null },
@@ -96,6 +103,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 10, dayRangeEnd: -1,
     loyaltyEffect: LoyaltyEffect.None,
     interesting: true,
+    placeable: false,
     text: {
       en: { blurb: '*** We have no time! The people must be free! Spread negative news! ***|*** Our time is at hand! Hurry! Get 1000 readers with -30 loyalty by the end of today! ***|*** Oh glorious day! We strike at sundown. Prepare yourself! ***', headline: null },
       es: { blurb: '*** ¡No tenemos tiempo! ¡El pueblo debe ser libre! ¡Difunda noticias negativas! ***|*** ¡Nuestro momento ha llegado! ¡Rápido! ¡Consiga 1000 lectores con -30 de lealtad para el final de hoy! ***|*** ¡Oh glorioso día! Atacamos al anochecer. ¡Prepárese! ***', headline: null },
@@ -110,6 +118,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 7, dayRangeEnd: 100,
     loyaltyEffect: LoyaltyEffect.Up,
     interesting: true,
+    placeable: true,
     text: {
       en: { blurb: 'Terrorist rebel hideout near Central Chem destroyed', headline: 'Rebels Routed At Factory!' },
       es: { blurb: 'Escondite terrorista rebelde cerca de Central Chem destruido', headline: 'Rebeldes Derrotados En Fabrica!' },
@@ -122,6 +131,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 8, dayRangeEnd: 100,
     loyaltyEffect: LoyaltyEffect.Down,
     interesting: true,
+    placeable: true,
     text: {
       en: { blurb: 'Rebels at Central Chem sabotage important machinary', headline: 'Factory Sabotaged!' },
       es: { blurb: 'Rebeldes en Central Chem sabotean maquinaria importante', headline: 'Fabrica Saboteada!' },
@@ -134,6 +144,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 9, dayRangeEnd: 100,
     loyaltyEffect: LoyaltyEffect.Up,
     interesting: true,
+    placeable: true,
     text: {
       en: { blurb: 'Terrorist 2nd-in-command captured. Renounces fight against [GOV]', headline: 'Terrorist Leader Buckles!' },
       es: { blurb: 'Segundo al mando terrorista capturado. Renuncia a luchar contra [GOV]', headline: 'Lider Terrorista Cede!' },
@@ -146,6 +157,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 10, dayRangeEnd: 100,
     loyaltyEffect: LoyaltyEffect.Down,
     interesting: true,
+    placeable: true,
     text: {
       en: { blurb: 'Rebels regroup in western towns. Growing in strength and number.', headline: 'Rebels Gaining Support!' },
       es: { blurb: 'Los rebeldes se reagrupan en pueblos del oeste. Crecen en fuerza y número.', headline: 'Rebeldes Ganan Apoyo!' },
@@ -160,6 +172,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 0, dayRangeEnd: 0,
     loyaltyEffect: LoyaltyEffect.Up,
     interesting: true,
+    placeable: true,
     text: {
       en: { blurb: '[GOV] forces have destroyed Antegria\'s illegal satellites', headline: '[GOV] Downs Enemy Satellite!' },
       es: { blurb: 'Las fuerzas de [GOV] han destruido los satélites ilegales de Antegria', headline: '¡[GOV] Derriba Satelite Enemigo!' },
@@ -172,6 +185,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 0, dayRangeEnd: 0,
     loyaltyEffect: LoyaltyEffect.Up,
     interesting: true,
+    placeable: true,
     text: {
       en: { blurb: '[GOV] borders have been reinforced with 200,000 additional troops', headline: 'Borders Reinforced!' },
       es: { blurb: 'Las fronteras de [GOV] han sido reforzadas con 200.000 tropas adicionales', headline: '¡Fronteras Reinforzadas!' },
@@ -184,6 +198,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 0, dayRangeEnd: 0,
     loyaltyEffect: LoyaltyEffect.Up,
     interesting: true,
+    placeable: true,
     text: {
       en: { blurb: 'State-of-the-art military spy satellites now used to reduce crime', headline: 'Keeping An Eye On Crime!' },
       es: { blurb: 'Satélites espía militares de última generación ahora usados contra el crimen', headline: '¡Vigilando El Crimen!' },
@@ -196,6 +211,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 0, dayRangeEnd: 0,
     loyaltyEffect: LoyaltyEffect.Up,
     interesting: true,
+    placeable: true,
     text: {
       en: { blurb: '[GOV] Navy commissions an additional 500 destroyers to patrol coast', headline: 'Safeguarding The Coasts!' },
       es: { blurb: 'La Armada de [GOV] comisiona 500 destructores adicionales para patrullar la costa', headline: '¡Protegiendo Las Costas!' },
@@ -208,6 +224,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 0, dayRangeEnd: 0,
     loyaltyEffect: LoyaltyEffect.Up,
     interesting: true,
+    placeable: true,
     text: {
       en: { blurb: '[GOV] Air Force tactical fighter sets new speed record', headline: 'Faster Fighter Flown!' },
       es: { blurb: 'Caza táctico de la Fuerza Aérea de [GOV] establece nuevo récord de velocidad', headline: '¡Caza Mas Rapido En Vuelo!' },
@@ -220,6 +237,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 0, dayRangeEnd: 0,
     loyaltyEffect: LoyaltyEffect.Up,
     interesting: true,
+    placeable: true,
     text: {
       en: { blurb: 'Multiple terrorist cells in central district foiled in operation', headline: 'Central Terrorists Terminated!' },
       es: { blurb: 'Múltiples células terroristas en el distrito central desarticuladas', headline: '¡Terroristas Eliminados!' },
@@ -232,6 +250,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 0, dayRangeEnd: 0,
     loyaltyEffect: LoyaltyEffect.Up,
     interesting: true,
+    placeable: true,
     text: {
       en: { blurb: '[GOV] Army 5th Divison shuts down bomb factory in northern mountains', headline: 'Bomb Factory Found, Destroyed!' },
       es: { blurb: 'La 5ta División del Ejército de [GOV] cierra fábrica de bombas en montañas del norte', headline: '¡Fabrica De Bombas Destruida!' },
@@ -244,6 +263,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 0, dayRangeEnd: 0,
     loyaltyEffect: LoyaltyEffect.Up,
     interesting: true,
+    placeable: true,
     text: {
       en: { blurb: '[GOV] soldiers strongest in the world according to latest tests', headline: 'Our Boys Are the Best!' },
       es: { blurb: 'Soldados de [GOV] los más fuertes del mundo según últimas pruebas', headline: 'Nuestros Soldados, ¡Los Mejores!' },
@@ -256,6 +276,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 0, dayRangeEnd: 0,
     loyaltyEffect: LoyaltyEffect.Up,
     interesting: true,
+    placeable: true,
     text: {
       en: { blurb: 'Peace enforcement squad rounds up 200 terrorist rebels', headline: 'Peace Restored, Rebels Captured!' },
       es: { blurb: 'Escuadrón de paz captura a 200 rebeldes terroristas', headline: 'Paz Restaurada, ¡Rebeldes Capturados!' },
@@ -268,6 +289,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 0, dayRangeEnd: 0,
     loyaltyEffect: LoyaltyEffect.Down,
     interesting: true,
+    placeable: true,
     text: {
       en: { blurb: '40,000 gallons of military gasoline stolen from western bases', headline: 'Military Gas Gone!' },
       es: { blurb: '40.000 galones de gasolina militar robados de bases del oeste', headline: '¡Gasolina Militar Robada!' },
@@ -280,6 +302,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 0, dayRangeEnd: 0,
     loyaltyEffect: LoyaltyEffect.Down,
     interesting: true,
+    placeable: true,
     text: {
       en: { blurb: 'Critical oil fields in the north have been sabotaged', headline: 'Pipelines Crippled!' },
       es: { blurb: 'Campos petroleros críticos del norte han sido saboteados', headline: 'Oleoductos Danados!' },
@@ -292,6 +315,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 0, dayRangeEnd: 0,
     loyaltyEffect: LoyaltyEffect.Down,
     interesting: true,
+    placeable: true,
     text: {
       en: { blurb: 'Terrorist bomb explodes on northern bay ferry. 600 people missing', headline: 'Explosion Rocks The Seas!' },
       es: { blurb: 'Bomba terrorista explota en ferry de la bahía norte. 600 desaparecidos', headline: '¡Explosión Sacude Los Mares!' },
@@ -304,6 +328,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 0, dayRangeEnd: 0,
     loyaltyEffect: LoyaltyEffect.Down,
     interesting: true,
+    placeable: true,
     text: {
       en: { blurb: '[GOV] Air Force tactical fighter test flight ends in crash. Crew lost', headline: 'Futuristic Fight Crashes, Burns!' },
       es: { blurb: 'Vuelo de prueba del caza táctico de [GOV] termina en accidente. Tripulación perdida', headline: '¡Caza Moderno Se Estrella!' },
@@ -316,6 +341,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 0, dayRangeEnd: 0,
     loyaltyEffect: LoyaltyEffect.Down,
     interesting: true,
+    placeable: true,
     text: {
       en: { blurb: '[GOV] Navy identifies critical fault in all operational submarines', headline: 'Our Subs Are Faulty!' },
       es: { blurb: 'La Armada de [GOV] identifica falla crítica en todos los submarinos operativos', headline: 'Nuestros Submarinos Fallan!' },
@@ -328,6 +354,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 0, dayRangeEnd: 0,
     loyaltyEffect: LoyaltyEffect.Down,
     interesting: true,
+    placeable: true,
     text: {
       en: { blurb: 'The top general in charge of southern forces has died suddenly', headline: 'General Dies Overnight!' },
       es: { blurb: 'El general al mando de las fuerzas del sur ha muerto repentinamente', headline: 'General Muere De Repente!' },
@@ -340,6 +367,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 0, dayRangeEnd: 0,
     loyaltyEffect: LoyaltyEffect.Down,
     interesting: true,
+    placeable: true,
     text: {
       en: { blurb: 'Antegria secret code remains unbreakable. Top [GOV] minds are flumoxed', headline: 'The Enemy\'s Unbreakable Code!' },
       es: { blurb: 'El código secreto de Antegria sigue siendo indescifrable. Las mejores mentes de [GOV] están confundidas', headline: 'Codigo Enemigo Indescifrable!' },
@@ -352,6 +380,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 0, dayRangeEnd: 0,
     loyaltyEffect: LoyaltyEffect.Down,
     interesting: true,
+    placeable: true,
     text: {
       en: { blurb: 'Tank production falls behind schedule. Poor factory conditions blamed', headline: 'Tanking Tanks!' },
       es: { blurb: 'La producción de tanques se retrasa. Culpan a las malas condiciones de fábrica', headline: 'Tanques En Problemas!' },
@@ -364,6 +393,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 0, dayRangeEnd: 0,
     loyaltyEffect: LoyaltyEffect.Down,
     interesting: true,
+    placeable: true,
     text: {
       en: { blurb: 'Worldwide survey finds [GOV] soldiers worst trained, with worst aim', headline: 'Our Boys Can\'t Fire Straight!' },
       es: { blurb: 'Encuesta mundial revela que los soldados de [GOV] son los peor entrenados', headline: 'Soldados Sin Punteria!' },
@@ -376,6 +406,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 0, dayRangeEnd: 0,
     loyaltyEffect: LoyaltyEffect.Down,
     interesting: true,
+    placeable: true,
     text: {
       en: { blurb: 'Antegria Navy sinks [GOV] battleship off eastern coast', headline: '[GOV] Battleship Bested!' },
       es: { blurb: 'La Armada de Antegria hunde acorazado de [GOV] frente a la costa este', headline: 'Acorazado De [GOV] Hundido!' },
@@ -390,6 +421,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 0, dayRangeEnd: 0,
     loyaltyEffect: LoyaltyEffect.Up,
     interesting: false,
+    placeable: true,
     text: {
       en: { blurb: 'The Honorable and Great Leader awarded Lifetime Glory medal', headline: 'A Lifetime of Glory!' },
       es: { blurb: 'El Honorable y Gran Líder recibe la medalla de Gloria Vitalicia', headline: 'Una Vida De Gloria!' },
@@ -402,6 +434,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 0, dayRangeEnd: 0,
     loyaltyEffect: LoyaltyEffect.Up,
     interesting: false,
+    placeable: true,
     text: {
       en: { blurb: 'Agricultural output from the farming sector doubles for 10th straight month', headline: 'More Corn Than Air!' },
       es: { blurb: 'La producción agrícola se duplica por décimo mes consecutivo', headline: 'Mas Maiz Que Aire!' },
@@ -414,6 +447,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 0, dayRangeEnd: 0,
     loyaltyEffect: LoyaltyEffect.Up,
     interesting: false,
+    placeable: true,
     text: {
       en: { blurb: 'Income reallocation scheme contributes 400 million to schools. Proves system works', headline: 'Education Spending Up!' },
       es: { blurb: 'Plan de redistribución de ingresos contribuye 400 millones a escuelas. Prueba que el sistema funciona', headline: 'Gasto Educativo Sube!' },
@@ -426,6 +460,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 0, dayRangeEnd: 0,
     loyaltyEffect: LoyaltyEffect.Up,
     interesting: false,
+    placeable: true,
     text: {
       en: { blurb: 'Latest polls show broad satisfaction with government leaders', headline: 'Politics Polls Positive!' },
       es: { blurb: 'Últimas encuestas muestran amplia satisfacción con los líderes del gobierno', headline: 'Encuestas Politicas Positivas!' },
@@ -438,6 +473,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 0, dayRangeEnd: 0,
     loyaltyEffect: LoyaltyEffect.Up,
     interesting: false,
+    placeable: true,
     text: {
       en: { blurb: 'Newest regional administrator fights for worker\'s rights', headline: 'Power To The People!' },
       es: { blurb: 'El nuevo administrador regional lucha por los derechos de los trabajadores', headline: 'Poder Para El Pueblo!' },
@@ -450,6 +486,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 0, dayRangeEnd: 0,
     loyaltyEffect: LoyaltyEffect.Down,
     interesting: false,
+    placeable: true,
     text: {
       en: { blurb: 'Party officials have voted to adjust ration quotas for all orphans', headline: 'Less Food For Orphans' },
       es: { blurb: 'Funcionarios del partido han votado ajustar las cuotas de raciones para todos los huérfanos', headline: 'Menos Comida Para Huerfanos' },
@@ -462,6 +499,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 0, dayRangeEnd: 0,
     loyaltyEffect: LoyaltyEffect.Down,
     interesting: false,
+    placeable: true,
     text: {
       en: { blurb: 'The Honorable and Great Leader photographed in women\'s clothes', headline: 'Great Leader, In A Dress!' },
       es: { blurb: 'El Honorable y Gran Líder fotografiado con ropa de mujer', headline: 'Gran Lider, En Vestido!' },
@@ -474,6 +512,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 0, dayRangeEnd: 0,
     loyaltyEffect: LoyaltyEffect.Down,
     interesting: false,
+    placeable: true,
     text: {
       en: { blurb: '30,000 teachers and academics reassigned to more useful labor tasks', headline: 'Educators Punished For Being Smart!' },
       es: { blurb: '30.000 profesores y académicos reasignados a tareas laborales más útiles', headline: 'Educadores Castigados Por Listos!' },
@@ -486,6 +525,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 0, dayRangeEnd: 0,
     loyaltyEffect: LoyaltyEffect.Down,
     interesting: false,
+    placeable: true,
     text: {
       en: { blurb: 'Local citizen council votes will be eliminated in favor of suggestive comments', headline: 'Local Councils Lose Vote!' },
       es: { blurb: 'Los votos de los consejos ciudadanos locales serán eliminados a favor de comentarios sugerentes', headline: 'Consejos Locales Pierden Voto!' },
@@ -498,6 +538,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 0, dayRangeEnd: 0,
     loyaltyEffect: LoyaltyEffect.Down,
     interesting: false,
+    placeable: true,
     text: {
       en: { blurb: 'Yearly donations to the state must increase to support growing government oversight', headline: 'Taxes Rise For 8th Year!' },
       es: { blurb: 'Las donaciones anuales al estado deben aumentar para sostener la creciente supervisión gubernamental', headline: 'Impuestos Suben 8vo Ano!' },
@@ -512,6 +553,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 0, dayRangeEnd: 0,
     loyaltyEffect: LoyaltyEffect.None,
     interesting: true,
+    placeable: true,
     text: {
       en: { blurb: 'Weather: Skies and temperatures will remain calm today', headline: 'Another Sunny Day!' },
       es: { blurb: 'Clima: Cielos despejados y temperaturas estables hoy', headline: 'Otro Dia Soleado!' },
@@ -524,6 +566,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 0, dayRangeEnd: 0,
     loyaltyEffect: LoyaltyEffect.None,
     interesting: true,
+    placeable: true,
     text: {
       en: { blurb: 'Weather: Storms predicted to wash western coast out to sea', headline: 'Western Storms Threaten Coast!' },
       es: { blurb: 'Clima: Se predicen tormentas que arrasarán la costa oeste', headline: 'Tormentas Amenazan Costa Oeste!' },
@@ -536,6 +579,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 0, dayRangeEnd: 0,
     loyaltyEffect: LoyaltyEffect.None,
     interesting: true,
+    placeable: true,
     text: {
       en: { blurb: 'Weather: Forecast expects heavy rains in the north and east', headline: 'Showers Rain Down!' },
       es: { blurb: 'Clima: Se esperan fuertes lluvias en el norte y el este', headline: 'Lluvia Intensa!' },
@@ -548,6 +592,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 0, dayRangeEnd: 0,
     loyaltyEffect: LoyaltyEffect.None,
     interesting: true,
+    placeable: true,
     text: {
       en: { blurb: 'Weather: Expect unseasonal snow in the south', headline: 'Blizzard Incoming?' },
       es: { blurb: 'Clima: Se espera nieve fuera de temporada en el sur', headline: 'Tormenta De Nieve?' },
@@ -560,6 +605,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 0, dayRangeEnd: 0,
     loyaltyEffect: LoyaltyEffect.None,
     interesting: true,
+    placeable: true,
     text: {
       en: { blurb: 'Weather: Sunny morning and cloudy evening for the day', headline: 'Warm To Cloudy!' },
       es: { blurb: 'Clima: Mañana soleada y tarde nublada para hoy', headline: 'De Sol A Nubes!' },
@@ -572,6 +618,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 0, dayRangeEnd: 0,
     loyaltyEffect: LoyaltyEffect.None,
     interesting: true,
+    placeable: true,
     text: {
       en: { blurb: 'Weather: Light showers throughout the day', headline: 'Warm To Cloudy This Week!' },
       es: { blurb: 'Clima: Lluvias ligeras durante todo el día', headline: 'Lluvias Ligeras Esta Semana!' },
@@ -584,6 +631,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 0, dayRangeEnd: 0,
     loyaltyEffect: LoyaltyEffect.None,
     interesting: true,
+    placeable: true,
     text: {
       en: { blurb: 'Weather: Hurricane-level winds spotted off eastern coast', headline: 'Eastern Hurricanes Return!' },
       es: { blurb: 'Clima: Vientos de nivel huracán avistados en la costa este', headline: 'Huracanes Del Este Vuelven!' },
@@ -596,6 +644,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 0, dayRangeEnd: 0,
     loyaltyEffect: LoyaltyEffect.None,
     interesting: true,
+    placeable: true,
     text: {
       en: { blurb: 'Weather: Clear skies and no sign of rain', headline: 'Another Dry Day!' },
       es: { blurb: 'Clima: Cielos despejados y sin señal de lluvia', headline: 'Otro Dia Seco!' },
@@ -608,6 +657,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 0, dayRangeEnd: 0,
     loyaltyEffect: LoyaltyEffect.None,
     interesting: true,
+    placeable: true,
     text: {
       en: { blurb: 'Weather: Freezing sleet and snow expected in northern mountains', headline: 'Buckle Down For Ice!' },
       es: { blurb: 'Clima: Se espera aguanieve y nieve en montañas del norte', headline: 'Preparense Para El Hielo!' },
@@ -620,6 +670,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 0, dayRangeEnd: 0,
     loyaltyEffect: LoyaltyEffect.None,
     interesting: true,
+    placeable: true,
     text: {
       en: { blurb: 'Weather: Tropical breezes blow across southeastern coast', headline: 'Sea Breeze Incoming!' },
       es: { blurb: 'Clima: Brisas tropicales soplan por la costa sureste', headline: 'Brisa Marina En Camino!' },
@@ -634,6 +685,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 0, dayRangeEnd: 0,
     loyaltyEffect: LoyaltyEffect.Up,
     interesting: true,
+    placeable: true,
     text: {
       en: { blurb: '[GOV] National Team has won the global football tournament', headline: '[GOV] Wins Football Crown!' },
       es: { blurb: 'El equipo nacional de [GOV] ha ganado el torneo mundial de fútbol', headline: '[GOV] Gana La Corona Del Futbol!' },
@@ -646,6 +698,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 0, dayRangeEnd: 0,
     loyaltyEffect: LoyaltyEffect.Up,
     interesting: true,
+    placeable: true,
     text: {
       en: { blurb: 'Antegria ski team soundly defeated by [GOV] crew', headline: '[GOV] Defeats Antegria Skiers!' },
       es: { blurb: 'Equipo de esquí de Antegria derrotado por equipo de [GOV]', headline: '[GOV] Derrota Esquiadores!' },
@@ -658,6 +711,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 0, dayRangeEnd: 0,
     loyaltyEffect: LoyaltyEffect.Up,
     interesting: true,
+    placeable: true,
     text: {
       en: { blurb: 'Tennis star Restojiu powers through semifinal brackets', headline: 'Tennis Star Advances!' },
       es: { blurb: 'La estrella del tenis Restojiu avanza por las semifinales', headline: 'Estrella Del Tenis Avanza!' },
@@ -670,6 +724,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 0, dayRangeEnd: 0,
     loyaltyEffect: LoyaltyEffect.Up,
     interesting: true,
+    placeable: true,
     text: {
       en: { blurb: 'Young [GOV] atheletes dominate track and field. May win Olympic gold', headline: 'Our Young Heroes!' },
       es: { blurb: 'Jóvenes atletas de [GOV] dominan el atletismo. Podrían ganar oro olímpico', headline: 'Nuestros Jovenes Heroes!' },
@@ -682,6 +737,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 0, dayRangeEnd: 0,
     loyaltyEffect: LoyaltyEffect.Up,
     interesting: true,
+    placeable: true,
     text: {
       en: { blurb: 'Skilled [GOV] baseball team finishes record season. Thanks Leader for support', headline: 'Baseball Success Sealed!' },
       es: { blurb: 'El talentoso equipo de béisbol de [GOV] termina temporada récord. Agradecen al Líder', headline: 'Exito En El Beisbol!' },
@@ -694,6 +750,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 0, dayRangeEnd: 0,
     loyaltyEffect: LoyaltyEffect.None,
     interesting: true,
+    placeable: true,
     text: {
       en: { blurb: 'Championship weight lifter Lekshou retires due to crippling injury', headline: 'Muscleman Retires!' },
       es: { blurb: 'El campeón de halterofilia Lekshou se retira por lesión grave', headline: 'Se Retira El Musculoso!' },
@@ -706,6 +763,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 0, dayRangeEnd: 0,
     loyaltyEffect: LoyaltyEffect.Down,
     interesting: true,
+    placeable: true,
     text: {
       en: { blurb: '[GOV] National Football Team has lost the regional finals to Antegria', headline: '[GOV] Football Stumbles!' },
       es: { blurb: 'El equipo nacional de fútbol de [GOV] ha perdido la final regional contra Antegria', headline: 'Futbol De [GOV] Tropieza!' },
@@ -718,6 +776,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 0, dayRangeEnd: 0,
     loyaltyEffect: LoyaltyEffect.Down,
     interesting: true,
+    placeable: true,
     text: {
       en: { blurb: 'Entire [GOV] National Hockey team killed in plane crash', headline: 'Tragedy Strikes Hockey!' },
       es: { blurb: 'Todo el equipo nacional de hockey de [GOV] muere en accidente aéreo', headline: 'Tragedia En El Hockey!' },
@@ -730,6 +789,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 0, dayRangeEnd: 0,
     loyaltyEffect: LoyaltyEffect.Down,
     interesting: true,
+    placeable: true,
     text: {
       en: { blurb: 'Athletic training in [GOV] is years behind the competition', headline: 'Our Athletes: Behind The Curve?' },
       es: { blurb: 'El entrenamiento atlético en [GOV] está años detrás de la competencia', headline: 'Atletas: Muy Rezagados?' },
@@ -742,6 +802,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 0, dayRangeEnd: 0,
     loyaltyEffect: LoyaltyEffect.Down,
     interesting: true,
+    placeable: true,
     text: {
       en: { blurb: 'National kayaking team has defected to Antegria', headline: 'Kayaking For The Enemy!' },
       es: { blurb: 'El equipo nacional de kayak ha desertado a Antegria', headline: 'Kayak Para El Enemigo!' },
@@ -756,6 +817,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 0, dayRangeEnd: 0,
     loyaltyEffect: LoyaltyEffect.Up,
     interesting: true,
+    placeable: true,
     text: {
       en: { blurb: 'Cherrywood\'s newest stars attended recent gala ball to honor verterans', headline: 'Stars Dance For Vets!' },
       es: { blurb: 'Las nuevas estrellas de Cherrywood asistieron a la gala en honor a veteranos', headline: 'Estrellas Bailan Por Veteranos!' },
@@ -768,6 +830,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 0, dayRangeEnd: 0,
     loyaltyEffect: LoyaltyEffect.Up,
     interesting: true,
+    placeable: true,
     text: {
       en: { blurb: 'New fall TV programming will focus on [GOV]\'s rebuilding', headline: 'Fall TV Revealaed!' },
       es: { blurb: 'La nueva programación de otoño se enfocará en la reconstrucción de [GOV]', headline: 'TV De Otono Revelada!' },
@@ -780,6 +843,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 0, dayRangeEnd: 0,
     loyaltyEffect: LoyaltyEffect.Up,
     interesting: true,
+    placeable: true,
     text: {
       en: { blurb: 'Beloved children\'s book "Mumpit Mush" finally coming to the big screen', headline: 'Mumpit Mush Is Coming!' },
       es: { blurb: 'El querido libro infantil "Mumpit Mush" llega por fin a la gran pantalla', headline: 'Llega Mumpit Mush!' },
@@ -792,6 +856,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 2, dayRangeEnd: -1,
     loyaltyEffect: LoyaltyEffect.Up,
     interesting: true,
+    placeable: true,
     text: {
       en: { blurb: 'Superstars Chad and Jenlyn preparing for Cherrywood wedding tomorrow', headline: 'C&J To Tie the Knot!' },
       es: { blurb: 'Las superestrellas Chad y Jenlyn preparan su boda en Cherrywood para mañana', headline: 'C&J Se Casan Manana!' },
@@ -804,6 +869,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 3, dayRangeEnd: -1,
     loyaltyEffect: LoyaltyEffect.Up,
     interesting: true,
+    placeable: true,
     text: {
       en: { blurb: 'Superstars Chad and Jenlyn marry in extravagant festival', headline: 'C&J Finally Hitched!' },
       es: { blurb: 'Las superestrellas Chad y Jenlyn se casan en extravagante festival', headline: 'C&J Por Fin Casados!' },
@@ -816,6 +882,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 0, dayRangeEnd: 0,
     loyaltyEffect: LoyaltyEffect.None,
     interesting: true,
+    placeable: true,
     text: {
       en: { blurb: '"My butt is not too fat, just right" claims TV star Aprelica', headline: 'Butt Within Spec!' },
       es: { blurb: '"Mi trasero no es gordo, es perfecto" dice la estrella de TV Aprelica', headline: 'Trasero Dentro De Lo Normal!' },
@@ -828,6 +895,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 0, dayRangeEnd: 0,
     loyaltyEffect: LoyaltyEffect.Down,
     interesting: true,
+    placeable: true,
     text: {
       en: { blurb: 'Reality star Mestonda found dead from apparent overdose', headline: 'Reality Star Overdoses!' },
       es: { blurb: 'La estrella de reality Mestonda hallada muerta por aparente sobredosis', headline: 'Estrella De Reality Muere!' },
@@ -840,6 +908,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 0, dayRangeEnd: 0,
     loyaltyEffect: LoyaltyEffect.Down,
     interesting: true,
+    placeable: true,
     text: {
       en: { blurb: 'Fashion designer CrevyCrevy has defected to Antegria', headline: 'Fashion Icon Defects!' },
       es: { blurb: 'El diseñador de moda CrevyCrevy ha desertado a Antegria', headline: 'Icono De Moda Deserta!' },
@@ -852,6 +921,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 0, dayRangeEnd: 0,
     loyaltyEffect: LoyaltyEffect.Down,
     interesting: true,
+    placeable: true,
     text: {
       en: { blurb: 'Mega-group HugginBoyz admits to not singing on any albums, can barely dance', headline: 'HugginBoyz: Talentless After All!' },
       es: { blurb: 'El mega-grupo HugginBoyz admite no cantar en ningún álbum y apenas bailar', headline: 'HugginBoyz: Sin Talento!' },
@@ -864,6 +934,7 @@ export const articleDatabase: readonly ArticleData[] = [
     dayRangeStart: 6, dayRangeEnd: -1,
     loyaltyEffect: LoyaltyEffect.Down,
     interesting: true,
+    placeable: true,
     text: {
       en: { blurb: 'Superstars Chad and Jenlyn file for divorce. Both claim infidelity', headline: 'C&J Fairytale Ends!' },
       es: { blurb: 'Las superestrellas Chad y Jenlyn solicitan el divorcio. Ambos alegan infidelidad', headline: 'C&J El Cuento Termina!' },
