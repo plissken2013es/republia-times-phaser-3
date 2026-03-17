@@ -174,8 +174,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: true,
     text: {
-      en: { blurb: '[GOV] forces have destroyed Antegria\'s illegal satellites', headline: '[GOV] Downs Enemy Satellite!' },
-      es: { blurb: 'Las fuerzas de [GOV] han destruido los satélites ilegales de Antegria', headline: '¡[GOV] Derriba Satelite Enemigo!' },
+      en: { blurb: '[GOV] forces have destroyed [ENE]\'s illegal satellites', headline: '[GOV] Downs Enemy Satellite!' },
+      es: { blurb: 'Las fuerzas de [GOV] han destruido los satélites ilegales de [ENE]', headline: '¡[GOV] Derriba Satelite Enemigo!' },
     },
   },
   {
@@ -369,8 +369,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: true,
     text: {
-      en: { blurb: 'Antegria secret code remains unbreakable. Top [GOV] minds are flumoxed', headline: 'The Enemy\'s Unbreakable Code!' },
-      es: { blurb: 'El código secreto de Antegria sigue siendo indescifrable. Las mejores mentes de [GOV] están confundidas', headline: 'Codigo Enemigo Indescifrable!' },
+      en: { blurb: '[ENE] secret code remains unbreakable. Top [GOV] minds are flumoxed', headline: 'The Enemy\'s Unbreakable Code!' },
+      es: { blurb: 'El código secreto de [ENE] sigue siendo indescifrable. Las mejores mentes de [GOV] están confundidas', headline: 'Codigo Enemigo Indescifrable!' },
     },
   },
   {
@@ -408,8 +408,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: true,
     text: {
-      en: { blurb: 'Antegria Navy sinks [GOV] battleship off eastern coast', headline: '[GOV] Battleship Bested!' },
-      es: { blurb: 'La Armada de Antegria hunde acorazado de [GOV] frente a la costa este', headline: 'Acorazado De [GOV] Hundido!' },
+      en: { blurb: '[ENE] Navy sinks [GOV] battleship off eastern coast', headline: '[GOV] Battleship Bested!' },
+      es: { blurb: 'La Armada de [ENE] hunde acorazado de [GOV] frente a la costa este', headline: 'Acorazado De [GOV] Hundido!' },
     },
   },
 
@@ -700,8 +700,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: true,
     text: {
-      en: { blurb: 'Antegria ski team soundly defeated by [GOV] crew', headline: '[GOV] Defeats Antegria Skiers!' },
-      es: { blurb: 'Equipo de esquí de Antegria derrotado por equipo de [GOV]', headline: '[GOV] Derrota Esquiadores!' },
+      en: { blurb: '[ENE] ski team soundly defeated by [GOV] crew', headline: '[GOV] Defeats [ENE] Skiers!' },
+      es: { blurb: 'Equipo de esquí de [ENE] derrotado por equipo de [GOV]', headline: '[GOV] Derrota Esquiadores!' },
     },
   },
   {
@@ -765,8 +765,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: true,
     text: {
-      en: { blurb: '[GOV] National Football Team has lost the regional finals to Antegria', headline: '[GOV] Football Stumbles!' },
-      es: { blurb: 'El equipo nacional de fútbol de [GOV] ha perdido la final regional contra Antegria', headline: 'Futbol De [GOV] Tropieza!' },
+      en: { blurb: '[GOV] National Football Team has lost the regional finals to [ENE]', headline: '[GOV] Football Stumbles!' },
+      es: { blurb: 'El equipo nacional de fútbol de [GOV] ha perdido la final regional contra [ENE]', headline: 'Futbol De [GOV] Tropieza!' },
     },
   },
   {
@@ -804,8 +804,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: true,
     text: {
-      en: { blurb: 'National kayaking team has defected to Antegria', headline: 'Kayaking For The Enemy!' },
-      es: { blurb: 'El equipo nacional de kayak ha desertado a Antegria', headline: 'Kayak Para El Enemigo!' },
+      en: { blurb: 'National kayaking team has defected to [ENE]', headline: 'Kayaking For The Enemy!' },
+      es: { blurb: 'El equipo nacional de kayak ha desertado a [ENE]', headline: 'Kayak Para El Enemigo!' },
     },
   },
 
@@ -910,8 +910,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: true,
     text: {
-      en: { blurb: 'Fashion designer CrevyCrevy has defected to Antegria', headline: 'Fashion Icon Defects!' },
-      es: { blurb: 'El diseñador de moda CrevyCrevy ha desertado a Antegria', headline: 'Icono De Moda Deserta!' },
+      en: { blurb: 'Fashion designer CrevyCrevy has defected to [ENE]', headline: 'Fashion Icon Defects!' },
+      es: { blurb: 'El diseñador de moda CrevyCrevy ha desertado a [ENE]', headline: 'Icono De Moda Deserta!' },
     },
   },
   {

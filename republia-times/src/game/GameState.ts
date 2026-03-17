@@ -20,7 +20,18 @@ export class GameState {
     return GameState.instance.stateInControl ? 'Republia' : 'Democria';
   }
 
+  public static getEnemyName(): string {
+    return 'Antegria';
+  }
+
+  public static expandPlaceholders(str: string): string {
+    return str
+      .replace(/\[GOV\]/g, GameState.getGovName())
+      .replace(/\[ENE\]/g, GameState.getEnemyName());
+  }
+
+  /** @deprecated Use expandPlaceholders instead */
   public static expandGovNames(str: string): string {
-    return str.replace(/\[GOV\]/g, GameState.getGovName());
+    return GameState.expandPlaceholders(str);
   }
 }

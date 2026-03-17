@@ -135,7 +135,7 @@ export const en: LocaleStrings = {
 
   // ── MorningScene messages ──
   morning_welcome: 'Welcome to The [GOV] Times. You are the new editor-in-chief.',
-  morning_warOver: 'The war with Antegria is over and the rebellion uprising has been crushed. Order is slowly returning to [GOV].',
+  morning_warOver: 'The war with [ENE] is over and the rebellion uprising has been crushed. Order is slowly returning to [GOV].',
   morning_publicNotLoyal: 'The public is not loyal to the government.',
   morning_freedomReturned: 'Freedom has returned to [GOV], but the public is skeptical.',
   morning_jobIncreaseLoyalty: 'It is your job to increase their loyalty by editing The [GOV] Times carefully. Pick only stories that highlight the good things about [GOV] and its government.',

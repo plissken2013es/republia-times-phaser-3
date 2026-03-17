@@ -42,8 +42,8 @@ export const es: LocaleStrings = {
   // ── MorningScene messages ──
   // 'Welcome to The [GOV] Times. You are the new editor-in-chief.'
   morning_welcome: 'Bienvenido a The [GOV] Times. Usted es el nuevo editor en jefe.',
-  // 'The war with Antegria is over and the rebellion uprising has been crushed. Order is slowly returning to [GOV].'
-  morning_warOver: 'La guerra con Antegria ha terminado y el levantamiento rebelde ha sido aplastado. El orden está volviendo lentamente a [GOV].',
+  // 'The war with [ENE] is over and the rebellion uprising has been crushed. Order is slowly returning to [GOV].'
+  morning_warOver: 'La guerra con [ENE] ha terminado y el levantamiento rebelde ha sido aplastado. El orden está volviendo lentamente a [GOV].',
   // 'The public is not loyal to the government.'
   morning_publicNotLoyal: 'El público no es leal al gobierno.',
   // 'Freedom has returned to [GOV], but the public is skeptical.'
