@@ -67,7 +67,7 @@ export class Readership {
     const curReadershipBonus = Readership.getReadershipBonus(this.curReaderCount);
     if (curReadershipBonus > preReadershipBonus) {
       this.comments += `* ${L.comment_influenceExpanded}\n`;
-    } else if (curReadershipBonus > preReadershipBonus) {
+    } else if (curReadershipBonus < preReadershipBonus) {
       this.comments += `* ${L.comment_influenceReduced}\n`;
     }
   }

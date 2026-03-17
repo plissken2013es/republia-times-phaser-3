@@ -9039,7 +9039,7 @@ Readership.prototype = {
 		var curReadershipBonus = Readership.getReadershipBonus(this.curReaderCount);
 		if(curReadershipBonus > preReadershipBonus) {
 			this.comments += "* The paper's increasing readership has expanded its influence.\n";
-		} else if(curReadershipBonus > preReadershipBonus) {
+		} else if(curReadershipBonus < preReadershipBonus) {
 			this.comments += "* The paper's decreasing readership has reduced its influence.\n";
 		}
 	}
