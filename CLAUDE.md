@@ -75,11 +75,22 @@ At day end, `Paper.getSummary()` returns a `PaperSummary` with:
 
 ### Content Data
 
-All `NewsItem` content is hardcoded as a static array in `NewsItem.as`. Items have:
+All `NewsItem` content lives in `src/data/articleDatabase.ts` (canonical source, loaded at startup from JSONBin.io or static fallback). Each article has:
+- `id` — unique string identifier (e.g. `'war-gas-stolen'`)
+- `legacyIndex` — stable numeric index for save compatibility
+- `category` — `ArticleCategory` enum (Plot, Military, War, Politics, Weather, Sports, Entertainment)
 - `dayRangeStart` / `dayRangeEnd` — 0/0 = always available; specific values = plot-critical
-- `loyaltyEffect` — `kLoyaltyUp(1)`, `kLoyaltyDown(-1)`, or `kLoyaltyNone(0)`
+- `loyaltyEffect` — `LoyaltyEffect.Up(1)`, `Down(-1)`, or `None(0)`
 - `interesting` — affects reader count
+- `placeable` — `false` for rebel cipher messages (no B/M/S icons, can't drag to paper)
+- `text.en` / `text.es` — bilingual blurb + headline (headline null for non-placeable items)
 - Rebel leader messages use `***` prefix and `|`-delimited text selected by current goal status
+
+### Placeholder System
+
+The `[GOV]` placeholder in all story/message strings is replaced at runtime via `GameState.expandPlaceholders()`:
+- `[GOV]` → "Republia" (state) or "Democria" (rebels), based on `GameState.stateInControl`
+- `[ENE]` → "Antegria" (enemy nation), via `GameState.getEnemyName()`
 
 ### Assets
 
@@ -382,17 +393,19 @@ scene.paper.spawnArticleAtPointer(2, blurb.newsItem, pointer);
 
 ### Fonts
 
-The original game uses HaxeFlixel bitmap fonts (`.fnt` + `_0.png` BMFont XML format). The Phaser port must use the **exact same font files** — do NOT regenerate or substitute fonts.
+The Phaser port uses BMFont XML format (`.fnt` + `_0.png`). Original headline fonts were ASCII-only so were replaced with Latin-capable alternatives for Spanish support.
 
-| Font file | Face name | Size | Used for |
-|---|---|---|---|
-| `nokiafc22` | Nokia Cellphone FC | **10** | Feed text, UI text, buttons, messages (FONT_FEED) |
-| `MotorolaScreentype` | Motorola ScreenType | **18** | Big article headlines (FONT_ARTICLE_B) |
-| `SILKWONDER` | Silky Wonderland | **12** | Medium article headlines (FONT_ARTICLE_M) |
-| `SG03` | SG03 | **8** | Small article headlines (FONT_ARTICLE_S) |
-| `7x5` | 07x5 | **8** | Small status numbers (available but not currently used) |
+| Font file | Face/Source | Size | Used for | Latin? |
+|---|---|---|---|---|
+| `nokiafc22` | Nokia Cellphone FC | **10** | Feed text, UI, buttons, messages, M headlines (FONT_FEED) | Yes |
+| `nokiafc22_8` | Nokia Cellphone FC | **6** | S article headlines (FONT_FEED_SMALL) | Yes |
+| `MotorolaScreentype` | Determination | **12** | B article headlines (FONT_ARTICLE_B) | Yes |
+| `SILKWONDER` | (loaded, unused) | **12** | Originally M headlines, replaced by nokiafc22 | — |
+| `SG03` | (loaded, unused) | **8** | Originally S headlines, replaced by nokiafc22_8 | — |
 
-Font files are in `republia-times/public/assets/fonts/` copied from `republia-original-html5/assets/`.
+Font files are in `republia-times/public/assets/fonts/`. Original TTFs in `legay_HaxeFlixel_src/assets/`.
+
+**snowb.org workflow:** Export at exact pixel size needed → fix `.fnt` XML (`file=` path, space char `page="-1"` → `page="0"`) → drop into fonts folder.
 
 ### Text Rendering Differences (Phaser vs HaxeFlixel)
 
