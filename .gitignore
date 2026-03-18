@@ -1,4 +1,6 @@
 republia-times/node_modules
 republia-times/dist
+republia-times/.env
+republia-times/.env.local
 _debug_ui
 .playwright-mcp
