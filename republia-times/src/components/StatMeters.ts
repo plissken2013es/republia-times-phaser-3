@@ -48,7 +48,7 @@ class StatMeter {
     this.deltaWedge.clear();
     if (prevValue !== undefined && prevValue !== value) {
       const prevAngle = this.loyaltyToAngle(prevValue);
-      const color = value > prevValue ? 0x00ff00 : 0xff0000;
+      const color = value > prevValue ? 0xff0000 : 0x0066ff;
       this.deltaWedge.fillStyle(color, 0.7);
       this.deltaWedge.beginPath();
       this.deltaWedge.moveTo(centerX, centerY);

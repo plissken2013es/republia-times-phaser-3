@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
 import { Const } from '../constants/Const';
+import { S } from '../locale/locale';
 import { PaperSummary } from './PaperSummary';
 import { Readership } from './Readership';
 
@@ -32,8 +33,8 @@ describe('Readership', () => {
     const summary = makeSummary(0, 0, 0);
     rs.applyPaperSummary(summary);
     expect(rs.curReaderCount).toBe(90);
-    expect(rs.comments).toContain('paper is blank');
-    expect(rs.comments).toContain('not enough interesting');
+    expect(rs.comments).toContain(S().comment_blankPaper);
+    expect(rs.comments).toContain(S().comment_notEnoughInteresting);
   });
 
   it('applies interest bonus when more than two interesting articles', () => {
@@ -41,13 +42,13 @@ describe('Readership', () => {
     const summary = makeSummary(1, 3, 0);
     rs.applyPaperSummary(summary);
     expect(rs.curReaderCount).toBe(250);
-    expect(rs.comments).toContain('many interesting');
+    expect(rs.comments).toContain(S().comment_manyInteresting);
   });
 
-  it('preserves the decreasing influence bug', () => {
+  it('shows influence reduced when readership drops', () => {
     const rs = new Readership(0, 500);
     const summary = makeSummary(0, 0, 0);
     rs.applyPaperSummary(summary);
-    expect(rs.comments).not.toContain('decreasing readership');
+    expect(rs.comments).toContain(S().comment_influenceReduced);
   });
 });

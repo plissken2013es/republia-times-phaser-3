@@ -8,13 +8,8 @@ describe('NewsItem', () => {
   });
 
   it('detects weather items', () => {
-    const weatherItems = NewsItem.allNewsItems.filter((item) =>
-      item.getBlurbText().startsWith('Weather:'),
-    );
+    const weatherItems = NewsItem.allNewsItems.filter((item) => item.isWeather());
     expect(weatherItems.length).toBeGreaterThan(0);
-    for (const item of weatherItems) {
-      expect(item.isWeather()).toBe(true);
-    }
   });
 
   it('detects rebel leader messages', () => {

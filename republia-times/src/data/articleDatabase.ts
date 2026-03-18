@@ -14,8 +14,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: true,
     text: {
-      en: { blurb: 'Remaining Rebel activity has been contained following coordinated Imperial security operations across multiple sectors', headline: 'Insurgency Contained, Stability Restored' },
-      es: { blurb: 'La actividad rebelde restante ha sido contenida tras operaciones coordinadas de seguridad imperial en varios sectores', headline: 'Insurgencia Contenida, Estabilidad Restaurada' },
+      en: { blurb: 'Remaining insurgent activity has been contained following coordinated ISB security operations across the Mid-Rim', headline: 'Sedition Extinguished, Order Restored' },
+      es: { blurb: 'La actividad insurgente restante ha sido neutralizada tras operaciones de seguridad de la ISB en el Borde Medio', headline: 'Sedición Extinguida, Orden Restaurado' },
     },
   },
   {
@@ -40,8 +40,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: false,
     text: {
-      en: { blurb: '*** Est#blishing secure holo-channel. Await further transmi##ion ***', headline: null },
-      es: { blurb: '*** Est#bleciendo canal holo seguro. Esp#re más transm##ión ***', headline: null },
+      en: { blurb: '*** Establishing secure holo-channel. Await further transmission from Fulcrum ***', headline: null },
+      es: { blurb: '*** Estableciendo canal holo seguro. Espere más transmisiones de Fulcrum ***', headline: null },
     },
   },
   {
@@ -53,8 +53,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: false,
     text: {
-      en: { blurb: '*** Listen carefully. There are cracks in their control. We can use them. We need you. ***', headline: null },
-      es: { blurb: '*** Escuche con atención. Hay grietas en su control. Podemos aprovecharlas. Le necesitamos. ***', headline: null },
+      en: { blurb: '*** The Empire is a disease that thrives in darkness. We are the spark. We need your access. ***', headline: null },
+      es: { blurb: '*** El Imperio es una enfermedad que crece en la oscuridad. Somos la chispa. Necesitamos su acceso. ***', headline: null },
     },
   },
   {
@@ -66,8 +66,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: false,
     text: {
-      en: { blurb: '*** We can extract your family from Imperial custody. Sow doubt. You have 4 days. ***', headline: null },
-      es: { blurb: '*** Podemos extraer a su familia de custodia imperial. Siembre dudas. Tiene 4 días. ***', headline: null },
+      en: { blurb: '*** We can extract your family from the Imperial detention center. Cause a narrative rift. 4 days. ***', headline: null },
+      es: { blurb: '*** Podemos extraer a su familia del centro de detención imperial. Cause una grieta narrativa. 4 días. ***', headline: null },
     },
   },
   {
@@ -79,8 +79,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: false,
     text: {
-      en: { blurb: '*** The Empire survives on perception. Break it. ***|*** Reduce compliance. Reach more systems. ***|*** It is working. We are growing. ***', headline: null },
-      es: { blurb: '*** El Imperio sobrevive gracias a la percepción. ¡Rómpala! ***|*** Reduzca la conformidad. Alcance más sistemas. ***|*** Está funcionando. Crecemos. ***', headline: null },
+      en: { blurb: '*** Fear keeps the local systems in line. Show them the Empire is bleedable. ***|*** Reduce compliance. Reach more systems. ***|*** It is working. We are growing. ***', headline: null },
+      es: { blurb: '*** El miedo mantiene a los sistemas a raya. Demuéstreles que el Imperio puede sangrar. ***|*** Reduzca la lealtad. Alcance más sistemas. ***|*** Está funcionando. Crecemos. ***', headline: null },
     },
   },
   {
@@ -120,8 +120,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: true,
     text: {
-      en: { blurb: 'ISB-led raid dismantles insurgent cell operating near an Imperial supply facility', headline: 'Security Forces Disrupt Rebel Cell' },
-      es: { blurb: 'Una redada de la ISB desmantela una célula insurgente cerca de una instalación imperial', headline: 'Fuerzas Imperiales Desarticulan Célula' },
+      en: { blurb: 'Stormtrooper Corps dismantles [ENE] cell hidden within a civilian manufacturing plant', headline: 'Security Forces Purge Terrorist Cell' },
+      es: { blurb: 'El Cuerpo de Stormtroopers desmantela una célula de [ENE] oculta en una planta civil', headline: 'Fuerzas de Seguridad Purgan Célula Terrorista' },
     },
   },
   {
@@ -133,8 +133,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: true,
     text: {
-      en: { blurb: 'Production delays reported after sabotage at an Imperial industrial complex', headline: 'Industrial Output Disrupted' },
-      es: { blurb: 'Retrasos de producción tras sabotaje en un complejo industrial imperial', headline: 'Producción Interrumpida' },
+      en: { blurb: 'Critical delays in TIE Fighter production following an explosion at the Kuat shipyards', headline: 'Imperial Production Sabotaged' },
+      es: { blurb: 'Retrasos críticos en la producción de cazas TIE tras una explosión en los astilleros de Kuat', headline: 'Producción Imperial Saboteada' },
     },
   },
   {
@@ -146,8 +146,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: true,
     text: {
-      en: { blurb: 'Captured Rebel operative provides intelligence and agrees to cooperate with Imperial authorities', headline: 'Rebel Operative Cooperates' },
-      es: { blurb: 'Un operativo rebelde capturado coopera con las autoridades imperiales', headline: 'Operativo Rebelde Coopera' },
+      en: { blurb: 'Captured [ENE] operative provides intelligence and agrees to cooperate with Imperial authorities', headline: 'Insurgent Leader Cooperates' },
+      es: { blurb: 'Un operativo de [ENE] capturado proporciona inteligencia y coopera con las autoridades imperiales', headline: 'Líder Insurgente Coopera' },
     },
   },
   {
@@ -159,8 +159,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: true,
     text: {
-      en: { blurb: 'Reports indicate Rebel elements regrouping in Outer Rim systems beyond direct Imperial oversight', headline: 'Rebel Presence Expands In Outer Rim' },
-      es: { blurb: 'Informes indican que elementos rebeldes se reagrupan en el Borde Exterior', headline: 'Presencia Rebelde En Expansión' },
+      en: { blurb: 'Reports indicate [ENE] elements regrouping in Outer Rim systems beyond direct Imperial oversight', headline: 'Enemy Presence Expands In Outer Rim' },
+      es: { blurb: 'Informes indican que elementos de [ENE] se reagrupan en sistemas del Borde Exterior', headline: 'Presencia Enemiga En Expansión' },
     },
   },
 
@@ -174,8 +174,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: true,
     text: {
-      en: { blurb: '[GOV] forces have neutralized unauthorized Rebel probe droids in orbit', headline: '[GOV] Eliminates Rebel Surveillance' },
-      es: { blurb: 'Las fuerzas de [GOV] han neutralizado sondas rebeldes en órbita', headline: '[GOV] Elimina Vigilancia Rebelde' },
+      en: { blurb: '[GOV] orbital batteries have neutralized unauthorized spy droids attempting to breach Core protocols', headline: '[GOV] Destroys Enemy Surveillance' },
+      es: { blurb: 'Baterías orbitales de [GOV] neutralizan droides espía que intentaban violar protocolos del Núcleo', headline: '[GOV] Destruye Vigilancia Enemiga' },
     },
   },
   {
@@ -200,8 +200,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: true,
     text: {
-      en: { blurb: 'Orbital monitoring systems expanded to improve detection of criminal and insurgent activity', headline: 'Expanded Surveillance Improves Security' },
-      es: { blurb: 'Sistemas orbitales ampliados para detectar actividad criminal e insurgente', headline: 'Vigilancia Ampliada Mejora Seguridad' },
+      en: { blurb: 'Orbital monitoring systems expanded to improve detection of criminal and [ENE] activity', headline: 'Expanded Surveillance Improves Security' },
+      es: { blurb: 'Sistemas orbitales ampliados para detectar actividad criminal y de [ENE]', headline: 'Vigilancia Ampliada Mejora Seguridad' },
     },
   },
   {
@@ -226,8 +226,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: true,
     text: {
-      en: { blurb: 'An advanced TIE prototype achieves a new velocity benchmark during controlled testing', headline: 'New Flight Record Achieved' },
-      es: { blurb: 'Un prototipo TIE alcanza un nuevo récord de velocidad en pruebas controladas', headline: 'Nuevo Récord De Vuelo' },
+      en: { blurb: 'An advanced TIE/v3 prototype achieves a new velocity benchmark during testing on Sullust', headline: 'New Flight Record Achieved' },
+      es: { blurb: 'Un prototipo TIE/v3 alcanza un nuevo récord de velocidad en pruebas en Sullust', headline: 'Nuevo Récord De Vuelo' },
     },
   },
   {
@@ -239,8 +239,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: true,
     text: {
-      en: { blurb: 'Multiple insurgent cells disrupted following coordinated intelligence operations', headline: 'Security Forces Prevent Attacks' },
-      es: { blurb: 'Varias células insurgentes desarticuladas tras operaciones coordinadas', headline: 'Fuerzas Imperiales Evitan Ataques' },
+      en: { blurb: 'Multiple [ENE] cells disrupted following coordinated ISB intelligence operations', headline: 'Security Forces Prevent Attacks' },
+      es: { blurb: 'Varias células de [ENE] desarticuladas tras operaciones coordinadas de la ISB', headline: 'Fuerzas Imperiales Evitan Ataques' },
     },
   },
   {
@@ -252,8 +252,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: true,
     text: {
-      en: { blurb: 'An illegal weapons facility discovered in a remote sector has been shut down by Imperial forces', headline: 'Hidden Facility Neutralized' },
-      es: { blurb: 'Una instalación ilegal de armas en un sector remoto ha sido desmantelada', headline: 'Instalación Ilegal Neutralizada' },
+      en: { blurb: 'An illegal thermal detonator facility discovered in a remote sector has been shut down', headline: 'Hidden Facility Neutralized' },
+      es: { blurb: 'Una instalación ilegal de detonadores termales en un sector remoto ha sido desmantelada', headline: 'Instalación Ilegal Neutralizada' },
     },
   },
   {
@@ -265,8 +265,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: true,
     text: {
-      en: { blurb: 'Recent evaluations confirm Imperial stormtroopers exceed expected combat readiness standards', headline: 'Trooper Performance Exceeds Expectations' },
-      es: { blurb: 'Evaluaciones confirman que los stormtroopers superan los estándares de combate', headline: 'Rendimiento Militar Destacado' },
+      en: { blurb: 'Recent evaluations confirm Imperial Stormtroopers exceed combat readiness standards', headline: 'Trooper Performance Exceeds Expectations' },
+      es: { blurb: 'Evaluaciones confirman que los Stormtroopers superan los estándares de combate', headline: 'Rendimiento Militar Destacado' },
     },
   },
   {
@@ -278,8 +278,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: true,
     text: {
-      en: { blurb: 'Large-scale detentions carried out after intelligence breakthrough targeting Rebel operatives', headline: 'Mass Arrests Secure Region' },
-      es: { blurb: 'Detenciones masivas tras un avance de inteligencia contra operativos rebeldes', headline: 'Arrestos Masivos Aseguran La Región' },
+      en: { blurb: 'Large-scale detentions carried out after intelligence targeting [ENE] operatives in the Core', headline: 'Mass Arrests Secure Region' },
+      es: { blurb: 'Detenciones masivas tras un avance contra operativos de [ENE] en el Núcleo', headline: 'Arrestos Masivos Aseguran La Región' },
     },
   },
   {
@@ -291,8 +291,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: true,
     text: {
-      en: { blurb: 'Fuel reserves reported missing from Imperial depots under unclear circumstances', headline: 'Supply Discrepancies Reported' },
-      es: { blurb: 'Reservas de combustible desaparecen de depósitos imperiales', headline: 'Irregularidades En Suministros' },
+      en: { blurb: 'Coaxium fuel reserves reported missing from Imperial depots on Mimban', headline: 'Supply Discrepancies Reported' },
+      es: { blurb: 'Reservas de Coaxium desaparecen de depósitos imperiales en Mimban', headline: 'Irregularidades En Suministros' },
     },
   },
   {
@@ -304,8 +304,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: true,
     text: {
-      en: { blurb: 'Critical energy facilities experience disruption following suspected sabotage', headline: 'Energy Production Affected' },
-      es: { blurb: 'Instalaciones energéticas afectadas por posible sabotaje', headline: 'Producción Energética Afectada' },
+      en: { blurb: 'Critical energy facilities on Corellia experience disruption following suspected sabotage', headline: 'Energy Production Affected' },
+      es: { blurb: 'Instalaciones energéticas en Corellia afectadas por posible sabotaje', headline: 'Producción Energética Afectada' },
     },
   },
   {
@@ -317,8 +317,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: true,
     text: {
-      en: { blurb: 'Explosion aboard civilian transport leaves hundreds unaccounted for. Cause remains under investigation', headline: 'Transport Explosion Under Review' },
-      es: { blurb: '¡Explosión en transporte civil deja cientos desaparecidos!', headline: 'Explosión En Transporte' },
+      en: { blurb: 'Explosion aboard civilian transport near Jedha leaves hundreds unaccounted for', headline: 'Transport Explosion Under Review' },
+      es: { blurb: '¡Explosión en transporte civil cerca de Jedha deja cientos desaparecidos!', headline: 'Explosión En Transporte' },
     },
   },
   {
@@ -330,8 +330,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: true,
     text: {
-      en: { blurb: 'A test flight ends in failure resulting in loss of crew. Investigation ongoing', headline: 'Test Flight Incident' },
-      es: { blurb: 'Vuelo de prueba termina en accidente con pérdida de tripulación', headline: 'Accidente En Prueba' },
+      en: { blurb: 'A test flight of the new TIE Interceptor ends in failure. Investigation ongoing', headline: 'Test Flight Incident' },
+      es: { blurb: 'Vuelo de prueba del nuevo TIE Interceptor termina en accidente', headline: 'Accidente En Prueba' },
     },
   },
   {
@@ -343,8 +343,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: true,
     text: {
-      en: { blurb: 'Technical irregularities identified across multiple capital ships', headline: 'Fleet Systems Under Review' },
-      es: { blurb: 'Irregularidades técnicas detectadas en varias naves capitales', headline: 'Sistemas Bajo Revisión' },
+      en: { blurb: 'Technical irregularities identified across multiple capital ships in the 5th Fleet', headline: 'Fleet Systems Under Review' },
+      es: { blurb: 'Irregularidades técnicas detectadas en varias naves capitales de la 5ª Flota', headline: 'Sistemas Bajo Revisión' },
     },
   },
   {
@@ -356,8 +356,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: true,
     text: {
-      en: { blurb: 'Senior Imperial officer dies unexpectedly during active command', headline: 'Command Structure Adjusted' },
-      es: { blurb: 'Un alto mando imperial fallece inesperadamente', headline: 'Cambio En La Cadena De Mando' },
+      en: { blurb: 'Senior Imperial Moff dies unexpectedly during active command in the Mid-Rim', headline: 'Command Structure Adjusted' },
+      es: { blurb: 'Un alto Moff imperial fallece inesperadamente durante su mando', headline: 'Cambio En La Cadena De Mando' },
     },
   },
   {
@@ -369,8 +369,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: true,
     text: {
-      en: { blurb: 'Rebel transmissions continue to evade full decryption despite ongoing analysis', headline: 'Encrypted Signals Persist' },
-      es: { blurb: 'Las transmisiones rebeldes siguen sin poder descifrarse', headline: 'Señales Rebeldes Persisten' },
+      en: { blurb: '[ENE] transmissions continue to evade full decryption despite ongoing ISB analysis', headline: 'Encrypted Signals Persist' },
+      es: { blurb: 'Las transmisiones de [ENE] siguen sin poder descifrarse pese al análisis de la ISB', headline: 'Señales Enemigas Persisten' },
     },
   },
   {
@@ -382,8 +382,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: true,
     text: {
-      en: { blurb: 'Armored production targets not met due to industrial inefficiencies', headline: 'Production Targets Missed' },
-      es: { blurb: 'Producción de vehículos militares por debajo de objetivos', headline: 'Producción Retrasada' },
+      en: { blurb: 'AT-ST walker production targets not met due to industrial inefficiencies on Fondor', headline: 'Production Targets Missed' },
+      es: { blurb: 'Producción de caminantes AT-ST por debajo de objetivos en Fondor', headline: 'Producción Retrasada' },
     },
   },
   {
@@ -395,8 +395,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: true,
     text: {
-      en: { blurb: 'External analysis questions combat accuracy of Imperial troops', headline: 'Training Standards Questioned' },
-      es: { blurb: '¿Análisis externo cuestiona la precisión de las tropas imperiales?', headline: 'Entrenamiento Cuestionado' },
+      en: { blurb: 'External analysis questions combat accuracy of E-11 blasters in the field', headline: 'Training Standards Questioned' },
+      es: { blurb: '¿Análisis cuestiona la precisión de los blasters E-11 en combate?', headline: 'Entrenamiento Cuestionado' },
     },
   },
   {
@@ -408,8 +408,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: true,
     text: {
-      en: { blurb: 'An Imperial capital ship lost during engagement with Rebel forces', headline: 'Capital Ship Lost In Engagement' },
-      es: { blurb: 'Una nave capital imperial se pierde en enfrentamiento con rebeldes', headline: 'Nave Imperial Destruida' },
+      en: { blurb: 'An Imperial cruiser lost during engagement with [ENE] forces near Scarif', headline: 'Capital Ship Lost In Engagement' },
+      es: { blurb: 'Una nave capital imperial se pierde en enfrentamiento con [ENE] cerca de Scarif', headline: 'Nave Imperial Destruida' },
     },
   },
 
@@ -423,8 +423,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: false,
     placeable: true,
     text: {
-      en: { blurb: 'The Emperor awards a distinction to a high-ranking official for lifelong service', headline: 'Service Recognized At Highest Level' },
-      es: { blurb: 'El Emperador concede una distinción por servicio prolongado', headline: 'Servicio Reconocido' },
+      en: { blurb: 'The Emperor awards the Medal of Honor to a high-ranking official for lifelong service', headline: 'Service Recognized At Highest Level' },
+      es: { blurb: 'El Emperador concede la Medalla de Honor a un alto cargo por servicio prolongado', headline: 'Servicio Reconocido' },
     },
   },
   {
@@ -436,8 +436,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: false,
     placeable: true,
     text: {
-      en: { blurb: 'Agricultural production quotas exceeded across multiple Imperial worlds', headline: 'Production Targets Surpassed' },
-      es: { blurb: 'La producción agrícola supera objetivos en varios mundos', headline: 'Producción Supera Objetivos' },
+      en: { blurb: 'Agricultural production quotas exceeded across multiple Imperial colony worlds', headline: 'Production Targets Surpassed' },
+      es: { blurb: 'La producción agrícola supera objetivos en mundos agrarios del Imperio', headline: 'Producción Supera Objetivos' },
     },
   },
   {
@@ -449,8 +449,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: false,
     placeable: true,
     text: {
-      en: { blurb: 'Resource reallocation increases funding for Imperial education initiatives', headline: 'Education Programs Expanded' },
-      es: { blurb: 'Redistribución de recursos aumenta inversión educativa', headline: 'Programas Educativos Ampliados' },
+      en: { blurb: 'Resource reallocation increases funding for COMPNOR youth education initiatives', headline: 'Education Programs Expanded' },
+      es: { blurb: 'Redistribución de recursos aumenta inversión en las juventudes de COMPNOR', headline: 'Programas Educativos Ampliados' },
     },
   },
   {
@@ -462,8 +462,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: false,
     placeable: true,
     text: {
-      en: { blurb: 'Recent surveys indicate widespread approval of Imperial governance', headline: 'Public Approval Remains High' },
-      es: { blurb: 'Encuestas recientes muestran alta aprobación del gobierno imperial', headline: 'Alta Aprobación Pública' },
+      en: { blurb: 'Recent surveys on Coruscant indicate widespread approval of Imperial governance', headline: 'Public Approval Remains High' },
+      es: { blurb: 'Encuestas en Coruscant muestran alta aprobación del gobierno imperial', headline: 'Alta Aprobación Pública' },
     },
   },
   {
@@ -475,8 +475,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: false,
     placeable: true,
     text: {
-      en: { blurb: 'Regional administrator introduces new measures to improve worker conditions within Imperial guidelines', headline: 'Labor Conditions Addressed' },
-      es: { blurb: 'Nuevo administrador introduce medidas laborales dentro de directrices imperiales', headline: 'Condiciones Laborales Revisadas' },
+      en: { blurb: 'Moff Tarkin introduces new labor measures to improve conditions in Imperial factories', headline: 'Labor Conditions Addressed' },
+      es: { blurb: 'El Moff Tarkin introduce medidas para mejorar condiciones en factorías imperiales', headline: 'Condiciones Laborales Revisadas' },
     },
   },
   {
@@ -488,8 +488,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: false,
     placeable: true,
     text: {
-      en: { blurb: 'Imperial administration approves adjustments to ration allocations for dependent populations', headline: 'Ration Policy Updated' },
-      es: { blurb: 'La administración imperial aprueba ajustes en raciones para población dependiente', headline: 'Política De Raciones Actualizada' },
+      en: { blurb: 'Imperial administration approves adjustments to ration allocations for refugee populations', headline: 'Ration Policy Updated' },
+      es: { blurb: 'La administración imperial aprueba ajustes en raciones para refugiados', headline: 'Política De Raciones Actualizada' },
     },
   },
   {
@@ -501,7 +501,7 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: false,
     placeable: true,
     text: {
-      en: { blurb: 'Unverified holo-image of a senior Imperial official circulates widely across the HoloNet', headline: 'HoloNet Image Raises Questions' },
+      en: { blurb: 'Unverified holo-image of a senior Imperial official in a scandalous outfit circulates the HoloNet', headline: 'HoloNet Image Raises Questions' },
       es: { blurb: 'Una imagen no verificada de un alto cargo imperial circula por el HoloNet', headline: 'Imagen Viral Genera Dudas' },
     },
   },
@@ -514,8 +514,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: false,
     placeable: true,
     text: {
-      en: { blurb: 'Thousands of educators reassigned to labor programs supporting Imperial infrastructure', headline: 'Workforce Redistribution Implemented' },
-      es: { blurb: 'Miles de educadores reasignados a programas laborales imperiales', headline: 'Redistribución Laboral Aplicada' },
+      en: { blurb: 'Educators from the Core reassigned to labor programs on Narkina 5', headline: 'Workforce Redistribution Implemented' },
+      es: { blurb: 'Educadores del Núcleo reasignados a programas laborales en Narkina 5', headline: 'Redistribución Laboral Aplicada' },
     },
   },
   {
@@ -527,8 +527,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: false,
     placeable: true,
     text: {
-      en: { blurb: 'Local advisory councils transition to consultative roles under centralized governance', headline: 'Local Councils Reorganized' },
-      es: { blurb: 'Consejos locales pasan a funciones consultivas bajo control central', headline: 'Consejos Locales Reorganizados' },
+      en: { blurb: 'Senate advisory councils transition to consultative roles under centralized governance', headline: 'Local Councils Reorganized' },
+      es: { blurb: 'Consejos del Senado pasan a funciones consultivas bajo control central', headline: 'Consejos Locales Reorganizados' },
     },
   },
   {
@@ -540,8 +540,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: false,
     placeable: true,
     text: {
-      en: { blurb: 'Increased citizen contributions approved to sustain expanding Imperial oversight programs', headline: 'Contribution Levels Adjusted' },
-      es: { blurb: 'Aumento de contribuciones para sostener programas imperiales', headline: 'Contribuciones Ajustadas' },
+      en: { blurb: 'Increased citizen contributions approved to fund the Imperial security expansion', headline: 'Contribution Levels Adjusted' },
+      es: { blurb: 'Aumento de contribuciones para financiar la expansión de seguridad imperial', headline: 'Contribuciones Ajustadas' },
     },
   },
 
@@ -568,8 +568,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: true,
     text: {
-      en: { blurb: 'Severe storm systems predicted across western coastal regions of an Outer Rim world', headline: 'Storm Front Approaches' },
-      es: { blurb: 'Tormentas intensas previstas en regiones costeras del Borde Exterior', headline: 'Frente De Tormenta En Camino' },
+      en: { blurb: 'Severe ion storms predicted across western coastal regions of Lothal', headline: 'Storm Front Approaches' },
+      es: { blurb: 'Tormentas de iones intensas previstas en regiones costeras de Lothal', headline: 'Frente De Tormenta En Camino' },
     },
   },
   {
@@ -581,8 +581,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: true,
     text: {
-      en: { blurb: 'Heavy precipitation expected across northern and eastern territories', headline: 'Heavy Rains Expected' },
-      es: { blurb: 'Fuertes lluvias previstas en regiones del norte y este', headline: 'Lluvias Intensas Previstas' },
+      en: { blurb: 'Heavy acid rain expected across northern territories of Mimban', headline: 'Heavy Rains Expected' },
+      es: { blurb: 'Lluvia ácida prevista en regiones del norte de Mimban', headline: 'Lluvias Intensas Previstas' },
     },
   },
   {
@@ -594,8 +594,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: true,
     text: {
-      en: { blurb: 'Unusual snowfall reported in southern desert regions of a frontier system', headline: 'Unexpected Climate Shift' },
-      es: { blurb: 'Nevadas inusuales en regiones desérticas del sur', headline: 'Cambio Climático Inusual' },
+      en: { blurb: 'Unusual snowfall reported in southern desert regions of Tatooine', headline: 'Unexpected Climate Shift' },
+      es: { blurb: 'Nevadas inusuales en regiones desérticas de Tatooine', headline: 'Cambio Climático Inusual' },
     },
   },
   {
@@ -607,8 +607,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: true,
     text: {
-      en: { blurb: 'Clear skies expected in the morning with cloud formations developing later', headline: 'Variable Conditions Expected' },
-      es: { blurb: 'Cielos despejados por la mañana y nubes por la tarde', headline: 'Condiciones Variables' },
+      en: { blurb: 'Clear skies expected in the morning with gas formations developing later', headline: 'Variable Conditions Expected' },
+      es: { blurb: 'Cielos despejados por la mañana y formaciones gaseosas por la tarde', headline: 'Condiciones Variables' },
     },
   },
   {
@@ -620,8 +620,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: true,
     text: {
-      en: { blurb: 'Light showers expected intermittently throughout the cycle', headline: 'Light Rain Across Regions' },
-      es: { blurb: 'Lluvias ligeras durante el día', headline: 'Lluvias Ligeras' },
+      en: { blurb: 'Light particle showers expected intermittently throughout the cycle', headline: 'Light Rain Across Regions' },
+      es: { blurb: 'Lluvias de partículas ligeras durante el día', headline: 'Lluvias Ligeras' },
     },
   },
   {
@@ -633,8 +633,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: true,
     text: {
-      en: { blurb: 'Hurricane-level atmospheric activity detected near oceanic systems', headline: 'Severe Storm Activity Detected' },
-      es: { blurb: 'Actividad atmosférica de nivel huracán en sistemas oceánicos', headline: 'Tormentas Severas Detectadas' },
+      en: { blurb: 'Hurricane-level activity detected near Kamino oceanic platforms', headline: 'Severe Storm Activity Detected' },
+      es: { blurb: 'Actividad de nivel huracán en las plataformas oceánicas de Kamino', headline: 'Tormentas Severas Detectadas' },
     },
   },
   {
@@ -646,8 +646,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: true,
     text: {
-      en: { blurb: 'Clear skies expected with no precipitation across monitored regions', headline: 'Dry Conditions Continue' },
-      es: { blurb: 'Cielos despejados sin lluvias previstas', headline: 'Condiciones Secas' },
+      en: { blurb: 'Clear skies expected with no solar flares across monitored regions', headline: 'Dry Conditions Continue' },
+      es: { blurb: 'Cielos despejados sin fulguraciones solares previstas', headline: 'Condiciones Secas' },
     },
   },
   {
@@ -659,8 +659,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: true,
     text: {
-      en: { blurb: 'Freezing sleet and ice storms expected in mountainous regions', headline: 'Extreme Cold Conditions' },
-      es: { blurb: 'Aguanieve y tormentas de hielo en zonas montañosas', headline: 'Condiciones Extremas De Frío' },
+      en: { blurb: 'Extreme blizzards and ice storms expected on Hoth sector routes', headline: 'Extreme Cold Conditions' },
+      es: { blurb: 'Ventiscas extremas y tormentas de hielo en rutas del sector Hoth', headline: 'Condiciones Extremas De Frío' },
     },
   },
   {
@@ -672,8 +672,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: true,
     text: {
-      en: { blurb: 'Warm atmospheric currents bring mild conditions to coastal regions', headline: 'Mild Climate Patterns' },
-      es: { blurb: 'Corrientes cálidas traen clima templado a zonas costeras', headline: 'Clima Suave' },
+      en: { blurb: 'Warm atmospheric currents bring mild conditions to Scarif beaches', headline: 'Mild Climate Patterns' },
+      es: { blurb: 'Corrientes cálidas traen clima templado a las playas de Scarif', headline: 'Clima Suave' },
     },
   },
 
@@ -687,8 +687,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: true,
     text: {
-      en: { blurb: '[GOV] grav-ball team secures victory in major intersystem tournament', headline: '[GOV] Wins Grav-Ball Championship' },
-      es: { blurb: '¡El equipo de grav-ball de [GOV] gana un torneo intersistémico!', headline: '[GOV] Gana Campeonato De Grav-Ball' },
+      en: { blurb: '[GOV] grav-ball team secures victory in the Galactic Cup tournament', headline: '[GOV] Wins Grav-Ball Championship' },
+      es: { blurb: '¡El equipo de grav-ball de [GOV] gana el torneo de la Copa Galáctica!', headline: '[GOV] Gana Campeonato De Grav-Ball' },
     },
   },
   {
@@ -700,8 +700,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: true,
     text: {
-      en: { blurb: '[ENE] team defeated in ice-slope competition by [GOV] athletes', headline: '[GOV] Triumphs On Ice Worlds' },
-      es: { blurb: 'Equipo de [ENE] derrotado en competición de hielo', headline: '[GOV] Triunfa En Mundos Helados' },
+      en: { blurb: '[ENE] pod-racing team defeated on Malastare by Imperial-funded pilots', headline: '[GOV] Triumphs On Outer Rim Circuits' },
+      es: { blurb: 'Equipo de [ENE] derrotado en Malastare por pilotos imperiales', headline: '[GOV] Triunfa En Circuitos Exteriores' },
     },
   },
   {
@@ -713,8 +713,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: true,
     text: {
-      en: { blurb: 'Professional shockball player Restojiu advances through elite tournament rounds', headline: 'Star Player Advances' },
-      es: { blurb: 'El jugador de shockball Restojiu avanza en el torneo', headline: 'Estrella Deportiva Avanza' },
+      en: { blurb: 'Professional Shockball player Restojiu advances through Coruscant elite rounds', headline: 'Star Player Advances' },
+      es: { blurb: 'El jugador de Shockball Restojiu avanza en el torneo de Coruscant', headline: 'Estrella Deportiva Avanza' },
     },
   },
   {
@@ -726,8 +726,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: true,
     text: {
-      en: { blurb: 'Young [GOV] athletes dominate multi-discipline competitions across several systems', headline: 'Next Generation Excels' },
-      es: { blurb: 'Jóvenes atletas de [GOV] dominan competiciones en varios sistemas', headline: 'Nueva Generación Destaca' },
+      en: { blurb: 'Young [GOV] athletes dominate Limmie competitions across several Core systems', headline: 'Next Generation Excels' },
+      es: { blurb: 'Jóvenes atletas de [GOV] dominan el Limmie en varios sistemas', headline: 'Nueva Generación Destaca' },
     },
   },
   {
@@ -739,8 +739,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: true,
     text: {
-      en: { blurb: '[GOV] team completes a record-breaking season with support from Imperial programs', headline: 'Historic Season Concluded' },
-      es: { blurb: 'Equipo de [GOV] logra una temporada récord con apoyo imperial', headline: 'Temporada Histórica' },
+      en: { blurb: '[GOV] team completes a record-breaking podracing season with Imperial support', headline: 'Historic Season Concluded' },
+      es: { blurb: 'Equipo de [GOV] logra una temporada de podracing récord con apoyo imperial', headline: 'Temporada Histórica' },
     },
   },
   {
@@ -752,8 +752,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: true,
     text: {
-      en: { blurb: 'Champion strength-athlete Lekshou retires following severe injury sustained during competition', headline: 'Veteran Athlete Retires' },
-      es: { blurb: 'El campeón Lekshou se retira tras una lesión grave en competición', headline: 'Atleta Se Retira' },
+      en: { blurb: 'Champion Wookiee wrestler Lekshou retires following injury during exhibition match', headline: 'Veteran Athlete Retires' },
+      es: { blurb: 'El campeón wookiee Lekshou se retira tras una lesión en combate', headline: 'Atleta Se Retira' },
     },
   },
   {
@@ -778,8 +778,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: true,
     text: {
-      en: { blurb: 'Transport carrying [GOV] ice-team crashes during transit between systems. No survivors reported', headline: 'Team Lost In Transit Accident' },
-      es: { blurb: '¡Transporte del equipo de hielo de [GOV] se estrella sin supervivientes!', headline: 'Equipo Perdido En Accidente' },
+      en: { blurb: 'Transport carrying the Alderaan Limmie team crashes. No survivors reported', headline: 'Team Lost In Transit Accident' },
+      es: { blurb: '¡Transporte del equipo de Limmie de Alderaan se estrella sin supervivientes!', headline: 'Equipo Perdido En Accidente' },
     },
   },
   {
@@ -804,8 +804,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: true,
     text: {
-      en: { blurb: 'Entire aquatic team reportedly defects to [ENE] territory during off-world event', headline: 'Athletes Defect To [ENE]' },
-      es: { blurb: '¡Equipo acuático deserta a territorio de [ENE]!', headline: 'Deserción Deportiva' },
+      en: { blurb: 'Mon Calamari aquatic team reportedly defects to [ENE] territory during event', headline: 'Athletes Defect To [ENE]' },
+      es: { blurb: '¡Equipo acuático de Mon Calamari deserta a territorio de [ENE]!', headline: 'Deserción Deportiva' },
     },
   },
 
@@ -819,7 +819,7 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: true,
     text: {
-      en: { blurb: 'Prominent Core World figures attend an Imperial gala honoring veterans of recent conflicts', headline: 'Elite Attend Imperial Gala' },
+      en: { blurb: 'Core World figures attend an Imperial gala honoring veterans of the Clone Wars', headline: 'Elite Attend Imperial Gala' },
       es: { blurb: 'Figuras del Núcleo asisten a una gala imperial en honor a veteranos', headline: 'Élite Asiste A Gala Imperial' },
     },
   },
@@ -832,8 +832,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: true,
     text: {
-      en: { blurb: 'New HoloNet programming to highlight reconstruction efforts across [GOV] systems', headline: 'HoloNet Schedule Announced' },
-      es: { blurb: 'Nueva programación del HoloNet mostrará la reconstrucción de [GOV]', headline: 'Programación Del HoloNet' },
+      en: { blurb: 'New HoloNet series to highlight Imperial reconstruction efforts in the Mid-Rim', headline: 'HoloNet Schedule Announced' },
+      es: { blurb: 'Nueva serie del HoloNet mostrará la reconstrucción imperial en el Borde Medio', headline: 'Programación Del HoloNet' },
     },
   },
   {
@@ -845,8 +845,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: true,
     text: {
-      en: { blurb: 'Popular children’s holo-story adaptation scheduled for system-wide release', headline: 'Family Classic Comes To HoloNet' },
-      es: { blurb: 'Historia infantil popular llega al HoloNet', headline: 'Clásico Infantil En El HoloNet' },
+      en: { blurb: 'Popular Ewok holo-cartoon adaptation scheduled for system-wide release', headline: 'Family Classic Comes To HoloNet' },
+      es: { blurb: 'Dibujos animados de Ewoks llegan al HoloNet', headline: 'Clásico Infantil En El HoloNet' },
     },
   },
   {
@@ -858,8 +858,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: true,
     text: {
-      en: { blurb: 'Two well-known HoloNet personalities prepare for a widely broadcast ceremony', headline: 'High-Profile Union Approaches' },
-      es: { blurb: 'Dos celebridades preparan una ceremonia retransmitida', headline: 'Unión De Alto Perfil' },
+      en: { blurb: 'Two well-known HoloNet personalities prepare for a ceremony on Coruscant', headline: 'High-Profile Union Approaches' },
+      es: { blurb: 'Dos celebridades preparan una ceremonia en Coruscant', headline: 'Unión De Alto Perfil' },
     },
   },
   {
@@ -871,8 +871,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: true,
     text: {
-      en: { blurb: 'Widely followed HoloNet figures marry in large-scale public celebration', headline: 'Ceremony Broadcast Across Systems' },
-      es: { blurb: 'Celebridades del HoloNet se casan en una gran ceremonia', headline: 'Boda Retransmitida' },
+      en: { blurb: 'Widely followed HoloNet figures marry in large-scale celebration at the Opera House', headline: 'Ceremony Broadcast Across Systems' },
+      es: { blurb: 'Celebridades del HoloNet se casan en la Ópera de Coruscant', headline: 'Boda Retransmitida' },
     },
   },
   {
@@ -884,8 +884,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: true,
     text: {
-      en: { blurb: 'HoloNet personality addresses rumors regarding appearance standards in recent broadcast', headline: 'Celebrity Responds To Criticism' },
-      es: { blurb: 'Una figura del HoloNet responde a críticas sobre su apariencia', headline: 'Celebridad Responde' },
+      en: { blurb: 'Cantina singer addresses rumors regarding droid-assisted vocal enhancement', headline: 'Celebrity Responds To Criticism' },
+      es: { blurb: 'Cantante de cantina responde a críticas sobre mejoras vocales con droides', headline: 'Celebridad Responde' },
     },
   },
   {
@@ -897,8 +897,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: true,
     text: {
-      en: { blurb: 'HoloNet personality found dead following suspected substance misuse', headline: 'Performer Found Dead' },
-      es: { blurb: 'Una figura del HoloNet aparece muerta por posible sobredosis', headline: 'Muerte De Celebridad' },
+      en: { blurb: 'HoloNet musician found dead on Nar Shaddaa following suspected spice misuse', headline: 'Performer Found Dead' },
+      es: { blurb: 'Músico del HoloNet aparece muerto en Nar Shaddaa por posible abuso de especias', headline: 'Muerte De Celebridad' },
     },
   },
   {
@@ -910,8 +910,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: true,
     text: {
-      en: { blurb: 'Well-known designer leaves [GOV] territory to work under [ENE] patronage', headline: 'Designer Departs Systems' },
-      es: { blurb: 'Un diseñador abandona [GOV] para trabajar con [ENE]', headline: 'Diseñador Abandona Sistemas' },
+      en: { blurb: 'Well-known designer leaves [GOV] territory to work on [ENE] controlled moons', headline: 'Designer Departs Systems' },
+      es: { blurb: 'Un diseñador abandona [GOV] para trabajar en lunas de [ENE]', headline: 'Diseñador Abandona Sistemas' },
     },
   },
   {
@@ -923,8 +923,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: true,
     text: {
-      en: { blurb: 'Popular music group admits heavy reliance on production systems rather than live performance ability', headline: 'Music Group Faces Scrutiny' },
-      es: { blurb: 'Grupo musical admite depender de producción más que talento', headline: 'Grupo Bajo Escrutinio' },
+      en: { blurb: 'Popular Bith band admits heavy reliance on synthetic playback systems', headline: 'Music Group Faces Scrutiny' },
+      es: { blurb: 'Banda de músicos Bith admite depender de playback sintético', headline: 'Grupo Bajo Escrutinio' },
     },
   },
   {
@@ -936,8 +936,8 @@ export const articleDatabase: readonly ArticleData[] = [
     interesting: true,
     placeable: true,
     text: {
-      en: { blurb: 'High-profile HoloNet couple separates amid mutual allegations', headline: 'Public Relationship Ends' },
-      es: { blurb: 'Pareja del HoloNet se separa tras acusaciones mutuas', headline: 'Fin De Relación Pública' },
+      en: { blurb: 'High-profile HoloNet couple separates amid mutual allegations of espionage', headline: 'Public Relationship Ends' },
+      es: { blurb: 'Pareja del HoloNet se separa tras acusaciones mutuas de espionaje', headline: 'Fin De Relación Pública' },
     },
   },
 ];

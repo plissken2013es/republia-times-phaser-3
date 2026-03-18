@@ -1,3 +1,4 @@
+import { S } from '../locale/locale';
 import { NewsItem } from './NewsItem';
 import { Readership } from './Readership';
 
@@ -17,11 +18,12 @@ export class GameState {
   }
 
   public static getGovName(): string {
-    return GameState.instance.stateInControl ? 'Republia' : 'Democria';
+    // stateInControl kept for future use (e.g. rebel victory renames the state)
+    return S().govName;
   }
 
   public static getEnemyName(): string {
-    return 'Antegria';
+    return S().enemyName;
   }
 
   public static expandPlaceholders(str: string): string {

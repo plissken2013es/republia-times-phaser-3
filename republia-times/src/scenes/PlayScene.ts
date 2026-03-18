@@ -54,7 +54,7 @@ export class PlayScene extends Phaser.Scene {
 
     // Newspaper title logo — switches between Republia/Democria
     const logoKey = GameState.instance.stateInControl ? IMG_LOGO_SMALL : IMG_LOGO_SMALL2;
-    this.add.image(360, 10, logoKey).setOrigin(0, 0);
+    this.add.image(360, 2, logoKey).setOrigin(0, 0);
 
     this.clock = new Clock(this, GameState.instance.dayNumber);
     this.statMeters = new StatMeters(this, 3, 240, true);

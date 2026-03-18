@@ -55,17 +55,21 @@ export class MorningScene extends Phaser.Scene {
     const logoSprite = this.add.image(0, 20, logoKey).setOrigin(0, 0);
     logoSprite.x = 270 - logoSprite.width / 2;
 
-    const messageText = this.add.bitmapText(100, 99, FONT_FEED, message, 10);
+    // Position everything below the logo
+    const logoBottom = 20 + logoSprite.height;
+    const dayTextY = logoBottom + 4;
+    const messageTop = dayTextY + 16;
+
+    const messageText = this.add.bitmapText(100, messageTop, FONT_FEED, message, 10);
     messageText.setMaxWidth(340);
     messageText.setLineSpacing(0);
     messageText.setTint(rebelsWon ? 0xff0000 : 0x000000);
-    // Match original: center text vertically around y=180
-    messageText.y = 180 - messageText.height / 2;
-    // Clamp so text doesn't go above the header area
-    if (messageText.y < 85) messageText.y = 85;
+    // Center text vertically in the remaining space between messageTop and button area
+    const availableSpace = 270 - messageTop;
+    messageText.y = messageTop + Math.max(0, (availableSpace - messageText.height) / 2);
 
-    // Place button below text, but no lower than y=270 (original position)
-    const buttonY = Math.max(270, messageText.y + messageText.height + 12);
+    // Place button below text, but no lower than y=280
+    const buttonY = Math.max(280, messageText.y + messageText.height + 12);
 
     const button = this.add.image(270, buttonY, IMG_BUTTON).setOrigin(0.5, 0.5).setDepth(10);
     const buttonLabel = this.add.bitmapText(
@@ -92,7 +96,7 @@ export class MorningScene extends Phaser.Scene {
     button.setInteractive({ useHandCursor: true }).on('pointerdown', onClick);
     buttonLabel.setInteractive({ useHandCursor: true }).on('pointerdown', onClick);
 
-    const dayText = this.add.bitmapText(270, 70, FONT_FEED, `${S().ui_day} ${dayNumber}`, 10);
+    const dayText = this.add.bitmapText(270, dayTextY, FONT_FEED, `${S().ui_day} ${dayNumber}`, 10);
     dayText.setOrigin(0.5, 0);
     dayText.setTint(0x000000);
 
