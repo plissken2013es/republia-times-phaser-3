@@ -4,7 +4,7 @@ import { es } from './es';
 import { rebuildNewsCache } from '../data/buildNewsLocale';
 
 const LANG_KEY = 'republiatimes-lang';
-let active: LocaleStrings = en;
+let active: LocaleStrings = es;
 
 export function setLanguage(lang: 'en' | 'es'): void {
   active = lang === 'es' ? es : en;
